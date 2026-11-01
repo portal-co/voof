@@ -11,4 +11,4 @@ rev = "b5061866696d90ef13d47dff35b875d70bf8c341"
 
 [repo.cirrus]
 url = "https://github.com/portal-co/cirrus.git"
-rev = "23d271baa468c01a94482a21ae8666075ab0a81d"
+rev = "3ec9a19d45e1a280f8be42a0f216494c8d2f073b"
