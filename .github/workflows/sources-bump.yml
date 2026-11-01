@@ -1,0 +1,66 @@
+name: Sources bump
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # weekly, Monday 06:00 UTC
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  bump:
+    name: Bump pins and open PR
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Install elan (Lean toolchain manager)
+        run: |
+          base=https://github.com/leanprover/elan/releases/latest/download
+          curl -sSfL "$base/elan-x86_64-unknown-linux-gnu.tar.gz" | tar xz
+          ./elan-init -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Install pinned cargo-hax
+        run: |
+          version="$(awk '
+            $0 == "[hax]" { inhax = 1; next }
+            /^\[/ { inhax = 0 }
+            inhax && $1 == "version" { gsub(/"/, "", $3); print $3; exit }
+          ' toolchain.toml)"
+          cargo install --locked "cargo-hax@$version"
+
+      - name: Bump all pins to main
+        run: |
+          for repo in volar volar-ir cirrus; do
+            scripts/bump.sh "$repo" main
+          done
+
+      - name: Check out bumped sources
+        run: scripts/sync.sh
+
+      - name: Install Charon/Aeneas
+        run: cd .sources/volar-ir/crates/ir/volar-ir && cargo hax tools install
+
+      - name: Verify single-instance dependency resolution
+        run: scripts/check-dedup.sh
+
+      - name: Regenerate all scenarios
+        run: scripts/extract.sh
+
+      - name: Open PR
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "[AI] bump source pins"
+          title: "chore: bump source pins"
+          body: |
+            Automated weekly bump of sources.toml to each repo's main.
+            Extraction output regenerated; extract-check and lake-build must
+            be green before merge.
+          branch: bot/sources-bump
+          delete-branch: true

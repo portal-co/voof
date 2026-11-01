@@ -332,11 +332,12 @@ building green. Findings that shape later milestones:
 
 ## 8. Milestones
 
-- **M0 — Scaffolding (this plan's first stage).** voof repo created under
-  `github.com/portal-co`; `sources.toml`, scripts, pinned hax
-  installed; *one* scenario (`volar-ir__volar-ir__core` or
-  `volar__volar-spec__garble`) extracting and building green in CI with
-  checked-in output.
+- **M0 — Scaffolding. DONE** (2026-11-01): voof live at
+  `github.com/portal-co/voof`; `sources.toml`, scripts, pinned hax 0.4.2;
+  three scenarios (`volar-side`, `volar-ir-common`, `volar-ir-core`)
+  extracted and building green in CI with checked-in output; dedup gate
+  (103 portal-co crates, one instance each); `sources-bump.yml` weekly PR
+  workflow. Findings in §7a.
 - **M1 — Stage-1 coverage.** All four stage-1 scenarios green;
   `sources-bump.yml` running.
 - **M2 — IR remodeling.** Hand-written Lean semantics for the volar-ir core
