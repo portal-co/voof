@@ -1,0 +1,20 @@
+name = "voof"
+version = "0.0.1"
+defaultTargets = ["Voof"]
+
+[[lean_lib]]
+name = "Voof"
+
+# One root package requiring all scenario packages: a single shared .lake
+# (mathlib/Aeneas built once), per docs/lean-verification-plan.md.
+[[require]]
+name = "VolarSide"
+path = "generated/volar-side"
+
+[[require]]
+name = "VolarIrCommon"
+path = "generated/volar-ir-common"
+
+[[require]]
+name = "VolarIrCore"
+path = "generated/volar-ir-core"

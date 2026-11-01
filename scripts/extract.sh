@@ -9,6 +9,8 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 ROOT="$PWD"
+SOURCES_DIR="${VOOF_SOURCES_DIR:-$ROOT/.sources}"
+SOURCES_DIR="$(cd "$SOURCES_DIR" && pwd -P)"  # physical: see sync.sh
 
 configs=()
 if [ "$#" -gt 0 ]; then
@@ -32,7 +34,7 @@ for cfg in "${configs[@]}"; do
     echo "extract: $cfg needs repo= and crate= keys" >&2; exit 1; }
 
   # Locate the crate directory by package name among workspace members.
-  checkout="$ROOT/.sources/$repo"
+  checkout="$SOURCES_DIR/$repo"
   cratedir=""
   while IFS= read -r m; do
     if [ -f "$checkout/$m/Cargo.toml" ] &&
@@ -48,10 +50,19 @@ for cfg in "${configs[@]}"; do
 
   echo "extract: $scenario ($repo/$crate)"
   cp "$cfg" "$cratedir/hax.toml"
+  # Seed the scratch package from the committed generated/ so hax's
+  # create-only-if-missing curation (lakefile.toml, Assumptions/,
+  # Verification/, root module) survives regeneration: generated/ is the
+  # source of truth for curated files, Extraction/ is always rewritten.
+  if [ -d "$ROOT/generated/$scenario" ]; then
+    mkdir -p "$cratedir/proofs/$scenario/lean"
+    rsync -a "$ROOT/generated/$scenario/" "$cratedir/proofs/$scenario/lean/"
+  fi
   (cd "$cratedir" && cargo hax extract "$scenario")
   rm -rf "$ROOT/generated/$scenario"
   mkdir -p "$ROOT/generated"
-  rsync -a "$cratedir/proofs/$scenario/lean/" "$ROOT/generated/$scenario/"
+  rsync -a --exclude '/llbc/' --exclude '/aeneas-error.log' \
+    "$cratedir/proofs/$scenario/lean/" "$ROOT/generated/$scenario/"
   rm -rf "$cratedir/proofs" "$cratedir/hax.toml"
 done
 echo "extract: done"

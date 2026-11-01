@@ -1,0 +1,46 @@
+# Scenario volar-ir-common: shared IR types (generated schema types,
+# Stmt, complexity hints). Dependency root for the volar-ir scenarios.
+repo = "volar-ir"
+crate = "volar-ir-common"
+
+[scenario.volar-ir-common]
+backend = "lean"
+include = [
+  "volar_ir_common::generated",
+  "volar_ir_common::complexity::generated",
+  "volar_ir_common::Stmt",
+  "volar_ir_common::Node",
+  # Derived impls are separate items (not subitems of the type).
+  "{impl core::cmp::PartialEq for volar_ir_common::Stmt}",
+  "{impl core::cmp::Eq for volar_ir_common::Stmt}",
+  "{impl core::cmp::PartialOrd for volar_ir_common::Stmt}",
+  "{impl core::cmp::Ord for volar_ir_common::Stmt}",
+  "{impl core::hash::Hash for volar_ir_common::Stmt}",
+  "{impl core::fmt::Debug for volar_ir_common::Stmt}",
+]
+# MeasureSpec recurses through Vec, which is not a strictly-positive
+# occurrence for the Lean kernel; extract it signature-only for now.
+# ReentryHint's derived impls read MeasureSpec's discriminant, which an
+# opaque (variant-less) type no longer supports — so they go opaque too.
+opaque = [
+  # Stmt's derived Clone uses BuiltinClone, whose trait dictionary comes from
+  # Aeneas.Std.core while the extraction targets CoreModels.core — a hax
+  # 0.4.2 pin skew. Signature-only until the pins align.
+  "{impl core::clone::Clone for volar_ir_common::Stmt}",
+  "volar_ir_common::complexity::MeasureSpec",
+  "{impl core::clone::Clone for volar_ir_common::complexity::generated::ReentryHint}",
+  "{impl core::cmp::PartialEq for volar_ir_common::complexity::generated::ReentryHint}",
+  "{impl core::cmp::Eq for volar_ir_common::complexity::generated::ReentryHint}",
+  "{impl core::cmp::PartialOrd for volar_ir_common::complexity::generated::ReentryHint}",
+  "{impl core::cmp::Ord for volar_ir_common::complexity::generated::ReentryHint}",
+  "{impl core::hash::Hash for volar_ir_common::complexity::generated::ReentryHint}",
+  "{impl core::fmt::Debug for volar_ir_common::complexity::generated::ReentryHint}",
+  "{impl core::clone::Clone for volar_ir_common::complexity::MeasureSpec}",
+  "{impl core::cmp::PartialEq for volar_ir_common::complexity::MeasureSpec}",
+  "{impl core::cmp::PartialEq<_> for volar_ir_common::complexity::MeasureSpec}",
+  "{impl core::cmp::Eq for volar_ir_common::complexity::MeasureSpec}",
+  "{impl core::cmp::PartialOrd for volar_ir_common::complexity::MeasureSpec}",
+  "{impl core::cmp::Ord for volar_ir_common::complexity::MeasureSpec}",
+  "{impl core::hash::Hash for volar_ir_common::complexity::MeasureSpec}",
+  "{impl core::fmt::Debug for volar_ir_common::complexity::MeasureSpec}",
+]

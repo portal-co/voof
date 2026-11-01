@@ -1,19 +1,10 @@
 #!/usr/bin/env bash
-# build-lean.sh [dir ...] — lake build each generated scenario package
-# (default: all of generated/*/) and then the root proofs package, if any.
+# build-lean.sh — build everything through the root `voof` package, which
+# requires each generated scenario package by path. One shared .lake means
+# mathlib/Aeneas are fetched and built once (per-scenario .lake dirs would
+# each duplicate ~8 GiB of mathlib artifacts).
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-dirs=("$@")
-if [ "$#" -eq 0 ]; then
-  dirs=(generated/*/)
-fi
-for d in "${dirs[@]}"; do
-  [ -f "$d/lakefile.toml" ] || continue
-  echo "lake: $d"
-  (cd "$d" && lake exe cache get && lake build)
-done
-if [ -f proofs/lakefile.toml ]; then
-  echo "lake: proofs/ (root)"
-  (cd proofs && lake exe cache get && lake build)
-fi
+lake exe cache get
+lake build

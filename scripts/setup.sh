@@ -22,8 +22,9 @@ fi
 # Charon + Aeneas are downloaded per hax's pins. `tools install` wants a
 # crate dir; any workspace member of the pinned sources works — run it after
 # sync.sh, or fall back to a scratch crate.
-if [ -d .sources/volar-ir ]; then
-  (cd .sources/volar-ir/crates/ir/volar-ir && cargo hax tools install)
+SOURCES_DIR="${VOOF_SOURCES_DIR:-$PWD/.sources}"
+if [ -d "$SOURCES_DIR/volar-ir" ]; then
+  (cd "$SOURCES_DIR/volar-ir/crates/ir/volar-ir" && cargo hax tools install)
 else
   echo "setup: run scripts/sync.sh first, then re-run to pre-install tools"
 fi

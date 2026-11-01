@@ -1,0 +1,29 @@
+# Scenario volar-ir-core: extract the core IR types of volar-ir.
+# First proof target for IR remodeling (plan §8 M2).
+repo = "volar-ir"
+crate = "volar-ir"
+
+[scenario.volar-ir-core]
+backend = "lean"
+# Narrow entry point: the core IR module and its transitive dependencies.
+# Expand toward whole-crate extraction as hax coverage allows.
+# volar_ir_common is a path-patched sibling crate (single-instance dedup);
+# including it makes its types translate transparently into this extraction
+# instead of being modeled as assumptions.
+include = ["volar_ir::ir", "volar_ir_common"]
+# Aeneas cannot end the region abstractions for the iterator closures in
+# these two methods ("Can't end abstraction ... set as non-endable").
+# Signature-only extraction keeps dependents usable; revisit when Aeneas
+# closure support improves or the methods are restructured upstream.
+opaque = [
+  # NB: charon cannot match inherent impl blocks directly; `_` is the
+  # documented workaround glob for the impl-block path segment.
+  "volar_ir::ir::_::as_ref",
+  "volar_ir::ir::_::as_mut",
+  "volar_ir::ir::_::map",
+  # These call volar_ir_common::Node::{new,map_prov}, whose charon names we
+  # can't select cleanly (re-exported type, impl at crate root). Signature-
+  # only until M1 coverage work.
+  "volar_ir::ir::_::push_stmt_with_side",
+  "volar_ir::ir::_::map_prov_with_handler",
+]

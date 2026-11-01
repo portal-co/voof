@@ -4,13 +4,21 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 ROOT="$PWD"
+SOURCES_DIR="${VOOF_SOURCES_DIR:-$ROOT/.sources}"
+# Physical path: cargo derives in-repo relative patch targets from the cwd,
+# and logical/physical mixes (macOS /var symlink) cause phantom collisions.
+SOURCES_DIR="$(cd "$SOURCES_DIR" && pwd -P)"
 
+# Run cargo from INSIDE the sources root: config discovery is cwd-based, and
+# the generated dedup config (plus any ancestor configs) must resolve
+# exactly as they do during extraction.
+cd "$SOURCES_DIR"
 for repo in volar volar-ir cirrus; do
-  cargo metadata --format-version 1 --manifest-path "$ROOT/.sources/$repo/Cargo.toml" \
-    > "$ROOT/.sources/metadata-$repo.json"
+  cargo metadata --format-version 1 --manifest-path "$SOURCES_DIR/$repo/Cargo.toml" \
+    > "$SOURCES_DIR/metadata-$repo.json"
 done
 
-python3 - "$ROOT/.sources" "$ROOT/.sources"/metadata-*.json <<'PY'
+python3 - "$SOURCES_DIR" "$SOURCES_DIR"/metadata-*.json <<'PY'
 import json, os, sys
 
 sources_dir = os.path.realpath(sys.argv[1])

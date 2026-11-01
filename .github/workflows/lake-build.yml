@@ -24,16 +24,18 @@ jobs:
         with:
           path: |
             ~/.elan
-            **/.lake
-          key: lake-${{ hashFiles('generated/*/lean-toolchain') }}
+            .lake
+          key: lake-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}
+          restore-keys: lake-
 
-      - name: Assert all scenario packages share one Lean toolchain
+      - name: Assert all packages share one Lean toolchain
         run: |
-          toolchains="$(cat generated/*/lean-toolchain | sort -u | wc -l)"
+          toolchains="$(cat lean-toolchain generated/*/lean-toolchain \
+            | sort -u | wc -l)"
           [ "$toolchains" -eq 1 ] || {
-            echo "::error::scenario packages disagree on lean-toolchain"
+            echo "::error::packages disagree on lean-toolchain"
             exit 1
           }
 
-      - name: Build all generated packages
+      - name: Build all packages via the root package
         run: scripts/build-lean.sh

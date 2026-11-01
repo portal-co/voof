@@ -1,0 +1,10 @@
+# Members of volar-ir that do not resolve from clean git pins: they need
+# llvm-bridge crates (volar-circuit-exec-core, volar-llvm-jumpthread,
+# volar-llvm-pass-build, volar-llvm-pass-support) that are unpublished
+# pre-publish state — llvm-bridge's public history has only
+# volar-llvm-constchain and volar-llvm-import-core. None are extraction
+# targets. Removing them from the scratch checkout's member list does not
+# change any extracted code. Upstream fix: publish llvm-bridge.
+crates/frontends/volar-wasm-circuit-import
+crates/tools/volar-steel
+crates/pass/volar-llvm-plugin

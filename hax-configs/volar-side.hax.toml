@@ -1,0 +1,11 @@
+# Scenario volar-side: SideId and friends (opaque numeric identifiers).
+# Dependency of volar-ir-common.
+repo = "volar-ir"
+crate = "volar-side"
+
+[scenario.volar-side]
+backend = "lean"
+include = ["volar_side::generated"]
+# Derived Debug extracts with a formatter-state type mismatch (Aeneas Lean
+# backend limitation); signature-only is fine for an identifier type.
+opaque = ["{impl core::fmt::Debug for volar_side::generated::SideId}"]

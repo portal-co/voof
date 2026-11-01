@@ -1,0 +1,8 @@
+# Members of cirrus that do not resolve from clean git pins: they need
+# llvm-bridge crates (volar-llvm-pass-build, volar-llvm-pass-support) that
+# are unpublished pre-publish state. Both are genuine LLVM pass plumbing —
+# unlike the ERT, which was refactored to drop its llvm-bridge dep
+# (SelectEmitter/select now live in cirrus-core). Nothing else in the
+# workspace depends on these two members. Upstream fix: publish llvm-bridge.
+crates/recompile/cirrus-llvm-pass
+crates/recompile/cirrus-llvm-frontend
