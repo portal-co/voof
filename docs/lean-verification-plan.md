@@ -288,6 +288,48 @@ A green `main` therefore means: generated Lean matches the pinned sources
   `sync.sh`'s generated config do the dedup, or the CI freshness check will
   disagree with your local output.
 
+## 7a. M0 findings (landed)
+
+M0 shipped with three scenarios — `volar-side`, `volar-ir-common`
+(`generated` types, `complexity::generated`, `Stmt` + derived impls), and
+`volar-ir-core` (the `ir` module) — extracted by cargo-hax 0.4.2 and
+building green. Findings that shape later milestones:
+
+- **Aeneas closure/region limits**: iterator-closure methods
+  (`IRTerminator::as_ref`/`as_mut`/`map`) fail with "Can't end abstraction";
+  they are `opaque` (signature-only axioms) for now.
+- **Non-positive recursion**: `MeasureSpec` recurses through `Vec`, which
+  the Lean kernel rejects; it is an opaque abstract type in Assumptions
+  until a mutual-inductive model is written.
+- **hax 0.4.2 pin skew**: generated code mixes `Aeneas.Std.core` and
+  `CoreModels.core` trait dictionaries (`BuiltinClone`); `Stmt`'s derived
+  Clone is opaque because of it. Newer hax (main pins hax-lean v0.3.39,
+  aeneas build-41977a5) may fix this — evaluate upgrading in M1.
+- **`fmt` back-reference triples**: axioms seeded for opaque `Debug::fmt`
+  carry an extra borrow back-reference; curated to the pair shape.
+- **CoreModels gaps** (hax-lean v0.3.30): no Ord/PartialOrd/Hash for
+  Vec/String/Array/Option/Pair, no Clone/PartialEq for String, no BTreeMap —
+  all modeled in `volar-ir-common`'s Assumptions extension block; upstream
+  candidates.
+- **volar-provenance scenario dropped**: aeneas emits a duplicate
+  `corecloneCloneInst` field for the multi-Clone-bound `ProvenanceHandler`
+  trait; the dictionary is hand-modeled in volar-ir-core's Assumptions.
+- **Pre-publish deps**: llvm-bridge's public history lacks four crates used
+  by volar-ir/cirrus members → `sources-patches/*.exclude-members` drops
+  those members from the scratch checkouts. cirrus-ert-core's spurious
+  llvm-bridge dependency was refactored away upstream (cirrus@23d2713:
+  `SelectEmitter`/`select` vendored into cirrus-core).
+- **macOS `/var` symlink**: all paths in scripts are physical (`pwd -P`);
+  logical/physical mixes cause phantom cargo patch collisions.
+- **Assumptions curation flow**: extract.sh reseeds the scratch package from
+  committed `generated/` before each run so curated files persist;
+  `scripts/resync-assumptions.sh` re-seeds from the template when the opaque
+  set changes, preserving the extension block after the
+  `-- EXTENSIONS` marker.
+- **Single root lake package**: per-scenario `lake build` duplicates ~8 GiB
+  of mathlib artifacts per package; the root `voof` package requires all
+  scenario packages and builds them in one shared `.lake`.
+
 ## 8. Milestones
 
 - **M0 — Scaffolding (this plan's first stage).** voof repo created under
