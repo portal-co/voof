@@ -1,0 +1,10 @@
+# Scenario VolarIrCore: extract the core IR types of volar-ir.
+# First proof target for IR remodeling (plan §8 M2).
+repo = "volar-ir"
+crate = "volar-ir"
+
+[scenario.VolarIrCore]
+backend = "lean"
+# Narrow entry point: the core IR module and its transitive dependencies.
+# Expand toward whole-crate extraction as hax coverage allows.
+include = ["volar_ir::ir"]

@@ -1,0 +1,55 @@
+name: Extraction freshness
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  extract-check:
+    name: Regenerate and diff
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Install elan (Lean toolchain manager)
+        run: |
+          curl -sSfL https://github.com/leanprover/elan/releases/latest/download/elan-x86_64-unknown-linux-gnu.tar.gz \
+            | tar xz
+          ./elan-init -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Install pinned cargo-hax
+        run: |
+          version="$(awk '
+            $0 == "[hax]" { inhax = 1; next }
+            /^\[/ { inhax = 0 }
+            inhax && $1 == "version" { gsub(/"/, "", $3); print $3; exit }
+          ' toolchain.toml)"
+          cargo install --locked "cargo-hax@$version"
+
+      - name: Check out pinned sources
+        run: scripts/sync.sh
+
+      - name: Install Charon/Aeneas
+        run: cd .sources/volar-ir/crates/ir/volar-ir && cargo hax tools install
+
+      - name: Verify single-instance dependency resolution
+        run: scripts/check-dedup.sh
+
+      - name: Regenerate all scenarios
+        run: scripts/extract.sh
+
+      - name: Fail if generated output is stale
+        run: |
+          git diff --exit-code generated/ || {
+            echo "::error::generated/ is stale; run scripts/extract.sh and commit"
+            exit 1
+          }

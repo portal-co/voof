@@ -1,0 +1,7 @@
+# Pinned tooling. scripts/setup.sh and CI install exactly these.
+
+[hax]
+# cargo install --locked cargo-hax --version <version>
+# hax transitively pins its Charon/Aeneas via `cargo hax tools install`,
+# and the Lean toolchain via the lean-toolchain files it generates.
+version = "0.4.2"

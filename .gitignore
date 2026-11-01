@@ -1,0 +1,4 @@
+.sources/
+*.olean
+lake-manifest.json
+.lake/
