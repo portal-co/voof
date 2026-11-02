@@ -14,3 +14,17 @@ dst="generated/volar-spec-native/VolarSpecNative/Generated.lean"
 mkdir -p "$(dirname "$dst")"
 cp "$src" "$dst"
 echo "prepare-native: $dst"
+
+# the Aeneas↔native bridge theorems (volar_lean_bridge_generated.lean) into
+# VolarSpecBridge/Generated.lean, with the import block prepended
+bsrc="$SOURCES_DIR/volar/crates/spec/volar-spec-lean/volar_lean_bridge_generated.lean"
+bdst="generated/volar-spec-bridge/VolarSpecBridge/Generated.lean"
+[ -f "$bsrc" ] || { echo "prepare-native: $bsrc missing (sync first)" >&2; exit 1; }
+mkdir -p "$(dirname "$bdst")"
+{
+  echo "import VolarSpecBridge.Prelude"
+  echo "import VolarSpecGarble.Extraction"
+  echo
+  tail -n +4 "$bsrc"
+} > "$bdst"
+echo "prepare-native: $bdst"

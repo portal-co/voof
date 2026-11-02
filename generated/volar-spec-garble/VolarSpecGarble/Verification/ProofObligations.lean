@@ -69,6 +69,107 @@ theorem u8_xor_cancel2 (b t : Std.U8) : (b ^^^ t) ^^^ b = t := by
   rw [u8_xor_comm b t]
   exact u8_xor_cancel t b
 
+
+/-- `core.U8`'s `Default` computes to `default`. -/
+theorem core_u8_default :
+    core.U8.Insts.CoreDefaultDefault.default = ok (default : Std.U8) := by
+  rfl
+
+/-- Spec of the shim's `Default` loop (mirrors `from_fn_loop_spec`). -/
+theorem array_default_loop_spec {T N : Type}
+    (dd : core.default.Default T) (d : array.ArraySize N)
+    (m : Std.Usize) (hsize : d.typenummarker_traitsUnsignedInst.USIZE = ok m)
+    (dv : T) (hdv : dd.default = ok dv)
+    : ∀ (k : Nat) (data : alloc.vec.Vec T) (i : Std.Usize),
+      m.val - i.val = k → i.val ≤ m.val →
+      vecL data = List.replicate i.val dv →
+      loop (fun x => array.Array.Insts.CoreDefaultDefault.default_loop.body dd d x.1 x.2) (data, i)
+        ⦃ data' => vecL data' = List.replicate m.val dv ⦄ := by
+  intro k
+  induction k with
+  | zero =>
+    intro data i hk hi hdata
+    have him : i.val = m.val := by omega
+    rw [loop.eq_1]
+    conv in (array.Array.Insts.CoreDefaultDefault.default_loop.body dd d (data, i).1
+        (data, i).2) =>
+      simp only [array.Array.Insts.CoreDefaultDefault.default_loop.body]
+    rw [hsize]
+    simp only [Bind.bind, Aeneas.Std.bind]
+    have hni : ¬ (i < m) := by simp [UScalar.lt_equiv, him]
+    rw [if_neg hni]
+    simp only [spec_ok]
+    rw [← him]
+    exact hdata
+  | succ k ih =>
+    intro data i hk hi hdata
+    have hlt : i < m := by simp [UScalar.lt_equiv]; omega
+    rw [loop.eq_1]
+    conv in (array.Array.Insts.CoreDefaultDefault.default_loop.body dd d (data, i).1
+        (data, i).2) =>
+      simp only [array.Array.Insts.CoreDefaultDefault.default_loop.body]
+    rw [hsize]
+    simp only [Bind.bind, Aeneas.Std.bind]
+    rw [if_pos hlt]
+    rw [hdv]
+    simp only [Bind.bind, Aeneas.Std.bind]
+    have hlen : (vecL data).length = i.val := by rw [hdata]; simp [vecL]
+    have hlen2 : (data.val ++ [dv]).length ≤ Usize.max := by
+      simp only [List.length_append, List.length_cons, List.length_nil,
+        show data.val.length = i.val from hlen]
+      have h2 : m.val ≤ Usize.max := by scalar_tac
+      omega
+    have hpush : data.push dv = ok ⟨data.val ++ [dv], hlen2⟩ := by
+      simp only [alloc.vec.Vec.push, rust_primitives.sequence.seq_push]
+      rw [dif_pos hlen2]
+      simp only [Bind.bind, Aeneas.Std.bind]
+    have hadd := UScalar.add_equiv i 1#usize
+    have h1v : (1#usize : Std.Usize).val = 1 := by
+      simp [UScalar.ofNat, UScalar.ofNatCore_val_eq]
+    rw [h1v] at hadd
+    rw [hpush]
+    simp only [Bind.bind, Aeneas.Std.bind]
+    cases haddi : i + 1#usize with
+    | ok z =>
+      rw [haddi] at hadd; obtain ⟨hin, hv, -⟩ := hadd
+      simp
+      exact ih ⟨data.val ++ [dv], hlen2⟩ z (by omega) (by omega) (by
+        show data.val ++ [dv] = _
+        rw [hv, List.replicate_succ']
+        have hdata' : data.val = List.replicate i.val dv := hdata
+        rw [← hdata'])
+    | fail e =>
+      rw [haddi] at hadd
+      obtain ⟨-, hnin⟩ := hadd
+      exfalso
+      have hlt' : i.val < m.val := (UScalar.lt_equiv i m).mp hlt
+      simp only [UScalar.inBounds] at hnin
+      have hb := m.hBounds
+      omega
+    | div => rw [haddi] at hadd; simp at hadd
+
+/-- Spec of the shim's `Default for Array` instance: the result's data is
+`replicate N.USIZE default`. -/
+theorem array_default_spec {T N : Type}
+    (dd : core.default.Default T) (dc : core.clone.Clone T) (d : array.ArraySize N)
+    (m : Std.Usize) (hsize : d.typenummarker_traitsUnsignedInst.USIZE = ok m)
+    (dv : T) (hdv : dd.default = ok dv) :
+    array.Array.Insts.CoreDefaultDefault.default dd dc d
+      ⦃ a => vecL a.data = List.replicate m.val dv ⦄ := by
+  simp only [array.Array.Insts.CoreDefaultDefault.default, alloc.vec.Vec.new,
+    rust_primitives.sequence.seq_empty, Bind.bind, Aeneas.Std.bind]
+  rw [show array.Array.Insts.CoreDefaultDefault.default_loop dd d (Slice.new T) 0#usize
+      = loop (fun x => array.Array.Insts.CoreDefaultDefault.default_loop.body dd d x.1 x.2)
+        (Slice.new T, 0#usize) from rfl]
+  have hloop := array_default_loop_spec dd d m hsize dv hdv m.val (Slice.new T) 0#usize
+    (by simp [UScalar.ofNat, UScalar.ofNatCore_val_eq]) (by simp)
+    (by simp [vecL, Slice.new])
+  obtain ⟨v, hv, hpost⟩ := spec_ok_elim hloop
+  rw [hv]
+  simp only []
+  rw [spec_ok]
+  exact hpost
+
 /-- Spec of the extracted `from_fn` loop: after the loop, the data is the
 prefix extended by the generator's remaining values. The FnMut closure is
 required to be *stateless* (returns its input state unchanged) and
