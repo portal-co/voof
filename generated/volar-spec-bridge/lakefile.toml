@@ -1,0 +1,14 @@
+name = "VolarSpecBridge"
+version = "0.0.1"
+defaultTargets = ["VolarSpecBridge"]
+
+[[lean_lib]]
+name = "VolarSpecBridge"
+
+[[require]]
+name = "VolarSpecGarble"
+path = "../volar-spec-garble"
+
+[[require]]
+name = "VolarSpecNative"
+path = "../volar-spec-native"

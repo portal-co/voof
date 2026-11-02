@@ -4,3 +4,4 @@ import VolarIrCommon
 import VolarIrCore
 import VolarSpecGarble
 import VolarSpecNative
+import VolarSpecBridge

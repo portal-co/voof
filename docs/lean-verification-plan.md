@@ -225,7 +225,53 @@ representation** of its specs, and voof proves the generated representation
   mathlib/Aeneas dependency, which is the point.
 - **First proof landed**: `Eval_open_Garble_share` (open∘share = id under
   the length invariant) in `VolarSpecNative/Verification.lean`.
-- Next (M2): the bridge theorems — `VolarSpecNative` (native) ≡
+
+### M2 work plan (in progress)
+
+Two proof layers, then the bridge:
+
+1. **Aeneas-side specs** (in `VolarSpecGarble/Verification/`, curated —
+   hax never touches it): partial-correctness specs in Aeneas's `spec`
+   idiom for the shim's `array.Array.from_fn` (via WF induction on
+   `n - i` over the extracted `from_fn_loop`, with a stateless-FnMut
+   hypothesis `F.call_mut s i = ok (g i, s)`) and for the share/open
+   closures (unfolding the index chain array→Vec→Slice→`getElem?`).
+   Capstone: `Eval.open (Garble.share g t) g = ok t` on the extracted
+   side, given both arrays have the `N.USIZE` length.
+2. **Transport** (new package `generated/volar-spec-bridge/`, requires
+   both `VolarSpecGarble` and `VolarSpecNative`; curated): list-spine
+   transports `array.Array U8 N → List UInt8` (via Aeneas `U8.val` →
+   `UInt8.ofNat`), the size transport `typenum ... .USIZE ↦ n`, and the
+   commutation theorems `toNative ∘ share_A = share_N ∘ toNative` (etc.)
+   for the digest-free fragment. `DigestSt ↔ SpecDigest` correspondence
+   is stated for the digest-taking functions (`and_result`,
+   `and_via_table`, `absorb_args_bases`): the extracted side takes an
+   abstract digest dict; the native side is instantiated with a hash
+   function whose spec matches the dict's `finalize`.
+3. The native round-trip (M1) then replays on the extracted side as a
+   corollary, giving end-to-end: extraction ⟂ native ⟂ proofs.
+
+**M2 status (landed, digest-free fragment):**
+- `VolarSpecGarble/Verification/ProofObligations.lean` — Aeneas-side
+  specs: `from_fn_loop_spec` (WF induction over the extracted loop;
+  stateless-closure hypothesis), `from_fn_spec`, closure specs for
+  share/open, `share_spec`/`open_spec`, and `open_share_roundtrip`
+  (`open (share g t) g = ok t` on the Aeneas extraction, no sorry).
+- `generated/volar-spec-bridge/` (new curated package, requires both):
+  `u8ToUInt8`/`arrToNative`/`garbleToNative`/`evalToNative` transports,
+  `share_commutes`/`open_commutes`, and `native_roundtrip_via_bridge` —
+  the native round-trip *derived* from the extracted spec's verified
+  behavior (not re-proven).
+- Proof-engineering notes for this Aeneas version are documented in the
+  Verification file header (bind-unfold recipe, vecL transparency
+  workaround, fully-instantiated rewrites to protect the loop lambda).
+- Still open for M2: the digest-taking functions (`and_result`,
+  `and_via_table`, `absorb_args_bases`, `to_share`): the extracted side
+  takes an abstract `SpecDigest` dict while the native side takes a
+  `hash : List UInt8 → List UInt8` — the correspondence is
+  `DigestSt.finalize` parts-concatenation vs the dict's `finalize` of the
+  folded `update` chain; also `GarbleTable`/`GlobalSecret` and the
+  `n / 8` bit-decomposition lemmas (`to_share`). — `VolarSpecNative` (native) ≡
   `VolarSpecGarble` (Aeneas extraction): transport `List` ↔ the Aeneas
   `Slice` model and `DigestSt` ↔ the opaque digest axioms, then replay the
   native proofs on the extracted side (or vice versa). The volar-spec

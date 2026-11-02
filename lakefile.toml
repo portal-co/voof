@@ -26,3 +26,7 @@ path = "generated/volar-spec-garble"
 [[require]]
 name = "VolarSpecNative"
 path = "generated/volar-spec-native"
+
+[[require]]
+name = "VolarSpecBridge"
+path = "generated/volar-spec-bridge"
