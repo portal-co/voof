@@ -265,6 +265,22 @@ Two proof layers, then the bridge:
 - Proof-engineering notes for this Aeneas version are documented in the
   Verification file header (bind-unfold recipe, vecL transparency
   workaround, fully-instantiated rewrites to protect the loop lambda).
+- **Autogeneration (landed)**: `volar-compiler/printer_lean_bridge.rs`
+  generates the equivalence layer from the spec IR: struct transports
+  (`<S>ToNative`), closure specs, and commutation theorems with complete
+  proofs for the recognized body patterns (`from_fn` pointwise-xor
+  constructors and bare-array methods, `Default` constructors; xor may
+  have the self field on either side, closure capture order follows
+  first-use). Unmatched items land in a visible `-- NOT-BRIDGED` comment
+  block. xtask `gen-specs` emits
+  `crates/spec/volar-spec-lean/volar_lean_bridge_generated.lean`;
+  voof's `prepare-native.sh` copies it into
+  `VolarSpecBridge/Generated.lean` with the import block prepended.
+  Generated proofs reference the curated shim specs in
+  `VolarSpecGarble/Verification/ProofObligations.lean` (`from_fn_spec`,
+  `array_default_spec`, `xorBytes`, ...) and the scalar transports in
+  `VolarSpecBridge/Prelude.lean`. Currently generated: `share`, `open`,
+  `zero` (×2), `not_garble` commutations.
 - Still open for M2: the digest-taking functions (`and_result`,
   `and_via_table`, `absorb_args_bases`, `to_share`): the extracted side
   takes an abstract `SpecDigest` dict while the native side takes a
