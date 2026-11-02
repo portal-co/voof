@@ -30,7 +30,7 @@ structure complexity.generated.StructRef where
   «name» : alloc.string.String
 
 /-- [volar_ir_common::complexity::generated::ReentryHint]
-    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 84:0-86:1
+    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 85:0-87:1
     Visibility: public -/
 structure complexity.generated.ReentryHint where
   measures : alloc.vec.Vec complexity.MeasureSpec
@@ -43,14 +43,14 @@ inductive generated.Type where
 | Bit : generated.Type
 
 /-- [volar_ir_common::generated::Constant]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 68:0-71:1
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 66:0-69:1
     Visibility: public -/
 structure generated.Constant where
   hi : Std.U128
   lo : Std.U128
 
 /-- [volar_ir_common::generated::ExternalExecutor]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 143:0-146:1
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 140:0-143:1
     Visibility: public -/
 @[discriminant isize]
 inductive generated.ExternalExecutor where
@@ -58,7 +58,7 @@ inductive generated.ExternalExecutor where
 | Evaluator : generated.ExternalExecutor
 
 /-- [volar_ir_common::generated::ExternalRevealPolicy]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 206:0-209:1
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 203:0-206:1
     Visibility: public -/
 @[discriminant isize]
 inductive generated.ExternalRevealPolicy where
@@ -66,7 +66,7 @@ inductive generated.ExternalRevealPolicy where
 | BothRoles : generated.ExternalRevealPolicy
 
 /-- [volar_ir_common::generated::OracleExecutionKind]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 269:0-272:1
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 268:0-271:1
     Visibility: public -/
 @[discriminant isize]
 inductive generated.OracleExecutionKind where
@@ -74,7 +74,7 @@ inductive generated.OracleExecutionKind where
 | Replicated : generated.OracleExecutionKind
 
 /-- [volar_ir_common::generated::ActionExecutionPolicy]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 332:0-336:1
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 331:0-335:1
     Visibility: public -/
 structure generated.ActionExecutionPolicy where
   executor : generated.ExternalExecutor
@@ -91,13 +91,13 @@ structure generated.OracleExecutionPolicy where
   fingerprint : Array Std.U8 32#usize
 
 /-- [volar_ir_common::generated::TypeId]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 875:0-875:27
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 882:0-882:27
     Visibility: public -/
 @[reducible]
 def generated.TypeId := Std.U32
 
 /-- [volar_ir_common::generated::OracleDecl]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 513:0-518:1
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 514:0-519:1
     Visibility: public -/
 structure generated.OracleDecl where
   «name» : alloc.string.String
@@ -106,7 +106,7 @@ structure generated.OracleDecl where
   execution : generated.OracleExecutionPolicy
 
 /-- [volar_ir_common::generated::ActionDecl]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 609:0-614:1
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 612:0-617:1
     Visibility: public -/
 structure generated.ActionDecl where
   «name» : alloc.string.String
@@ -115,20 +115,20 @@ structure generated.ActionDecl where
   execution : generated.ActionExecutionPolicy
 
 /-- [volar_ir_common::generated::RngDecl]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 705:0-708:1
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 710:0-713:1
     Visibility: public -/
 structure generated.RngDecl where
   «name» : alloc.string.String
   ty : generated.TypeId
 
 /-- [volar_ir_common::generated::StorageId]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 918:0-918:30
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 925:0-925:30
     Visibility: public -/
 @[reducible]
 def generated.StorageId := Std.U32
 
 /-- [volar_ir_common::generated::PreInitSegment]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 779:0-784:1
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 784:0-789:1
     Visibility: public -/
 structure generated.PreInitSegment where
   storage : generated.StorageId
@@ -137,28 +137,68 @@ structure generated.PreInitSegment where
   data : alloc.vec.Vec generated.Constant
 
 /-- [volar_ir_common::generated::Node]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 961:0-965:1
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 968:0-972:1
     Visibility: public -/
 structure generated.Node (T : Type) (P : Type) where
   kind : T
   prov : P
   side : core.option.Option volar_side.generated.SideId
 
+/-- [volar_ir_common::PolyKey]
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 293:0-298:1
+    Visibility: public -/
+@[discriminant isize]
+inductive PolyKey (V : Type) where
+| One : V → PolyKey V
+| Many : alloc.vec.Vec V → PolyKey V
+
 /-- [volar_ir_common::PolyCoeffs]
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 291:0-291:44
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 350:0-350:48
     Visibility: public -/
 @[reducible]
-def PolyCoeffs (V : Type) := alloc.vec.Vec ((alloc.vec.Vec V) × Std.U8)
+def PolyCoeffs (V : Type) := alloc.vec.Vec ((PolyKey V) × Std.U8)
 
 /-- [volar_ir_common::ActionTarget]
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 700:0-705:1
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 797:0-802:1
     Visibility: public -/
 structure ActionTarget (Addr : Type) (Stor : Type) where
   storage : Stor
   addr : Addr
 
+/-- [volar_ir_common::OracleCallData]
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 881:0-889:1
+    Visibility: public -/
+structure OracleCallData (Var : Type) (Ty : Type) where
+  «name» : alloc.string.String
+  args : alloc.vec.Vec Var
+  output_tys : alloc.vec.Vec Ty
+  result_ty : Ty
+
+/-- [volar_ir_common::ActionCallData]
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 898:0-909:1
+    Visibility: public -/
+structure ActionCallData (Var : Type) (Ty : Type) where
+  «name» : alloc.string.String
+  guard : Var
+  args : alloc.vec.Vec Var
+  fallbacks : alloc.vec.Vec Var
+  output_tys : alloc.vec.Vec Ty
+  result_ty : Ty
+
+/-- [volar_ir_common::ActionStoreData]
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 918:0-925:1
+    Visibility: public -/
+structure ActionStoreData (Var : Type) (Addr : Type) (Ty : Type) (Stor : Type)
+  where
+  «name» : alloc.string.String
+  guard : Var
+  args : alloc.vec.Vec Var
+  fallbacks : alloc.vec.Vec Var
+  output_tys : alloc.vec.Vec Ty
+  targets : alloc.vec.Vec (ActionTarget Addr Stor)
+
 /-- [volar_ir_common::Stmt]
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 799:0-929:1
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 953:0-1061:1
     Visibility: public -/
 @[discriminant isize]
 inductive Stmt (Var : Type) (Addr : Type) (Ty : Type) (Stor : Type) where
@@ -172,29 +212,10 @@ inductive Stmt (Var : Type) (Addr : Type) (Ty : Type) (Stor : Type) where
 | Merge : alloc.vec.Vec Var → Ty → Stmt Var Addr Ty Stor
 | Splat : Var → Ty → Stmt Var Addr Ty Stor
 | Shuffle : alloc.vec.Vec (Std.U8 × Var) → Ty → Stmt Var Addr Ty Stor
-| OracleCall :
-  alloc.string.String →
-  alloc.vec.Vec Var →
-  alloc.vec.Vec Ty →
-  Ty →
-  Stmt Var Addr Ty Stor
+| OracleCall : OracleCallData Var Ty → Stmt Var Addr Ty Stor
 | OracleOutput : Var → Std.Usize → Ty → Stmt Var Addr Ty Stor
-| ActionCall :
-  alloc.string.String →
-  Var →
-  alloc.vec.Vec Var →
-  alloc.vec.Vec Var →
-  alloc.vec.Vec Ty →
-  Ty →
-  Stmt Var Addr Ty Stor
-| ActionStore :
-  alloc.string.String →
-  Var →
-  alloc.vec.Vec Var →
-  alloc.vec.Vec Var →
-  alloc.vec.Vec Ty →
-  alloc.vec.Vec (ActionTarget Addr Stor) →
-  Stmt Var Addr Ty Stor
+| ActionCall : ActionCallData Var Ty → Stmt Var Addr Ty Stor
+| ActionStore : ActionStoreData Var Addr Ty Stor → Stmt Var Addr Ty Stor
 | ActionOutput : Var → Std.Usize → Ty → Stmt Var Addr Ty Stor
 | Rng : alloc.string.String → Ty → Stmt Var Addr Ty Stor
 

@@ -184,7 +184,7 @@ def complexity.generated.StructRef.Insts.CoreFmtDebug : core.fmt.Debug
 }
 
 /-- Trait implementation: [volar_ir_common::complexity::generated::{impl core::clone::Clone for volar_ir_common::complexity::generated::ReentryHint}]
-    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 83:9-83:14 -/
+    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 84:9-84:14 -/
 @[reducible]
 impl_def complexity.generated.ReentryHint.Insts.CoreCloneClone :
   core.clone.Clone complexity.generated.ReentryHint := {
@@ -194,7 +194,7 @@ impl_def complexity.generated.ReentryHint.Insts.CoreCloneClone :
 }
 
 /-- Trait implementation: [volar_ir_common::complexity::generated::{impl core::marker::StructuralPartialEq for volar_ir_common::complexity::generated::ReentryHint}]
-    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 83:16-83:25 -/
+    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 84:16-84:25 -/
 @[reducible]
 def complexity.generated.ReentryHint.Insts.CoreMarkerStructuralPartialEq :
   core.marker.StructuralPartialEq complexity.generated.ReentryHint := {
@@ -211,7 +211,7 @@ impl_def complexity.MeasureSpec.Insts.CoreCmpPartialEqMeasureSpec :
 }
 
 /-- [volar_ir_common::complexity::generated::{impl core::cmp::PartialEq<volar_ir_common::complexity::generated::ReentryHint> for volar_ir_common::complexity::generated::ReentryHint}::eq]:
-    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 83:16-83:25
+    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 84:16-84:25
     Visibility: public -/
 def complexity.generated.ReentryHint.Insts.CoreCmpPartialEqReentryHint.eq
   (self : complexity.generated.ReentryHint)
@@ -223,7 +223,7 @@ def complexity.generated.ReentryHint.Insts.CoreCmpPartialEqReentryHint.eq
     other.measures
 
 /-- Trait implementation: [volar_ir_common::complexity::generated::{impl core::cmp::PartialEq<volar_ir_common::complexity::generated::ReentryHint> for volar_ir_common::complexity::generated::ReentryHint}]
-    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 83:16-83:25 -/
+    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 84:16-84:25 -/
 @[reducible]
 impl_def complexity.generated.ReentryHint.Insts.CoreCmpPartialEqReentryHint :
   core.cmp.PartialEq complexity.generated.ReentryHint
@@ -234,7 +234,7 @@ impl_def complexity.generated.ReentryHint.Insts.CoreCmpPartialEqReentryHint :
 }
 
 /-- Trait implementation: [volar_ir_common::complexity::generated::{impl core::cmp::Eq for volar_ir_common::complexity::generated::ReentryHint}]
-    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 83:27-83:29 -/
+    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 84:27-84:29 -/
 @[reducible]
 def complexity.generated.ReentryHint.Insts.CoreCmpEq : core.cmp.Eq
   complexity.generated.ReentryHint := {
@@ -243,7 +243,7 @@ def complexity.generated.ReentryHint.Insts.CoreCmpEq : core.cmp.Eq
 }
 
 /-- [volar_ir_common::complexity::generated::{impl core::cmp::PartialOrd<volar_ir_common::complexity::generated::ReentryHint> for volar_ir_common::complexity::generated::ReentryHint}::partial_cmp]:
-    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 83:31-83:41
+    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 84:31-84:41
     Visibility: public -/
 def
   complexity.generated.ReentryHint.Insts.CoreCmpPartialOrdReentryHint.partial_cmp
@@ -255,7 +255,7 @@ def
   ok (core.option.Option.Some o)
 
 /-- Trait implementation: [volar_ir_common::complexity::generated::{impl core::cmp::PartialOrd<volar_ir_common::complexity::generated::ReentryHint> for volar_ir_common::complexity::generated::ReentryHint}]
-    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 83:31-83:41 -/
+    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 84:31-84:41 -/
 @[reducible]
 impl_def complexity.generated.ReentryHint.Insts.CoreCmpPartialOrdReentryHint :
   core.cmp.PartialOrd complexity.generated.ReentryHint
@@ -275,7 +275,7 @@ impl_def complexity.generated.ReentryHint.Insts.CoreCmpPartialOrdReentryHint :
 }
 
 /-- Trait implementation: [volar_ir_common::complexity::generated::{impl core::cmp::Ord for volar_ir_common::complexity::generated::ReentryHint}]
-    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 83:43-83:46 -/
+    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 84:43-84:46 -/
 @[reducible]
 def complexity.generated.ReentryHint.Insts.CoreCmpOrd : core.cmp.Ord
   complexity.generated.ReentryHint := {
@@ -286,7 +286,7 @@ def complexity.generated.ReentryHint.Insts.CoreCmpOrd : core.cmp.Ord
 }
 
 /-- Trait implementation: [volar_ir_common::complexity::generated::{impl core::hash::Hash for volar_ir_common::complexity::generated::ReentryHint}]
-    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 83:48-83:52 -/
+    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 84:48-84:52 -/
 @[reducible]
 def complexity.generated.ReentryHint.Insts.CoreHashHash : core.hash.Hash
   complexity.generated.ReentryHint := {
@@ -295,7 +295,7 @@ def complexity.generated.ReentryHint.Insts.CoreHashHash : core.hash.Hash
 }
 
 /-- Trait implementation: [volar_ir_common::complexity::generated::{impl core::fmt::Debug for volar_ir_common::complexity::generated::ReentryHint}]
-    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 83:54-83:59 -/
+    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 84:54-84:59 -/
 @[reducible]
 def complexity.generated.ReentryHint.Insts.CoreFmtDebug : core.fmt.Debug
   complexity.generated.ReentryHint := {
@@ -426,14 +426,14 @@ def generated.Type.Insts.CoreFmtDebug : core.fmt.Debug generated.Type := {
 }
 
 /-- [volar_ir_common::generated::{impl core::clone::Clone for volar_ir_common::generated::Constant}::clone]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 67:9-67:14
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 65:9-65:14
     Visibility: public -/
 def generated.Constant.Insts.CoreCloneClone.clone
   (self : generated.Constant) : RustM generated.Constant := do
   ok self
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::clone::Clone for volar_ir_common::generated::Constant}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 67:9-67:14 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 65:9-65:14 -/
 @[reducible]
 impl_def generated.Constant.Insts.CoreCloneClone : core.clone.Clone
   generated.Constant := {
@@ -443,7 +443,7 @@ impl_def generated.Constant.Insts.CoreCloneClone : core.clone.Clone
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::marker::Copy for volar_ir_common::generated::Constant}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 67:16-67:20 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 65:16-65:20 -/
 @[reducible]
 def generated.Constant.Insts.CoreMarkerCopy : core.marker.Copy
   generated.Constant := {
@@ -451,14 +451,14 @@ def generated.Constant.Insts.CoreMarkerCopy : core.marker.Copy
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::marker::StructuralPartialEq for volar_ir_common::generated::Constant}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 67:22-67:31 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 65:22-65:31 -/
 @[reducible]
 def generated.Constant.Insts.CoreMarkerStructuralPartialEq :
   core.marker.StructuralPartialEq generated.Constant := {
 }
 
 /-- [volar_ir_common::generated::{impl core::cmp::PartialEq<volar_ir_common::generated::Constant> for volar_ir_common::generated::Constant}::eq]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 67:22-67:31
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 65:22-65:31
     Visibility: public -/
 def generated.Constant.Insts.CoreCmpPartialEqConstant.eq
   (self : generated.Constant) (other : generated.Constant) : RustM Bool := do
@@ -467,7 +467,7 @@ def generated.Constant.Insts.CoreCmpPartialEqConstant.eq
   else ok false
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::PartialEq<volar_ir_common::generated::Constant> for volar_ir_common::generated::Constant}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 67:22-67:31 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 65:22-65:31 -/
 @[reducible]
 impl_def generated.Constant.Insts.CoreCmpPartialEqConstant : core.cmp.PartialEq
   generated.Constant generated.Constant := {
@@ -477,14 +477,14 @@ impl_def generated.Constant.Insts.CoreCmpPartialEqConstant : core.cmp.PartialEq
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::Eq for volar_ir_common::generated::Constant}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 67:33-67:35 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 65:33-65:35 -/
 @[reducible]
 def generated.Constant.Insts.CoreCmpEq : core.cmp.Eq generated.Constant := {
   PartialEqInst := generated.Constant.Insts.CoreCmpPartialEqConstant
 }
 
 /-- [volar_ir_common::generated::{impl core::cmp::Ord for volar_ir_common::generated::Constant}::cmp]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 67:49-67:52
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 65:49-65:52
     Visibility: public -/
 def generated.Constant.Insts.CoreCmpOrd.cmp
   (self : generated.Constant) (other : generated.Constant) :
@@ -497,7 +497,7 @@ def generated.Constant.Insts.CoreCmpOrd.cmp
   | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
 
 /-- [volar_ir_common::generated::{impl core::cmp::PartialOrd<volar_ir_common::generated::Constant> for volar_ir_common::generated::Constant}::partial_cmp]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 67:37-67:47
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 65:37-65:47
     Visibility: public -/
 def generated.Constant.Insts.CoreCmpPartialOrdConstant.partial_cmp
   (self : generated.Constant) (other : generated.Constant) :
@@ -507,7 +507,7 @@ def generated.Constant.Insts.CoreCmpPartialOrdConstant.partial_cmp
   ok (core.option.Option.Some o)
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::PartialOrd<volar_ir_common::generated::Constant> for volar_ir_common::generated::Constant}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 67:37-67:47 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 65:37-65:47 -/
 @[reducible]
 impl_def generated.Constant.Insts.CoreCmpPartialOrdConstant :
   core.cmp.PartialOrd generated.Constant generated.Constant := {
@@ -524,7 +524,7 @@ impl_def generated.Constant.Insts.CoreCmpPartialOrdConstant :
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::Ord for volar_ir_common::generated::Constant}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 67:49-67:52 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 65:49-65:52 -/
 @[reducible]
 def generated.Constant.Insts.CoreCmpOrd : core.cmp.Ord generated.Constant := {
   EqInst := generated.Constant.Insts.CoreCmpEq
@@ -533,7 +533,7 @@ def generated.Constant.Insts.CoreCmpOrd : core.cmp.Ord generated.Constant := {
 }
 
 /-- [volar_ir_common::generated::{impl core::hash::Hash for volar_ir_common::generated::Constant}::hash]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 67:54-67:58
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 65:54-65:58
     Visibility: public -/
 def generated.Constant.Insts.CoreHashHash.hash
   {__H : Type} (corehashHasherInst : core.hash.Hasher __H)
@@ -545,7 +545,7 @@ def generated.Constant.Insts.CoreHashHash.hash
   core.U128.Insts.CoreHashHash.hash corehashHasherInst self.lo state1
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::hash::Hash for volar_ir_common::generated::Constant}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 67:54-67:58 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 65:54-65:58 -/
 @[reducible]
 def generated.Constant.Insts.CoreHashHash : core.hash.Hash generated.Constant
   := {
@@ -554,7 +554,7 @@ def generated.Constant.Insts.CoreHashHash : core.hash.Hash generated.Constant
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::fmt::Debug for volar_ir_common::generated::Constant}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 67:60-67:65 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 65:60-65:65 -/
 @[reducible]
 def generated.Constant.Insts.CoreFmtDebug : core.fmt.Debug generated.Constant
   := {
@@ -562,14 +562,14 @@ def generated.Constant.Insts.CoreFmtDebug : core.fmt.Debug generated.Constant
 }
 
 /-- [volar_ir_common::generated::{impl core::clone::Clone for volar_ir_common::generated::ExternalExecutor}::clone]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 142:9-142:14
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 139:9-139:14
     Visibility: public -/
 def generated.ExternalExecutor.Insts.CoreCloneClone.clone
   (self : generated.ExternalExecutor) : RustM generated.ExternalExecutor := do
   ok self
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::clone::Clone for volar_ir_common::generated::ExternalExecutor}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 142:9-142:14 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 139:9-139:14 -/
 @[reducible]
 impl_def generated.ExternalExecutor.Insts.CoreCloneClone : core.clone.Clone
   generated.ExternalExecutor := {
@@ -579,7 +579,7 @@ impl_def generated.ExternalExecutor.Insts.CoreCloneClone : core.clone.Clone
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::marker::Copy for volar_ir_common::generated::ExternalExecutor}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 142:16-142:20 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 139:16-139:20 -/
 @[reducible]
 def generated.ExternalExecutor.Insts.CoreMarkerCopy : core.marker.Copy
   generated.ExternalExecutor := {
@@ -587,14 +587,14 @@ def generated.ExternalExecutor.Insts.CoreMarkerCopy : core.marker.Copy
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::marker::StructuralPartialEq for volar_ir_common::generated::ExternalExecutor}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 142:22-142:31 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 139:22-139:31 -/
 @[reducible]
 def generated.ExternalExecutor.Insts.CoreMarkerStructuralPartialEq :
   core.marker.StructuralPartialEq generated.ExternalExecutor := {
 }
 
 /-- [volar_ir_common::generated::{impl core::cmp::PartialEq<volar_ir_common::generated::ExternalExecutor> for volar_ir_common::generated::ExternalExecutor}::eq]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 142:22-142:31
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 139:22-139:31
     Visibility: public -/
 def generated.ExternalExecutor.Insts.CoreCmpPartialEqExternalExecutor.eq
   (self : generated.ExternalExecutor) (other : generated.ExternalExecutor) :
@@ -605,7 +605,7 @@ def generated.ExternalExecutor.Insts.CoreCmpPartialEqExternalExecutor.eq
   ok (self1 = other1)
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::PartialEq<volar_ir_common::generated::ExternalExecutor> for volar_ir_common::generated::ExternalExecutor}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 142:22-142:31 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 139:22-139:31 -/
 @[reducible]
 impl_def generated.ExternalExecutor.Insts.CoreCmpPartialEqExternalExecutor :
   core.cmp.PartialEq generated.ExternalExecutor generated.ExternalExecutor := {
@@ -615,7 +615,7 @@ impl_def generated.ExternalExecutor.Insts.CoreCmpPartialEqExternalExecutor :
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::Eq for volar_ir_common::generated::ExternalExecutor}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 142:33-142:35 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 139:33-139:35 -/
 @[reducible]
 def generated.ExternalExecutor.Insts.CoreCmpEq : core.cmp.Eq
   generated.ExternalExecutor := {
@@ -624,7 +624,7 @@ def generated.ExternalExecutor.Insts.CoreCmpEq : core.cmp.Eq
 }
 
 /-- [volar_ir_common::generated::{impl core::cmp::Ord for volar_ir_common::generated::ExternalExecutor}::cmp]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 142:49-142:52
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 139:49-139:52
     Visibility: public -/
 def generated.ExternalExecutor.Insts.CoreCmpOrd.cmp
   (self : generated.ExternalExecutor) (other : generated.ExternalExecutor) :
@@ -635,7 +635,7 @@ def generated.ExternalExecutor.Insts.CoreCmpOrd.cmp
   core.Isize.Insts.CoreCmpOrd.cmp self1 other1
 
 /-- [volar_ir_common::generated::{impl core::cmp::PartialOrd<volar_ir_common::generated::ExternalExecutor> for volar_ir_common::generated::ExternalExecutor}::partial_cmp]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 142:37-142:47
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 139:37-139:47
     Visibility: public -/
 def
   generated.ExternalExecutor.Insts.CoreCmpPartialOrdExternalExecutor.partial_cmp
@@ -646,7 +646,7 @@ def
   ok (core.option.Option.Some o)
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::PartialOrd<volar_ir_common::generated::ExternalExecutor> for volar_ir_common::generated::ExternalExecutor}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 142:37-142:47 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 139:37-139:47 -/
 @[reducible]
 impl_def generated.ExternalExecutor.Insts.CoreCmpPartialOrdExternalExecutor :
   core.cmp.PartialOrd generated.ExternalExecutor generated.ExternalExecutor
@@ -666,7 +666,7 @@ impl_def generated.ExternalExecutor.Insts.CoreCmpPartialOrdExternalExecutor :
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::Ord for volar_ir_common::generated::ExternalExecutor}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 142:49-142:52 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 139:49-139:52 -/
 @[reducible]
 def generated.ExternalExecutor.Insts.CoreCmpOrd : core.cmp.Ord
   generated.ExternalExecutor := {
@@ -677,7 +677,7 @@ def generated.ExternalExecutor.Insts.CoreCmpOrd : core.cmp.Ord
 }
 
 /-- [volar_ir_common::generated::{impl core::hash::Hash for volar_ir_common::generated::ExternalExecutor}::hash]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 142:54-142:58
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 139:54-139:58
     Visibility: public -/
 def generated.ExternalExecutor.Insts.CoreHashHash.hash
   {__H : Type} (corehashHasherInst : core.hash.Hasher __H)
@@ -688,7 +688,7 @@ def generated.ExternalExecutor.Insts.CoreHashHash.hash
   core.Isize.Insts.CoreHashHash.hash corehashHasherInst self1 state
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::hash::Hash for volar_ir_common::generated::ExternalExecutor}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 142:54-142:58 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 139:54-139:58 -/
 @[reducible]
 def generated.ExternalExecutor.Insts.CoreHashHash : core.hash.Hash
   generated.ExternalExecutor := {
@@ -697,7 +697,7 @@ def generated.ExternalExecutor.Insts.CoreHashHash : core.hash.Hash
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::fmt::Debug for volar_ir_common::generated::ExternalExecutor}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 142:60-142:65 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 139:60-139:65 -/
 @[reducible]
 def generated.ExternalExecutor.Insts.CoreFmtDebug : core.fmt.Debug
   generated.ExternalExecutor := {
@@ -705,7 +705,7 @@ def generated.ExternalExecutor.Insts.CoreFmtDebug : core.fmt.Debug
 }
 
 /-- [volar_ir_common::generated::{impl core::clone::Clone for volar_ir_common::generated::ExternalRevealPolicy}::clone]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 205:9-205:14
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 202:9-202:14
     Visibility: public -/
 def generated.ExternalRevealPolicy.Insts.CoreCloneClone.clone
   (self : generated.ExternalRevealPolicy) :
@@ -714,7 +714,7 @@ def generated.ExternalRevealPolicy.Insts.CoreCloneClone.clone
   ok self
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::clone::Clone for volar_ir_common::generated::ExternalRevealPolicy}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 205:9-205:14 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 202:9-202:14 -/
 @[reducible]
 impl_def generated.ExternalRevealPolicy.Insts.CoreCloneClone : core.clone.Clone
   generated.ExternalRevealPolicy := {
@@ -724,7 +724,7 @@ impl_def generated.ExternalRevealPolicy.Insts.CoreCloneClone : core.clone.Clone
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::marker::Copy for volar_ir_common::generated::ExternalRevealPolicy}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 205:16-205:20 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 202:16-202:20 -/
 @[reducible]
 def generated.ExternalRevealPolicy.Insts.CoreMarkerCopy : core.marker.Copy
   generated.ExternalRevealPolicy := {
@@ -732,14 +732,14 @@ def generated.ExternalRevealPolicy.Insts.CoreMarkerCopy : core.marker.Copy
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::marker::StructuralPartialEq for volar_ir_common::generated::ExternalRevealPolicy}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 205:22-205:31 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 202:22-202:31 -/
 @[reducible]
 def generated.ExternalRevealPolicy.Insts.CoreMarkerStructuralPartialEq :
   core.marker.StructuralPartialEq generated.ExternalRevealPolicy := {
 }
 
 /-- [volar_ir_common::generated::{impl core::cmp::PartialEq<volar_ir_common::generated::ExternalRevealPolicy> for volar_ir_common::generated::ExternalRevealPolicy}::eq]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 205:22-205:31
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 202:22-202:31
     Visibility: public -/
 def
   generated.ExternalRevealPolicy.Insts.CoreCmpPartialEqExternalRevealPolicy.eq
@@ -752,7 +752,7 @@ def
   ok (self1 = other1)
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::PartialEq<volar_ir_common::generated::ExternalRevealPolicy> for volar_ir_common::generated::ExternalRevealPolicy}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 205:22-205:31 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 202:22-202:31 -/
 @[reducible]
 impl_def
   generated.ExternalRevealPolicy.Insts.CoreCmpPartialEqExternalRevealPolicy :
@@ -765,7 +765,7 @@ impl_def
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::Eq for volar_ir_common::generated::ExternalRevealPolicy}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 205:33-205:35 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 202:33-202:35 -/
 @[reducible]
 def generated.ExternalRevealPolicy.Insts.CoreCmpEq : core.cmp.Eq
   generated.ExternalRevealPolicy := {
@@ -774,7 +774,7 @@ def generated.ExternalRevealPolicy.Insts.CoreCmpEq : core.cmp.Eq
 }
 
 /-- [volar_ir_common::generated::{impl core::cmp::Ord for volar_ir_common::generated::ExternalRevealPolicy}::cmp]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 205:49-205:52
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 202:49-202:52
     Visibility: public -/
 def generated.ExternalRevealPolicy.Insts.CoreCmpOrd.cmp
   (self : generated.ExternalRevealPolicy)
@@ -786,7 +786,7 @@ def generated.ExternalRevealPolicy.Insts.CoreCmpOrd.cmp
   core.Isize.Insts.CoreCmpOrd.cmp self1 other1
 
 /-- [volar_ir_common::generated::{impl core::cmp::PartialOrd<volar_ir_common::generated::ExternalRevealPolicy> for volar_ir_common::generated::ExternalRevealPolicy}::partial_cmp]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 205:37-205:47
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 202:37-202:47
     Visibility: public -/
 def
   generated.ExternalRevealPolicy.Insts.CoreCmpPartialOrdExternalRevealPolicy.partial_cmp
@@ -798,7 +798,7 @@ def
   ok (core.option.Option.Some o)
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::PartialOrd<volar_ir_common::generated::ExternalRevealPolicy> for volar_ir_common::generated::ExternalRevealPolicy}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 205:37-205:47 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 202:37-202:47 -/
 @[reducible]
 impl_def
   generated.ExternalRevealPolicy.Insts.CoreCmpPartialOrdExternalRevealPolicy :
@@ -819,7 +819,7 @@ impl_def
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::Ord for volar_ir_common::generated::ExternalRevealPolicy}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 205:49-205:52 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 202:49-202:52 -/
 @[reducible]
 def generated.ExternalRevealPolicy.Insts.CoreCmpOrd : core.cmp.Ord
   generated.ExternalRevealPolicy := {
@@ -830,7 +830,7 @@ def generated.ExternalRevealPolicy.Insts.CoreCmpOrd : core.cmp.Ord
 }
 
 /-- [volar_ir_common::generated::{impl core::hash::Hash for volar_ir_common::generated::ExternalRevealPolicy}::hash]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 205:54-205:58
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 202:54-202:58
     Visibility: public -/
 def generated.ExternalRevealPolicy.Insts.CoreHashHash.hash
   {__H : Type} (corehashHasherInst : core.hash.Hasher __H)
@@ -841,7 +841,7 @@ def generated.ExternalRevealPolicy.Insts.CoreHashHash.hash
   core.Isize.Insts.CoreHashHash.hash corehashHasherInst self1 state
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::hash::Hash for volar_ir_common::generated::ExternalRevealPolicy}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 205:54-205:58 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 202:54-202:58 -/
 @[reducible]
 def generated.ExternalRevealPolicy.Insts.CoreHashHash : core.hash.Hash
   generated.ExternalRevealPolicy := {
@@ -850,7 +850,7 @@ def generated.ExternalRevealPolicy.Insts.CoreHashHash : core.hash.Hash
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::fmt::Debug for volar_ir_common::generated::ExternalRevealPolicy}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 205:60-205:65 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 202:60-202:65 -/
 @[reducible]
 def generated.ExternalRevealPolicy.Insts.CoreFmtDebug : core.fmt.Debug
   generated.ExternalRevealPolicy := {
@@ -858,7 +858,7 @@ def generated.ExternalRevealPolicy.Insts.CoreFmtDebug : core.fmt.Debug
 }
 
 /-- [volar_ir_common::generated::{impl core::clone::Clone for volar_ir_common::generated::OracleExecutionKind}::clone]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 268:9-268:14
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 267:9-267:14
     Visibility: public -/
 def generated.OracleExecutionKind.Insts.CoreCloneClone.clone
   (self : generated.OracleExecutionKind) :
@@ -867,7 +867,7 @@ def generated.OracleExecutionKind.Insts.CoreCloneClone.clone
   ok self
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::clone::Clone for volar_ir_common::generated::OracleExecutionKind}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 268:9-268:14 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 267:9-267:14 -/
 @[reducible]
 impl_def generated.OracleExecutionKind.Insts.CoreCloneClone : core.clone.Clone
   generated.OracleExecutionKind := {
@@ -877,7 +877,7 @@ impl_def generated.OracleExecutionKind.Insts.CoreCloneClone : core.clone.Clone
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::marker::Copy for volar_ir_common::generated::OracleExecutionKind}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 268:16-268:20 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 267:16-267:20 -/
 @[reducible]
 def generated.OracleExecutionKind.Insts.CoreMarkerCopy : core.marker.Copy
   generated.OracleExecutionKind := {
@@ -885,14 +885,14 @@ def generated.OracleExecutionKind.Insts.CoreMarkerCopy : core.marker.Copy
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::marker::StructuralPartialEq for volar_ir_common::generated::OracleExecutionKind}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 268:22-268:31 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 267:22-267:31 -/
 @[reducible]
 def generated.OracleExecutionKind.Insts.CoreMarkerStructuralPartialEq :
   core.marker.StructuralPartialEq generated.OracleExecutionKind := {
 }
 
 /-- [volar_ir_common::generated::{impl core::cmp::PartialEq<volar_ir_common::generated::OracleExecutionKind> for volar_ir_common::generated::OracleExecutionKind}::eq]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 268:22-268:31
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 267:22-267:31
     Visibility: public -/
 def generated.OracleExecutionKind.Insts.CoreCmpPartialEqOracleExecutionKind.eq
   (self : generated.OracleExecutionKind)
@@ -904,7 +904,7 @@ def generated.OracleExecutionKind.Insts.CoreCmpPartialEqOracleExecutionKind.eq
   ok (self1 = other1)
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::PartialEq<volar_ir_common::generated::OracleExecutionKind> for volar_ir_common::generated::OracleExecutionKind}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 268:22-268:31 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 267:22-267:31 -/
 @[reducible]
 impl_def
   generated.OracleExecutionKind.Insts.CoreCmpPartialEqOracleExecutionKind :
@@ -917,7 +917,7 @@ impl_def
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::Eq for volar_ir_common::generated::OracleExecutionKind}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 268:33-268:35 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 267:33-267:35 -/
 @[reducible]
 def generated.OracleExecutionKind.Insts.CoreCmpEq : core.cmp.Eq
   generated.OracleExecutionKind := {
@@ -926,7 +926,7 @@ def generated.OracleExecutionKind.Insts.CoreCmpEq : core.cmp.Eq
 }
 
 /-- [volar_ir_common::generated::{impl core::cmp::Ord for volar_ir_common::generated::OracleExecutionKind}::cmp]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 268:49-268:52
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 267:49-267:52
     Visibility: public -/
 def generated.OracleExecutionKind.Insts.CoreCmpOrd.cmp
   (self : generated.OracleExecutionKind)
@@ -938,7 +938,7 @@ def generated.OracleExecutionKind.Insts.CoreCmpOrd.cmp
   core.Isize.Insts.CoreCmpOrd.cmp self1 other1
 
 /-- [volar_ir_common::generated::{impl core::cmp::PartialOrd<volar_ir_common::generated::OracleExecutionKind> for volar_ir_common::generated::OracleExecutionKind}::partial_cmp]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 268:37-268:47
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 267:37-267:47
     Visibility: public -/
 def
   generated.OracleExecutionKind.Insts.CoreCmpPartialOrdOracleExecutionKind.partial_cmp
@@ -950,7 +950,7 @@ def
   ok (core.option.Option.Some o)
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::PartialOrd<volar_ir_common::generated::OracleExecutionKind> for volar_ir_common::generated::OracleExecutionKind}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 268:37-268:47 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 267:37-267:47 -/
 @[reducible]
 impl_def
   generated.OracleExecutionKind.Insts.CoreCmpPartialOrdOracleExecutionKind :
@@ -971,7 +971,7 @@ impl_def
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::Ord for volar_ir_common::generated::OracleExecutionKind}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 268:49-268:52 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 267:49-267:52 -/
 @[reducible]
 def generated.OracleExecutionKind.Insts.CoreCmpOrd : core.cmp.Ord
   generated.OracleExecutionKind := {
@@ -982,7 +982,7 @@ def generated.OracleExecutionKind.Insts.CoreCmpOrd : core.cmp.Ord
 }
 
 /-- [volar_ir_common::generated::{impl core::hash::Hash for volar_ir_common::generated::OracleExecutionKind}::hash]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 268:54-268:58
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 267:54-267:58
     Visibility: public -/
 def generated.OracleExecutionKind.Insts.CoreHashHash.hash
   {__H : Type} (corehashHasherInst : core.hash.Hasher __H)
@@ -993,7 +993,7 @@ def generated.OracleExecutionKind.Insts.CoreHashHash.hash
   core.Isize.Insts.CoreHashHash.hash corehashHasherInst self1 state
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::hash::Hash for volar_ir_common::generated::OracleExecutionKind}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 268:54-268:58 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 267:54-267:58 -/
 @[reducible]
 def generated.OracleExecutionKind.Insts.CoreHashHash : core.hash.Hash
   generated.OracleExecutionKind := {
@@ -1002,7 +1002,7 @@ def generated.OracleExecutionKind.Insts.CoreHashHash : core.hash.Hash
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::fmt::Debug for volar_ir_common::generated::OracleExecutionKind}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 268:60-268:65 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 267:60-267:65 -/
 @[reducible]
 def generated.OracleExecutionKind.Insts.CoreFmtDebug : core.fmt.Debug
   generated.OracleExecutionKind := {
@@ -1010,7 +1010,7 @@ def generated.OracleExecutionKind.Insts.CoreFmtDebug : core.fmt.Debug
 }
 
 /-- [volar_ir_common::generated::{impl core::clone::Clone for volar_ir_common::generated::ActionExecutionPolicy}::clone]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 331:9-331:14
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 330:9-330:14
     Visibility: public -/
 def generated.ActionExecutionPolicy.Insts.CoreCloneClone.clone
   (self : generated.ActionExecutionPolicy) :
@@ -1019,7 +1019,7 @@ def generated.ActionExecutionPolicy.Insts.CoreCloneClone.clone
   ok self
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::clone::Clone for volar_ir_common::generated::ActionExecutionPolicy}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 331:9-331:14 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 330:9-330:14 -/
 @[reducible]
 impl_def generated.ActionExecutionPolicy.Insts.CoreCloneClone :
   core.clone.Clone generated.ActionExecutionPolicy := {
@@ -1029,7 +1029,7 @@ impl_def generated.ActionExecutionPolicy.Insts.CoreCloneClone :
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::marker::Copy for volar_ir_common::generated::ActionExecutionPolicy}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 331:16-331:20 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 330:16-330:20 -/
 @[reducible]
 def generated.ActionExecutionPolicy.Insts.CoreMarkerCopy : core.marker.Copy
   generated.ActionExecutionPolicy := {
@@ -1037,14 +1037,14 @@ def generated.ActionExecutionPolicy.Insts.CoreMarkerCopy : core.marker.Copy
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::marker::StructuralPartialEq for volar_ir_common::generated::ActionExecutionPolicy}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 331:22-331:31 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 330:22-330:31 -/
 @[reducible]
 def generated.ActionExecutionPolicy.Insts.CoreMarkerStructuralPartialEq :
   core.marker.StructuralPartialEq generated.ActionExecutionPolicy := {
 }
 
 /-- [volar_ir_common::generated::{impl core::cmp::PartialEq<volar_ir_common::generated::ActionExecutionPolicy> for volar_ir_common::generated::ActionExecutionPolicy}::eq]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 331:22-331:31
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 330:22-330:31
     Visibility: public -/
 def
   generated.ActionExecutionPolicy.Insts.CoreCmpPartialEqActionExecutionPolicy.eq
@@ -1068,7 +1068,7 @@ def
   else ok false
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::PartialEq<volar_ir_common::generated::ActionExecutionPolicy> for volar_ir_common::generated::ActionExecutionPolicy}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 331:22-331:31 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 330:22-330:31 -/
 @[reducible]
 impl_def
   generated.ActionExecutionPolicy.Insts.CoreCmpPartialEqActionExecutionPolicy :
@@ -1081,7 +1081,7 @@ impl_def
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::Eq for volar_ir_common::generated::ActionExecutionPolicy}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 331:33-331:35 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 330:33-330:35 -/
 @[reducible]
 def generated.ActionExecutionPolicy.Insts.CoreCmpEq : core.cmp.Eq
   generated.ActionExecutionPolicy := {
@@ -1090,7 +1090,7 @@ def generated.ActionExecutionPolicy.Insts.CoreCmpEq : core.cmp.Eq
 }
 
 /-- [volar_ir_common::generated::{impl core::cmp::Ord for volar_ir_common::generated::ActionExecutionPolicy}::cmp]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 331:49-331:52
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 330:49-330:52
     Visibility: public -/
 def generated.ActionExecutionPolicy.Insts.CoreCmpOrd.cmp
   (self : generated.ActionExecutionPolicy)
@@ -1115,7 +1115,7 @@ def generated.ActionExecutionPolicy.Insts.CoreCmpOrd.cmp
   | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
 
 /-- [volar_ir_common::generated::{impl core::cmp::PartialOrd<volar_ir_common::generated::ActionExecutionPolicy> for volar_ir_common::generated::ActionExecutionPolicy}::partial_cmp]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 331:37-331:47
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 330:37-330:47
     Visibility: public -/
 def
   generated.ActionExecutionPolicy.Insts.CoreCmpPartialOrdActionExecutionPolicy.partial_cmp
@@ -1127,7 +1127,7 @@ def
   ok (core.option.Option.Some o)
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::PartialOrd<volar_ir_common::generated::ActionExecutionPolicy> for volar_ir_common::generated::ActionExecutionPolicy}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 331:37-331:47 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 330:37-330:47 -/
 @[reducible]
 impl_def
   generated.ActionExecutionPolicy.Insts.CoreCmpPartialOrdActionExecutionPolicy
@@ -1148,7 +1148,7 @@ impl_def
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::Ord for volar_ir_common::generated::ActionExecutionPolicy}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 331:49-331:52 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 330:49-330:52 -/
 @[reducible]
 def generated.ActionExecutionPolicy.Insts.CoreCmpOrd : core.cmp.Ord
   generated.ActionExecutionPolicy := {
@@ -1159,7 +1159,7 @@ def generated.ActionExecutionPolicy.Insts.CoreCmpOrd : core.cmp.Ord
 }
 
 /-- [volar_ir_common::generated::{impl core::hash::Hash for volar_ir_common::generated::ActionExecutionPolicy}::hash]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 331:54-331:58
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 330:54-330:58
     Visibility: public -/
 def generated.ActionExecutionPolicy.Insts.CoreHashHash.hash
   {__H : Type} (corehashHasherInst : core.hash.Hasher __H)
@@ -1176,7 +1176,7 @@ def generated.ActionExecutionPolicy.Insts.CoreHashHash.hash
     corehashHasherInst self.fingerprint state2
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::hash::Hash for volar_ir_common::generated::ActionExecutionPolicy}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 331:54-331:58 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 330:54-330:58 -/
 @[reducible]
 def generated.ActionExecutionPolicy.Insts.CoreHashHash : core.hash.Hash
   generated.ActionExecutionPolicy := {
@@ -1185,7 +1185,7 @@ def generated.ActionExecutionPolicy.Insts.CoreHashHash : core.hash.Hash
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::fmt::Debug for volar_ir_common::generated::ActionExecutionPolicy}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 331:60-331:65 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 330:60-330:65 -/
 @[reducible]
 def generated.ActionExecutionPolicy.Insts.CoreFmtDebug : core.fmt.Debug
   generated.ActionExecutionPolicy := {
@@ -1392,14 +1392,14 @@ def generated.OracleExecutionPolicy.Insts.CoreFmtDebug : core.fmt.Debug
 }
 
 /-- [volar_ir_common::generated::{impl core::clone::Clone for volar_ir_common::generated::TypeId}::clone]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 874:9-874:14
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 881:9-881:14
     Visibility: public -/
 def generated.TypeId.Insts.CoreCloneClone.clone
   (self : generated.TypeId) : RustM generated.TypeId := do
   ok self
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::clone::Clone for volar_ir_common::generated::TypeId}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 874:9-874:14 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 881:9-881:14 -/
 @[reducible]
 impl_def generated.TypeId.Insts.CoreCloneClone : core.clone.Clone
   generated.TypeId := {
@@ -1409,7 +1409,7 @@ impl_def generated.TypeId.Insts.CoreCloneClone : core.clone.Clone
 }
 
 /-- [volar_ir_common::generated::{impl core::clone::Clone for volar_ir_common::generated::OracleDecl}::clone]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 512:9-512:14
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 513:9-513:14
     Visibility: public -/
 def generated.OracleDecl.Insts.CoreCloneClone.clone
   (self : generated.OracleDecl) : RustM generated.OracleDecl := do
@@ -1425,7 +1425,7 @@ def generated.OracleDecl.Insts.CoreCloneClone.clone
   ok { «name» := s, params := v, results := v1, execution := oep }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::clone::Clone for volar_ir_common::generated::OracleDecl}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 512:9-512:14 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 513:9-513:14 -/
 @[reducible]
 impl_def generated.OracleDecl.Insts.CoreCloneClone : core.clone.Clone
   generated.OracleDecl := {
@@ -1435,21 +1435,21 @@ impl_def generated.OracleDecl.Insts.CoreCloneClone : core.clone.Clone
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::marker::StructuralPartialEq for volar_ir_common::generated::OracleDecl}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 512:16-512:25 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 513:16-513:25 -/
 @[reducible]
 def generated.OracleDecl.Insts.CoreMarkerStructuralPartialEq :
   core.marker.StructuralPartialEq generated.OracleDecl := {
 }
 
 /-- [volar_ir_common::generated::{impl core::cmp::PartialEq<volar_ir_common::generated::TypeId> for volar_ir_common::generated::TypeId}::eq]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 874:22-874:31
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 881:22-881:31
     Visibility: public -/
 def generated.TypeId.Insts.CoreCmpPartialEqTypeId.eq
   (self : generated.TypeId) (other : generated.TypeId) : RustM Bool := do
   ok (self = other)
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::PartialEq<volar_ir_common::generated::TypeId> for volar_ir_common::generated::TypeId}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 874:22-874:31 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 881:22-881:31 -/
 @[reducible]
 impl_def generated.TypeId.Insts.CoreCmpPartialEqTypeId : core.cmp.PartialEq
   generated.TypeId generated.TypeId := {
@@ -1459,7 +1459,7 @@ impl_def generated.TypeId.Insts.CoreCmpPartialEqTypeId : core.cmp.PartialEq
 }
 
 /-- [volar_ir_common::generated::{impl core::cmp::PartialEq<volar_ir_common::generated::OracleDecl> for volar_ir_common::generated::OracleDecl}::eq]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 512:16-512:25
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 513:16-513:25
     Visibility: public -/
 def generated.OracleDecl.Insts.CoreCmpPartialEqOracleDecl.eq
   (self : generated.OracleDecl) (other : generated.OracleDecl) :
@@ -1487,7 +1487,7 @@ def generated.OracleDecl.Insts.CoreCmpPartialEqOracleDecl.eq
   else ok false
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::PartialEq<volar_ir_common::generated::OracleDecl> for volar_ir_common::generated::OracleDecl}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 512:16-512:25 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 513:16-513:25 -/
 @[reducible]
 impl_def generated.OracleDecl.Insts.CoreCmpPartialEqOracleDecl :
   core.cmp.PartialEq generated.OracleDecl generated.OracleDecl := {
@@ -1497,7 +1497,7 @@ impl_def generated.OracleDecl.Insts.CoreCmpPartialEqOracleDecl :
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::Eq for volar_ir_common::generated::OracleDecl}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 512:27-512:29 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 513:27-513:29 -/
 @[reducible]
 def generated.OracleDecl.Insts.CoreCmpEq : core.cmp.Eq generated.OracleDecl
   := {
@@ -1505,7 +1505,7 @@ def generated.OracleDecl.Insts.CoreCmpEq : core.cmp.Eq generated.OracleDecl
 }
 
 /-- [volar_ir_common::generated::{impl core::cmp::Ord for volar_ir_common::generated::TypeId}::cmp]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 874:49-874:52
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 881:49-881:52
     Visibility: public -/
 def generated.TypeId.Insts.CoreCmpOrd.cmp
   (self : generated.TypeId) (other : generated.TypeId) :
@@ -1514,7 +1514,7 @@ def generated.TypeId.Insts.CoreCmpOrd.cmp
   core.U32.Insts.CoreCmpOrd.cmp self other
 
 /-- [volar_ir_common::generated::{impl core::cmp::PartialOrd<volar_ir_common::generated::TypeId> for volar_ir_common::generated::TypeId}::partial_cmp]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 874:37-874:47
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 881:37-881:47
     Visibility: public -/
 def generated.TypeId.Insts.CoreCmpPartialOrdTypeId.partial_cmp
   (self : generated.TypeId) (other : generated.TypeId) :
@@ -1524,7 +1524,7 @@ def generated.TypeId.Insts.CoreCmpPartialOrdTypeId.partial_cmp
   ok (core.option.Option.Some o)
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::PartialOrd<volar_ir_common::generated::TypeId> for volar_ir_common::generated::TypeId}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 874:37-874:47 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 881:37-881:47 -/
 @[reducible]
 impl_def generated.TypeId.Insts.CoreCmpPartialOrdTypeId : core.cmp.PartialOrd
   generated.TypeId generated.TypeId := {
@@ -1541,14 +1541,14 @@ impl_def generated.TypeId.Insts.CoreCmpPartialOrdTypeId : core.cmp.PartialOrd
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::Eq for volar_ir_common::generated::TypeId}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 874:33-874:35 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 881:33-881:35 -/
 @[reducible]
 def generated.TypeId.Insts.CoreCmpEq : core.cmp.Eq generated.TypeId := {
   PartialEqInst := generated.TypeId.Insts.CoreCmpPartialEqTypeId
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::Ord for volar_ir_common::generated::TypeId}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 874:49-874:52 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 881:49-881:52 -/
 @[reducible]
 def generated.TypeId.Insts.CoreCmpOrd : core.cmp.Ord generated.TypeId := {
   EqInst := generated.TypeId.Insts.CoreCmpEq
@@ -1557,7 +1557,7 @@ def generated.TypeId.Insts.CoreCmpOrd : core.cmp.Ord generated.TypeId := {
 }
 
 /-- [volar_ir_common::generated::{impl core::cmp::Ord for volar_ir_common::generated::OracleDecl}::cmp]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 512:43-512:46
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 513:43-513:46
     Visibility: public -/
 def generated.OracleDecl.Insts.CoreCmpOrd.cmp
   (self : generated.OracleDecl) (other : generated.OracleDecl) :
@@ -1586,7 +1586,7 @@ def generated.OracleDecl.Insts.CoreCmpOrd.cmp
   | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
 
 /-- [volar_ir_common::generated::{impl core::cmp::PartialOrd<volar_ir_common::generated::OracleDecl> for volar_ir_common::generated::OracleDecl}::partial_cmp]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 512:31-512:41
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 513:31-513:41
     Visibility: public -/
 def generated.OracleDecl.Insts.CoreCmpPartialOrdOracleDecl.partial_cmp
   (self : generated.OracleDecl) (other : generated.OracleDecl) :
@@ -1596,7 +1596,7 @@ def generated.OracleDecl.Insts.CoreCmpPartialOrdOracleDecl.partial_cmp
   ok (core.option.Option.Some o)
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::PartialOrd<volar_ir_common::generated::OracleDecl> for volar_ir_common::generated::OracleDecl}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 512:31-512:41 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 513:31-513:41 -/
 @[reducible]
 impl_def generated.OracleDecl.Insts.CoreCmpPartialOrdOracleDecl :
   core.cmp.PartialOrd generated.OracleDecl generated.OracleDecl := {
@@ -1614,7 +1614,7 @@ impl_def generated.OracleDecl.Insts.CoreCmpPartialOrdOracleDecl :
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::Ord for volar_ir_common::generated::OracleDecl}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 512:43-512:46 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 513:43-513:46 -/
 @[reducible]
 def generated.OracleDecl.Insts.CoreCmpOrd : core.cmp.Ord generated.OracleDecl
   := {
@@ -1624,7 +1624,7 @@ def generated.OracleDecl.Insts.CoreCmpOrd : core.cmp.Ord generated.OracleDecl
 }
 
 /-- [volar_ir_common::generated::{impl core::hash::Hash for volar_ir_common::generated::TypeId}::hash]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 874:54-874:58
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 881:54-881:58
     Visibility: public -/
 def generated.TypeId.Insts.CoreHashHash.hash
   {__H : Type} (corehashHasherInst : core.hash.Hasher __H)
@@ -1634,7 +1634,7 @@ def generated.TypeId.Insts.CoreHashHash.hash
   core.U32.Insts.CoreHashHash.hash corehashHasherInst self state
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::hash::Hash for volar_ir_common::generated::TypeId}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 874:54-874:58 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 881:54-881:58 -/
 @[reducible]
 def generated.TypeId.Insts.CoreHashHash : core.hash.Hash generated.TypeId := {
   hash := fun {H : Type} (corehashHasherInst : core.hash.Hasher H) =>
@@ -1642,7 +1642,7 @@ def generated.TypeId.Insts.CoreHashHash : core.hash.Hash generated.TypeId := {
 }
 
 /-- [volar_ir_common::generated::{impl core::hash::Hash for volar_ir_common::generated::OracleDecl}::hash]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 512:48-512:52
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 513:48-513:52
     Visibility: public -/
 def generated.OracleDecl.Insts.CoreHashHash.hash
   {__H : Type} (corehashHasherInst : core.hash.Hasher __H)
@@ -1662,7 +1662,7 @@ def generated.OracleDecl.Insts.CoreHashHash.hash
     self.execution state3
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::hash::Hash for volar_ir_common::generated::OracleDecl}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 512:48-512:52 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 513:48-513:52 -/
 @[reducible]
 def generated.OracleDecl.Insts.CoreHashHash : core.hash.Hash
   generated.OracleDecl := {
@@ -1671,7 +1671,7 @@ def generated.OracleDecl.Insts.CoreHashHash : core.hash.Hash
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::fmt::Debug for volar_ir_common::generated::OracleDecl}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 512:54-512:59 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 513:54-513:59 -/
 @[reducible]
 def generated.OracleDecl.Insts.CoreFmtDebug : core.fmt.Debug
   generated.OracleDecl := {
@@ -1679,7 +1679,7 @@ def generated.OracleDecl.Insts.CoreFmtDebug : core.fmt.Debug
 }
 
 /-- [volar_ir_common::generated::{impl core::clone::Clone for volar_ir_common::generated::ActionDecl}::clone]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 608:9-608:14
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 611:9-611:14
     Visibility: public -/
 def generated.ActionDecl.Insts.CoreCloneClone.clone
   (self : generated.ActionDecl) : RustM generated.ActionDecl := do
@@ -1695,7 +1695,7 @@ def generated.ActionDecl.Insts.CoreCloneClone.clone
   ok { «name» := s, params := v, results := v1, execution := aep }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::clone::Clone for volar_ir_common::generated::ActionDecl}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 608:9-608:14 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 611:9-611:14 -/
 @[reducible]
 impl_def generated.ActionDecl.Insts.CoreCloneClone : core.clone.Clone
   generated.ActionDecl := {
@@ -1705,14 +1705,14 @@ impl_def generated.ActionDecl.Insts.CoreCloneClone : core.clone.Clone
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::marker::StructuralPartialEq for volar_ir_common::generated::ActionDecl}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 608:16-608:25 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 611:16-611:25 -/
 @[reducible]
 def generated.ActionDecl.Insts.CoreMarkerStructuralPartialEq :
   core.marker.StructuralPartialEq generated.ActionDecl := {
 }
 
 /-- [volar_ir_common::generated::{impl core::cmp::PartialEq<volar_ir_common::generated::ActionDecl> for volar_ir_common::generated::ActionDecl}::eq]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 608:16-608:25
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 611:16-611:25
     Visibility: public -/
 def generated.ActionDecl.Insts.CoreCmpPartialEqActionDecl.eq
   (self : generated.ActionDecl) (other : generated.ActionDecl) :
@@ -1740,7 +1740,7 @@ def generated.ActionDecl.Insts.CoreCmpPartialEqActionDecl.eq
   else ok false
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::PartialEq<volar_ir_common::generated::ActionDecl> for volar_ir_common::generated::ActionDecl}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 608:16-608:25 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 611:16-611:25 -/
 @[reducible]
 impl_def generated.ActionDecl.Insts.CoreCmpPartialEqActionDecl :
   core.cmp.PartialEq generated.ActionDecl generated.ActionDecl := {
@@ -1750,7 +1750,7 @@ impl_def generated.ActionDecl.Insts.CoreCmpPartialEqActionDecl :
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::Eq for volar_ir_common::generated::ActionDecl}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 608:27-608:29 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 611:27-611:29 -/
 @[reducible]
 def generated.ActionDecl.Insts.CoreCmpEq : core.cmp.Eq generated.ActionDecl
   := {
@@ -1758,7 +1758,7 @@ def generated.ActionDecl.Insts.CoreCmpEq : core.cmp.Eq generated.ActionDecl
 }
 
 /-- [volar_ir_common::generated::{impl core::cmp::Ord for volar_ir_common::generated::ActionDecl}::cmp]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 608:43-608:46
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 611:43-611:46
     Visibility: public -/
 def generated.ActionDecl.Insts.CoreCmpOrd.cmp
   (self : generated.ActionDecl) (other : generated.ActionDecl) :
@@ -1787,7 +1787,7 @@ def generated.ActionDecl.Insts.CoreCmpOrd.cmp
   | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
 
 /-- [volar_ir_common::generated::{impl core::cmp::PartialOrd<volar_ir_common::generated::ActionDecl> for volar_ir_common::generated::ActionDecl}::partial_cmp]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 608:31-608:41
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 611:31-611:41
     Visibility: public -/
 def generated.ActionDecl.Insts.CoreCmpPartialOrdActionDecl.partial_cmp
   (self : generated.ActionDecl) (other : generated.ActionDecl) :
@@ -1797,7 +1797,7 @@ def generated.ActionDecl.Insts.CoreCmpPartialOrdActionDecl.partial_cmp
   ok (core.option.Option.Some o)
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::PartialOrd<volar_ir_common::generated::ActionDecl> for volar_ir_common::generated::ActionDecl}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 608:31-608:41 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 611:31-611:41 -/
 @[reducible]
 impl_def generated.ActionDecl.Insts.CoreCmpPartialOrdActionDecl :
   core.cmp.PartialOrd generated.ActionDecl generated.ActionDecl := {
@@ -1815,7 +1815,7 @@ impl_def generated.ActionDecl.Insts.CoreCmpPartialOrdActionDecl :
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::Ord for volar_ir_common::generated::ActionDecl}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 608:43-608:46 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 611:43-611:46 -/
 @[reducible]
 def generated.ActionDecl.Insts.CoreCmpOrd : core.cmp.Ord generated.ActionDecl
   := {
@@ -1825,7 +1825,7 @@ def generated.ActionDecl.Insts.CoreCmpOrd : core.cmp.Ord generated.ActionDecl
 }
 
 /-- [volar_ir_common::generated::{impl core::hash::Hash for volar_ir_common::generated::ActionDecl}::hash]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 608:48-608:52
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 611:48-611:52
     Visibility: public -/
 def generated.ActionDecl.Insts.CoreHashHash.hash
   {__H : Type} (corehashHasherInst : core.hash.Hasher __H)
@@ -1845,7 +1845,7 @@ def generated.ActionDecl.Insts.CoreHashHash.hash
     self.execution state3
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::hash::Hash for volar_ir_common::generated::ActionDecl}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 608:48-608:52 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 611:48-611:52 -/
 @[reducible]
 def generated.ActionDecl.Insts.CoreHashHash : core.hash.Hash
   generated.ActionDecl := {
@@ -1854,7 +1854,7 @@ def generated.ActionDecl.Insts.CoreHashHash : core.hash.Hash
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::fmt::Debug for volar_ir_common::generated::ActionDecl}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 608:54-608:59 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 611:54-611:59 -/
 @[reducible]
 def generated.ActionDecl.Insts.CoreFmtDebug : core.fmt.Debug
   generated.ActionDecl := {
@@ -1862,7 +1862,7 @@ def generated.ActionDecl.Insts.CoreFmtDebug : core.fmt.Debug
 }
 
 /-- [volar_ir_common::generated::{impl core::clone::Clone for volar_ir_common::generated::RngDecl}::clone]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 704:9-704:14
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 709:9-709:14
     Visibility: public -/
 def generated.RngDecl.Insts.CoreCloneClone.clone
   (self : generated.RngDecl) : RustM generated.RngDecl := do
@@ -1871,7 +1871,7 @@ def generated.RngDecl.Insts.CoreCloneClone.clone
   ok { «name» := s, ty := ti }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::clone::Clone for volar_ir_common::generated::RngDecl}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 704:9-704:14 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 709:9-709:14 -/
 @[reducible]
 impl_def generated.RngDecl.Insts.CoreCloneClone : core.clone.Clone
   generated.RngDecl := {
@@ -1881,14 +1881,14 @@ impl_def generated.RngDecl.Insts.CoreCloneClone : core.clone.Clone
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::marker::StructuralPartialEq for volar_ir_common::generated::RngDecl}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 704:16-704:25 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 709:16-709:25 -/
 @[reducible]
 def generated.RngDecl.Insts.CoreMarkerStructuralPartialEq :
   core.marker.StructuralPartialEq generated.RngDecl := {
 }
 
 /-- [volar_ir_common::generated::{impl core::cmp::PartialEq<volar_ir_common::generated::RngDecl> for volar_ir_common::generated::RngDecl}::eq]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 704:16-704:25
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 709:16-709:25
     Visibility: public -/
 def generated.RngDecl.Insts.CoreCmpPartialEqRngDecl.eq
   (self : generated.RngDecl) (other : generated.RngDecl) : RustM Bool := do
@@ -1899,7 +1899,7 @@ def generated.RngDecl.Insts.CoreCmpPartialEqRngDecl.eq
   else ok false
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::PartialEq<volar_ir_common::generated::RngDecl> for volar_ir_common::generated::RngDecl}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 704:16-704:25 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 709:16-709:25 -/
 @[reducible]
 impl_def generated.RngDecl.Insts.CoreCmpPartialEqRngDecl : core.cmp.PartialEq
   generated.RngDecl generated.RngDecl := {
@@ -1909,14 +1909,14 @@ impl_def generated.RngDecl.Insts.CoreCmpPartialEqRngDecl : core.cmp.PartialEq
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::Eq for volar_ir_common::generated::RngDecl}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 704:27-704:29 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 709:27-709:29 -/
 @[reducible]
 def generated.RngDecl.Insts.CoreCmpEq : core.cmp.Eq generated.RngDecl := {
   PartialEqInst := generated.RngDecl.Insts.CoreCmpPartialEqRngDecl
 }
 
 /-- [volar_ir_common::generated::{impl core::cmp::Ord for volar_ir_common::generated::RngDecl}::cmp]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 704:43-704:46
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 709:43-709:46
     Visibility: public -/
 def generated.RngDecl.Insts.CoreCmpOrd.cmp
   (self : generated.RngDecl) (other : generated.RngDecl) :
@@ -1930,7 +1930,7 @@ def generated.RngDecl.Insts.CoreCmpOrd.cmp
   | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
 
 /-- [volar_ir_common::generated::{impl core::cmp::PartialOrd<volar_ir_common::generated::RngDecl> for volar_ir_common::generated::RngDecl}::partial_cmp]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 704:31-704:41
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 709:31-709:41
     Visibility: public -/
 def generated.RngDecl.Insts.CoreCmpPartialOrdRngDecl.partial_cmp
   (self : generated.RngDecl) (other : generated.RngDecl) :
@@ -1940,7 +1940,7 @@ def generated.RngDecl.Insts.CoreCmpPartialOrdRngDecl.partial_cmp
   ok (core.option.Option.Some o)
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::PartialOrd<volar_ir_common::generated::RngDecl> for volar_ir_common::generated::RngDecl}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 704:31-704:41 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 709:31-709:41 -/
 @[reducible]
 impl_def generated.RngDecl.Insts.CoreCmpPartialOrdRngDecl : core.cmp.PartialOrd
   generated.RngDecl generated.RngDecl := {
@@ -1957,7 +1957,7 @@ impl_def generated.RngDecl.Insts.CoreCmpPartialOrdRngDecl : core.cmp.PartialOrd
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::Ord for volar_ir_common::generated::RngDecl}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 704:43-704:46 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 709:43-709:46 -/
 @[reducible]
 def generated.RngDecl.Insts.CoreCmpOrd : core.cmp.Ord generated.RngDecl := {
   EqInst := generated.RngDecl.Insts.CoreCmpEq
@@ -1966,7 +1966,7 @@ def generated.RngDecl.Insts.CoreCmpOrd : core.cmp.Ord generated.RngDecl := {
 }
 
 /-- [volar_ir_common::generated::{impl core::hash::Hash for volar_ir_common::generated::RngDecl}::hash]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 704:48-704:52
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 709:48-709:52
     Visibility: public -/
 def generated.RngDecl.Insts.CoreHashHash.hash
   {__H : Type} (corehashHasherInst : core.hash.Hasher __H)
@@ -1979,7 +1979,7 @@ def generated.RngDecl.Insts.CoreHashHash.hash
   generated.TypeId.Insts.CoreHashHash.hash corehashHasherInst self.ty state1
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::hash::Hash for volar_ir_common::generated::RngDecl}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 704:48-704:52 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 709:48-709:52 -/
 @[reducible]
 def generated.RngDecl.Insts.CoreHashHash : core.hash.Hash generated.RngDecl
   := {
@@ -1988,7 +1988,7 @@ def generated.RngDecl.Insts.CoreHashHash : core.hash.Hash generated.RngDecl
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::fmt::Debug for volar_ir_common::generated::RngDecl}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 704:54-704:59 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 709:54-709:59 -/
 @[reducible]
 def generated.RngDecl.Insts.CoreFmtDebug : core.fmt.Debug generated.RngDecl
   := {
@@ -1996,14 +1996,14 @@ def generated.RngDecl.Insts.CoreFmtDebug : core.fmt.Debug generated.RngDecl
 }
 
 /-- [volar_ir_common::generated::{impl core::clone::Clone for volar_ir_common::generated::StorageId}::clone]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 917:9-917:14
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 924:9-924:14
     Visibility: public -/
 def generated.StorageId.Insts.CoreCloneClone.clone
   (self : generated.StorageId) : RustM generated.StorageId := do
   ok self
 
 /-- [volar_ir_common::generated::{impl core::clone::Clone for volar_ir_common::generated::PreInitSegment}::clone]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 778:9-778:14
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 783:9-783:14
     Visibility: public -/
 def generated.PreInitSegment.Insts.CoreCloneClone.clone
   (self : generated.PreInitSegment) : RustM generated.PreInitSegment := do
@@ -2016,7 +2016,7 @@ def generated.PreInitSegment.Insts.CoreCloneClone.clone
   ok { storage := si, ty := ti, offset := i, data := v }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::clone::Clone for volar_ir_common::generated::PreInitSegment}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 778:9-778:14 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 783:9-783:14 -/
 @[reducible]
 impl_def generated.PreInitSegment.Insts.CoreCloneClone : core.clone.Clone
   generated.PreInitSegment := {
@@ -2026,21 +2026,21 @@ impl_def generated.PreInitSegment.Insts.CoreCloneClone : core.clone.Clone
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::marker::StructuralPartialEq for volar_ir_common::generated::PreInitSegment}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 778:16-778:25 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 783:16-783:25 -/
 @[reducible]
 def generated.PreInitSegment.Insts.CoreMarkerStructuralPartialEq :
   core.marker.StructuralPartialEq generated.PreInitSegment := {
 }
 
 /-- [volar_ir_common::generated::{impl core::cmp::PartialEq<volar_ir_common::generated::StorageId> for volar_ir_common::generated::StorageId}::eq]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 917:22-917:31
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 924:22-924:31
     Visibility: public -/
 def generated.StorageId.Insts.CoreCmpPartialEqStorageId.eq
   (self : generated.StorageId) (other : generated.StorageId) : RustM Bool := do
   ok (self = other)
 
 /-- [volar_ir_common::generated::{impl core::cmp::PartialEq<volar_ir_common::generated::PreInitSegment> for volar_ir_common::generated::PreInitSegment}::eq]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 778:16-778:25
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 783:16-783:25
     Visibility: public -/
 def generated.PreInitSegment.Insts.CoreCmpPartialEqPreInitSegment.eq
   (self : generated.PreInitSegment) (other : generated.PreInitSegment) :
@@ -2065,7 +2065,7 @@ def generated.PreInitSegment.Insts.CoreCmpPartialEqPreInitSegment.eq
   else ok false
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::PartialEq<volar_ir_common::generated::PreInitSegment> for volar_ir_common::generated::PreInitSegment}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 778:16-778:25 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 783:16-783:25 -/
 @[reducible]
 impl_def generated.PreInitSegment.Insts.CoreCmpPartialEqPreInitSegment :
   core.cmp.PartialEq generated.PreInitSegment generated.PreInitSegment := {
@@ -2075,7 +2075,7 @@ impl_def generated.PreInitSegment.Insts.CoreCmpPartialEqPreInitSegment :
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::Eq for volar_ir_common::generated::PreInitSegment}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 778:27-778:29 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 783:27-783:29 -/
 @[reducible]
 def generated.PreInitSegment.Insts.CoreCmpEq : core.cmp.Eq
   generated.PreInitSegment := {
@@ -2084,7 +2084,7 @@ def generated.PreInitSegment.Insts.CoreCmpEq : core.cmp.Eq
 }
 
 /-- [volar_ir_common::generated::{impl core::cmp::Ord for volar_ir_common::generated::StorageId}::cmp]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 917:49-917:52
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 924:49-924:52
     Visibility: public -/
 def generated.StorageId.Insts.CoreCmpOrd.cmp
   (self : generated.StorageId) (other : generated.StorageId) :
@@ -2093,7 +2093,7 @@ def generated.StorageId.Insts.CoreCmpOrd.cmp
   core.U32.Insts.CoreCmpOrd.cmp self other
 
 /-- [volar_ir_common::generated::{impl core::cmp::Ord for volar_ir_common::generated::PreInitSegment}::cmp]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 778:43-778:46
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 783:43-783:46
     Visibility: public -/
 def generated.PreInitSegment.Insts.CoreCmpOrd.cmp
   (self : generated.PreInitSegment) (other : generated.PreInitSegment) :
@@ -2118,7 +2118,7 @@ def generated.PreInitSegment.Insts.CoreCmpOrd.cmp
   | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
 
 /-- [volar_ir_common::generated::{impl core::cmp::PartialOrd<volar_ir_common::generated::PreInitSegment> for volar_ir_common::generated::PreInitSegment}::partial_cmp]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 778:31-778:41
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 783:31-783:41
     Visibility: public -/
 def generated.PreInitSegment.Insts.CoreCmpPartialOrdPreInitSegment.partial_cmp
   (self : generated.PreInitSegment) (other : generated.PreInitSegment) :
@@ -2128,7 +2128,7 @@ def generated.PreInitSegment.Insts.CoreCmpPartialOrdPreInitSegment.partial_cmp
   ok (core.option.Option.Some o)
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::PartialOrd<volar_ir_common::generated::PreInitSegment> for volar_ir_common::generated::PreInitSegment}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 778:31-778:41 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 783:31-783:41 -/
 @[reducible]
 impl_def generated.PreInitSegment.Insts.CoreCmpPartialOrdPreInitSegment :
   core.cmp.PartialOrd generated.PreInitSegment generated.PreInitSegment := {
@@ -2147,7 +2147,7 @@ impl_def generated.PreInitSegment.Insts.CoreCmpPartialOrdPreInitSegment :
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::Ord for volar_ir_common::generated::PreInitSegment}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 778:43-778:46 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 783:43-783:46 -/
 @[reducible]
 def generated.PreInitSegment.Insts.CoreCmpOrd : core.cmp.Ord
   generated.PreInitSegment := {
@@ -2158,7 +2158,7 @@ def generated.PreInitSegment.Insts.CoreCmpOrd : core.cmp.Ord
 }
 
 /-- [volar_ir_common::generated::{impl core::hash::Hash for volar_ir_common::generated::StorageId}::hash]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 917:54-917:58
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 924:54-924:58
     Visibility: public -/
 def generated.StorageId.Insts.CoreHashHash.hash
   {__H : Type} (corehashHasherInst : core.hash.Hasher __H)
@@ -2168,7 +2168,7 @@ def generated.StorageId.Insts.CoreHashHash.hash
   core.U32.Insts.CoreHashHash.hash corehashHasherInst self state
 
 /-- [volar_ir_common::generated::{impl core::hash::Hash for volar_ir_common::generated::PreInitSegment}::hash]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 778:48-778:52
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 783:48-783:52
     Visibility: public -/
 def generated.PreInitSegment.Insts.CoreHashHash.hash
   {__H : Type} (corehashHasherInst : core.hash.Hasher __H)
@@ -2186,7 +2186,7 @@ def generated.PreInitSegment.Insts.CoreHashHash.hash
     corehashHasherInst self.data state3
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::hash::Hash for volar_ir_common::generated::PreInitSegment}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 778:48-778:52 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 783:48-783:52 -/
 @[reducible]
 def generated.PreInitSegment.Insts.CoreHashHash : core.hash.Hash
   generated.PreInitSegment := {
@@ -2195,7 +2195,7 @@ def generated.PreInitSegment.Insts.CoreHashHash : core.hash.Hash
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::fmt::Debug for volar_ir_common::generated::PreInitSegment}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 778:54-778:59 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 783:54-783:59 -/
 @[reducible]
 def generated.PreInitSegment.Insts.CoreFmtDebug : core.fmt.Debug
   generated.PreInitSegment := {
@@ -2203,7 +2203,7 @@ def generated.PreInitSegment.Insts.CoreFmtDebug : core.fmt.Debug
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::marker::Copy for volar_ir_common::generated::TypeId}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 874:16-874:20 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 881:16-881:20 -/
 @[reducible]
 def generated.TypeId.Insts.CoreMarkerCopy : core.marker.Copy generated.TypeId
   := {
@@ -2211,21 +2211,21 @@ def generated.TypeId.Insts.CoreMarkerCopy : core.marker.Copy generated.TypeId
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::marker::StructuralPartialEq for volar_ir_common::generated::TypeId}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 874:22-874:31 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 881:22-881:31 -/
 @[reducible]
 def generated.TypeId.Insts.CoreMarkerStructuralPartialEq :
   core.marker.StructuralPartialEq generated.TypeId := {
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::fmt::Debug for volar_ir_common::generated::TypeId}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 874:60-874:65 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 881:60-881:65 -/
 @[reducible]
 def generated.TypeId.Insts.CoreFmtDebug : core.fmt.Debug generated.TypeId := {
   fmt := generated.TypeId.Insts.CoreFmtDebug.fmt
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::clone::Clone for volar_ir_common::generated::StorageId}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 917:9-917:14 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 924:9-924:14 -/
 @[reducible]
 impl_def generated.StorageId.Insts.CoreCloneClone : core.clone.Clone
   generated.StorageId := {
@@ -2235,7 +2235,7 @@ impl_def generated.StorageId.Insts.CoreCloneClone : core.clone.Clone
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::marker::Copy for volar_ir_common::generated::StorageId}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 917:16-917:20 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 924:16-924:20 -/
 @[reducible]
 def generated.StorageId.Insts.CoreMarkerCopy : core.marker.Copy
   generated.StorageId := {
@@ -2243,14 +2243,14 @@ def generated.StorageId.Insts.CoreMarkerCopy : core.marker.Copy
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::marker::StructuralPartialEq for volar_ir_common::generated::StorageId}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 917:22-917:31 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 924:22-924:31 -/
 @[reducible]
 def generated.StorageId.Insts.CoreMarkerStructuralPartialEq :
   core.marker.StructuralPartialEq generated.StorageId := {
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::PartialEq<volar_ir_common::generated::StorageId> for volar_ir_common::generated::StorageId}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 917:22-917:31 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 924:22-924:31 -/
 @[reducible]
 impl_def generated.StorageId.Insts.CoreCmpPartialEqStorageId :
   core.cmp.PartialEq generated.StorageId generated.StorageId := {
@@ -2260,14 +2260,14 @@ impl_def generated.StorageId.Insts.CoreCmpPartialEqStorageId :
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::Eq for volar_ir_common::generated::StorageId}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 917:33-917:35 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 924:33-924:35 -/
 @[reducible]
 def generated.StorageId.Insts.CoreCmpEq : core.cmp.Eq generated.StorageId := {
   PartialEqInst := generated.StorageId.Insts.CoreCmpPartialEqStorageId
 }
 
 /-- [volar_ir_common::generated::{impl core::cmp::PartialOrd<volar_ir_common::generated::StorageId> for volar_ir_common::generated::StorageId}::partial_cmp]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 917:37-917:47
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 924:37-924:47
     Visibility: public -/
 def generated.StorageId.Insts.CoreCmpPartialOrdStorageId.partial_cmp
   (self : generated.StorageId) (other : generated.StorageId) :
@@ -2277,7 +2277,7 @@ def generated.StorageId.Insts.CoreCmpPartialOrdStorageId.partial_cmp
   ok (core.option.Option.Some o)
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::PartialOrd<volar_ir_common::generated::StorageId> for volar_ir_common::generated::StorageId}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 917:37-917:47 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 924:37-924:47 -/
 @[reducible]
 impl_def generated.StorageId.Insts.CoreCmpPartialOrdStorageId :
   core.cmp.PartialOrd generated.StorageId generated.StorageId := {
@@ -2295,7 +2295,7 @@ impl_def generated.StorageId.Insts.CoreCmpPartialOrdStorageId :
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::Ord for volar_ir_common::generated::StorageId}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 917:49-917:52 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 924:49-924:52 -/
 @[reducible]
 def generated.StorageId.Insts.CoreCmpOrd : core.cmp.Ord generated.StorageId
   := {
@@ -2305,7 +2305,7 @@ def generated.StorageId.Insts.CoreCmpOrd : core.cmp.Ord generated.StorageId
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::hash::Hash for volar_ir_common::generated::StorageId}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 917:54-917:58 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 924:54-924:58 -/
 @[reducible]
 def generated.StorageId.Insts.CoreHashHash : core.hash.Hash generated.StorageId
   := {
@@ -2314,7 +2314,7 @@ def generated.StorageId.Insts.CoreHashHash : core.hash.Hash generated.StorageId
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::fmt::Debug for volar_ir_common::generated::StorageId}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 917:60-917:65 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 924:60-924:65 -/
 @[reducible]
 def generated.StorageId.Insts.CoreFmtDebug : core.fmt.Debug generated.StorageId
   := {
@@ -2322,7 +2322,7 @@ def generated.StorageId.Insts.CoreFmtDebug : core.fmt.Debug generated.StorageId
 }
 
 /-- [volar_ir_common::generated::{impl core::clone::Clone for volar_ir_common::generated::Node<T, P>}::clone]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 960:9-960:14
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 967:9-967:14
     Visibility: public -/
 def generated.Node.Insts.CoreCloneClone.clone
   {T : Type} {P : Type} (corecloneCloneInst : core.clone.Clone T)
@@ -2338,7 +2338,7 @@ def generated.Node.Insts.CoreCloneClone.clone
   ok { kind := t, prov := t1, side := o }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::clone::Clone for volar_ir_common::generated::Node<T, P>}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 960:9-960:14 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 967:9-967:14 -/
 @[reducible]
 impl_def generated.Node.Insts.CoreCloneClone {T : Type} {P : Type}
   (corecloneCloneInst : core.clone.Clone T) (corecloneCloneInst1 :
@@ -2352,7 +2352,7 @@ impl_def generated.Node.Insts.CoreCloneClone {T : Type} {P : Type}
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::marker::StructuralPartialEq for volar_ir_common::generated::Node<T, P>}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 960:16-960:25 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 967:16-967:25 -/
 @[reducible]
 def generated.Node.Insts.CoreMarkerStructuralPartialEq {T : Type} {P : Type}
   (corecmpPartialEqInst : core.cmp.PartialEq T T) (corecmpPartialEqInst1 :
@@ -2361,7 +2361,7 @@ def generated.Node.Insts.CoreMarkerStructuralPartialEq {T : Type} {P : Type}
 }
 
 /-- [volar_ir_common::generated::{impl core::cmp::PartialEq<volar_ir_common::generated::Node<T, P>> for volar_ir_common::generated::Node<T, P>}::eq]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 960:16-960:25
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 967:16-967:25
     Visibility: public -/
 def generated.Node.Insts.CoreCmpPartialEqNode.eq
   {T : Type} {P : Type} (corecmpPartialEqInst : core.cmp.PartialEq T T)
@@ -2383,7 +2383,7 @@ def generated.Node.Insts.CoreCmpPartialEqNode.eq
   else ok false
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::PartialEq<volar_ir_common::generated::Node<T, P>> for volar_ir_common::generated::Node<T, P>}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 960:16-960:25 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 967:16-967:25 -/
 @[reducible]
 impl_def generated.Node.Insts.CoreCmpPartialEqNode {T : Type} {P : Type}
   (corecmpPartialEqInst : core.cmp.PartialEq T T) (corecmpPartialEqInst1 :
@@ -2397,7 +2397,7 @@ impl_def generated.Node.Insts.CoreCmpPartialEqNode {T : Type} {P : Type}
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::Eq for volar_ir_common::generated::Node<T, P>}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 960:27-960:29 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 967:27-967:29 -/
 @[reducible]
 def generated.Node.Insts.CoreCmpEq {T : Type} {P : Type} (corecmpEqInst :
   core.cmp.Eq T) (corecmpEqInst1 : core.cmp.Eq P) (corecloneCloneInst :
@@ -2407,7 +2407,7 @@ def generated.Node.Insts.CoreCmpEq {T : Type} {P : Type} (corecmpEqInst :
 }
 
 /-- [volar_ir_common::generated::{impl core::cmp::PartialOrd<volar_ir_common::generated::Node<T, P>> for volar_ir_common::generated::Node<T, P>}::partial_cmp]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 960:31-960:41
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 967:31-967:41
     Visibility: public -/
 def generated.Node.Insts.CoreCmpPartialOrdNode.partial_cmp
   {T : Type} {P : Type} (corecmpPartialOrdInst : core.cmp.PartialOrd T T)
@@ -2437,7 +2437,7 @@ def generated.Node.Insts.CoreCmpPartialOrdNode.partial_cmp
     | core.cmp.Ordering.Greater => ok o
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::PartialOrd<volar_ir_common::generated::Node<T, P>> for volar_ir_common::generated::Node<T, P>}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 960:31-960:41 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 967:31-967:41 -/
 @[reducible]
 impl_def generated.Node.Insts.CoreCmpPartialOrdNode {T : Type} {P : Type}
   (corecmpPartialOrdInst : core.cmp.PartialOrd T T) (corecmpPartialOrdInst1 :
@@ -2463,7 +2463,7 @@ impl_def generated.Node.Insts.CoreCmpPartialOrdNode {T : Type} {P : Type}
 }
 
 /-- [volar_ir_common::generated::{impl core::cmp::Ord for volar_ir_common::generated::Node<T, P>}::cmp]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 960:43-960:46
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 967:43-967:46
     Visibility: public -/
 def generated.Node.Insts.CoreCmpOrd.cmp
   {T : Type} {P : Type} (corecmpOrdInst : core.cmp.Ord T) (corecmpOrdInst1 :
@@ -2485,7 +2485,7 @@ def generated.Node.Insts.CoreCmpOrd.cmp
   | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::cmp::Ord for volar_ir_common::generated::Node<T, P>}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 960:43-960:46 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 967:43-967:46 -/
 @[reducible]
 def generated.Node.Insts.CoreCmpOrd {T : Type} {P : Type} (corecmpOrdInst :
   core.cmp.Ord T) (corecmpOrdInst1 : core.cmp.Ord P) (corecloneCloneInst :
@@ -2500,7 +2500,7 @@ def generated.Node.Insts.CoreCmpOrd {T : Type} {P : Type} (corecmpOrdInst :
 }
 
 /-- [volar_ir_common::generated::{impl core::hash::Hash for volar_ir_common::generated::Node<T, P>}::hash]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 960:48-960:52
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 967:48-967:52
     Visibility: public -/
 def generated.Node.Insts.CoreHashHash.hash
   {T : Type} {P : Type} {__H : Type} (corehashHashInst : core.hash.Hash T)
@@ -2516,7 +2516,7 @@ def generated.Node.Insts.CoreHashHash.hash
     self.side state2
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::hash::Hash for volar_ir_common::generated::Node<T, P>}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 960:48-960:52 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 967:48-967:52 -/
 @[reducible]
 def generated.Node.Insts.CoreHashHash {T : Type} {P : Type} (corehashHashInst :
   core.hash.Hash T) (corehashHashInst1 : core.hash.Hash P) (corecloneCloneInst
@@ -2527,7 +2527,7 @@ def generated.Node.Insts.CoreHashHash {T : Type} {P : Type} (corehashHashInst :
 }
 
 /-- Trait implementation: [volar_ir_common::generated::{impl core::fmt::Debug for volar_ir_common::generated::Node<T, P>}]
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 960:54-960:59 -/
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 967:54-967:59 -/
 @[reducible]
 def generated.Node.Insts.CoreFmtDebug {T : Type} {P : Type} (corefmtDebugInst :
   core.fmt.Debug T) (corefmtDebugInst1 : core.fmt.Debug P) (corecloneCloneInst
@@ -2536,8 +2536,164 @@ def generated.Node.Insts.CoreFmtDebug {T : Type} {P : Type} (corefmtDebugInst :
     corefmtDebugInst1 corecloneCloneInst
 }
 
+/-- [volar_ir_common::{impl core::cmp::PartialEq<volar_ir_common::PolyKey<V>> for volar_ir_common::PolyKey<V>}::eq]:
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 288:16-288:25
+    Visibility: public -/
+def PolyKey.Insts.CoreCmpPartialEqPolyKey.eq
+  {V : Type} (corecmpPartialEqInst : core.cmp.PartialEq V V) (self : PolyKey V)
+  (other : PolyKey V) :
+  RustM Bool
+  := do
+  let self1 := read_discriminant self
+  let other1 := read_discriminant other
+  if self1 = other1
+  then
+    match self with
+    | PolyKey.One __self_0 =>
+      match other with
+      | PolyKey.One __arg1_0 =>
+        core.Shared1A.Insts.CoreCmpPartialEqShared0B.eq corecmpPartialEqInst
+          __self_0 __arg1_0
+      | PolyKey.Many _ => fail panic
+    | PolyKey.Many __self_0 =>
+      match other with
+      | PolyKey.One _ => fail panic
+      | PolyKey.Many __arg1_0 =>
+        alloc.vec.Vec.Insts.CoreCmpPartialEqVec.eq corecmpPartialEqInst
+          __self_0 __arg1_0
+  else ok false
+
+/-- Trait implementation: [volar_ir_common::{impl core::cmp::PartialEq<volar_ir_common::PolyKey<V>> for volar_ir_common::PolyKey<V>}]
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 288:16-288:25 -/
+@[reducible]
+impl_def PolyKey.Insts.CoreCmpPartialEqPolyKey {V : Type} (corecmpPartialEqInst
+  : core.cmp.PartialEq V V) : core.cmp.PartialEq (PolyKey V) (PolyKey V) := {
+  eq := PolyKey.Insts.CoreCmpPartialEqPolyKey.eq corecmpPartialEqInst
+  ne := core.cmp.PartialEq.ne.default (PolyKey.Insts.CoreCmpPartialEqPolyKey
+    corecmpPartialEqInst)
+}
+
+/-- Trait implementation: [volar_ir_common::{impl core::cmp::Eq for volar_ir_common::PolyKey<V>}]
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 288:27-288:29 -/
+@[reducible]
+def PolyKey.Insts.CoreCmpEq {V : Type} (corecmpEqInst : core.cmp.Eq V) :
+  core.cmp.Eq (PolyKey V) := {
+  PartialEqInst := PolyKey.Insts.CoreCmpPartialEqPolyKey
+    corecmpEqInst.PartialEqInst
+}
+
+/-- [volar_ir_common::{impl core::cmp::PartialOrd<volar_ir_common::PolyKey<V>> for volar_ir_common::PolyKey<V>}::partial_cmp]:
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 288:31-288:41
+    Visibility: public -/
+def PolyKey.Insts.CoreCmpPartialOrdPolyKey.partial_cmp
+  {V : Type} (corecmpPartialOrdInst : core.cmp.PartialOrd V V)
+  (self : PolyKey V) (other : PolyKey V) :
+  RustM (core.option.Option core.cmp.Ordering)
+  := do
+  let self1 := read_discriminant self
+  let other1 := read_discriminant other
+  match self with
+  | PolyKey.One __self_0 =>
+    match other with
+    | PolyKey.One __arg1_0 =>
+      corecmpPartialOrdInst.partial_cmp __self_0 __arg1_0
+    | PolyKey.Many _ =>
+      core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
+  | PolyKey.Many __self_0 =>
+    match other with
+    | PolyKey.One _ =>
+      core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
+    | PolyKey.Many __arg1_0 =>
+      alloc.vec.Vec.Insts.CoreCmpPartialOrdVec.partial_cmp
+        corecmpPartialOrdInst __self_0 __arg1_0
+
+/-- Trait implementation: [volar_ir_common::{impl core::cmp::PartialOrd<volar_ir_common::PolyKey<V>> for volar_ir_common::PolyKey<V>}]
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 288:31-288:41 -/
+@[reducible]
+impl_def PolyKey.Insts.CoreCmpPartialOrdPolyKey {V : Type}
+  (corecmpPartialOrdInst : core.cmp.PartialOrd V V) : core.cmp.PartialOrd
+  (PolyKey V) (PolyKey V) := {
+  PartialEqInst := PolyKey.Insts.CoreCmpPartialEqPolyKey
+    corecmpPartialOrdInst.PartialEqInst
+  partial_cmp := PolyKey.Insts.CoreCmpPartialOrdPolyKey.partial_cmp
+    corecmpPartialOrdInst
+  lt := core.cmp.PartialOrd.lt.default (PolyKey.Insts.CoreCmpPartialOrdPolyKey
+    corecmpPartialOrdInst)
+  le := core.cmp.PartialOrd.le.default (PolyKey.Insts.CoreCmpPartialOrdPolyKey
+    corecmpPartialOrdInst)
+  gt := core.cmp.PartialOrd.gt.default (PolyKey.Insts.CoreCmpPartialOrdPolyKey
+    corecmpPartialOrdInst)
+  ge := core.cmp.PartialOrd.ge.default (PolyKey.Insts.CoreCmpPartialOrdPolyKey
+    corecmpPartialOrdInst)
+}
+
+/-- [volar_ir_common::{impl core::cmp::Ord for volar_ir_common::PolyKey<V>}::cmp]:
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 288:43-288:46
+    Visibility: public -/
+def PolyKey.Insts.CoreCmpOrd.cmp
+  {V : Type} (corecmpOrdInst : core.cmp.Ord V) (self : PolyKey V)
+  (other : PolyKey V) :
+  RustM core.cmp.Ordering
+  := do
+  let self1 := read_discriminant self
+  let other1 := read_discriminant other
+  let o ← core.Isize.Insts.CoreCmpOrd.cmp self1 other1
+  match o with
+  | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
+  | core.cmp.Ordering.Equal =>
+    match self with
+    | PolyKey.One __self_0 =>
+      match other with
+      | PolyKey.One __arg1_0 => corecmpOrdInst.cmp __self_0 __arg1_0
+      | PolyKey.Many _ => fail panic
+    | PolyKey.Many __self_0 =>
+      match other with
+      | PolyKey.One _ => fail panic
+      | PolyKey.Many __arg1_0 =>
+        alloc.vec.Vec.Insts.CoreCmpOrd.cmp corecmpOrdInst __self_0 __arg1_0
+  | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
+
+/-- Trait implementation: [volar_ir_common::{impl core::cmp::Ord for volar_ir_common::PolyKey<V>}]
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 288:43-288:46 -/
+@[reducible]
+def PolyKey.Insts.CoreCmpOrd {V : Type} (corecmpOrdInst : core.cmp.Ord V) :
+  core.cmp.Ord (PolyKey V) := {
+  EqInst := PolyKey.Insts.CoreCmpEq corecmpOrdInst.EqInst
+  PartialOrdInst := PolyKey.Insts.CoreCmpPartialOrdPolyKey
+    corecmpOrdInst.PartialOrdInst
+  cmp := PolyKey.Insts.CoreCmpOrd.cmp corecmpOrdInst
+}
+
+/-- [volar_ir_common::{impl core::hash::Hash for volar_ir_common::PolyKey<V>}::hash]:
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 288:48-288:52
+    Visibility: public -/
+def PolyKey.Insts.CoreHashHash.hash
+  {V : Type} {__H : Type} (corehashHashInst : core.hash.Hash V)
+  (corehashHasherInst : core.hash.Hasher __H) (self : PolyKey V) (state : __H)
+  :
+  RustM __H
+  := do
+  let self1 := read_discriminant self
+  let state1 ←
+    core.Isize.Insts.CoreHashHash.hash corehashHasherInst self1 state
+  match self with
+  | PolyKey.One __self_0 =>
+    corehashHashInst.hash corehashHasherInst __self_0 state1
+  | PolyKey.Many __self_0 =>
+    alloc.vec.Vec.Insts.CoreHashHash.hash corehashHashInst corehashHasherInst
+      __self_0 state1
+
+/-- Trait implementation: [volar_ir_common::{impl core::hash::Hash for volar_ir_common::PolyKey<V>}]
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 288:48-288:52 -/
+@[reducible]
+def PolyKey.Insts.CoreHashHash {V : Type} (corehashHashInst : core.hash.Hash V)
+  : core.hash.Hash (PolyKey V) := {
+  hash := fun {H : Type} (corehashHasherInst : core.hash.Hasher H) =>
+    PolyKey.Insts.CoreHashHash.hash corehashHashInst corehashHasherInst
+}
+
 /-- [volar_ir_common::{impl core::cmp::PartialEq<volar_ir_common::PolyCoeffs<V>> for volar_ir_common::PolyCoeffs<V>}::eq]:
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 286:16-286:25
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 345:16-345:25
     Visibility: public -/
 def PolyCoeffs.Insts.CoreCmpPartialEqPolyCoeffs.eq
   {V : Type} (corecmpPartialEqInst : core.cmp.PartialEq V V)
@@ -2546,11 +2702,11 @@ def PolyCoeffs.Insts.CoreCmpPartialEqPolyCoeffs.eq
   := do
   alloc.vec.Vec.Insts.CoreCmpPartialEqVec.eq
     (core.Pair.Insts.CoreCmpPartialEqPair
-    (alloc.vec.Vec.Insts.CoreCmpPartialEqVec corecmpPartialEqInst)
+    (PolyKey.Insts.CoreCmpPartialEqPolyKey corecmpPartialEqInst)
     core.U8.Insts.CoreCmpPartialEqU8) self other
 
 /-- Trait implementation: [volar_ir_common::{impl core::cmp::PartialEq<volar_ir_common::PolyCoeffs<V>> for volar_ir_common::PolyCoeffs<V>}]
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 286:16-286:25 -/
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 345:16-345:25 -/
 @[reducible]
 impl_def PolyCoeffs.Insts.CoreCmpPartialEqPolyCoeffs {V : Type}
   (corecmpPartialEqInst : core.cmp.PartialEq V V) : core.cmp.PartialEq
@@ -2561,7 +2717,7 @@ impl_def PolyCoeffs.Insts.CoreCmpPartialEqPolyCoeffs {V : Type}
 }
 
 /-- [volar_ir_common::{impl core::cmp::PartialOrd<volar_ir_common::PolyCoeffs<V>> for volar_ir_common::PolyCoeffs<V>}::partial_cmp]:
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 286:31-286:41
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 345:31-345:41
     Visibility: public -/
 def PolyCoeffs.Insts.CoreCmpPartialOrdPolyCoeffs.partial_cmp
   {V : Type} (corecmpPartialOrdInst : core.cmp.PartialOrd V V)
@@ -2570,12 +2726,11 @@ def PolyCoeffs.Insts.CoreCmpPartialOrdPolyCoeffs.partial_cmp
   := do
   alloc.vec.Vec.Insts.CoreCmpPartialOrdVec.partial_cmp
     (core.Pair.Insts.CoreCmpPartialOrdPair
-    (alloc.vec.Vec.Insts.CoreCmpPartialOrdVec alloc.alloc.Global
-    alloc.alloc.Global corecmpPartialOrdInst)
+    (PolyKey.Insts.CoreCmpPartialOrdPolyKey corecmpPartialOrdInst)
     core.U8.Insts.CoreCmpPartialOrdU8) self other
 
 /-- [volar_ir_common::{impl core::cmp::Ord for volar_ir_common::PolyCoeffs<V>}::cmp]:
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 286:43-286:46
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 345:43-345:46
     Visibility: public -/
 def PolyCoeffs.Insts.CoreCmpOrd.cmp
   {V : Type} (corecmpOrdInst : core.cmp.Ord V) (self : PolyCoeffs V)
@@ -2583,11 +2738,11 @@ def PolyCoeffs.Insts.CoreCmpOrd.cmp
   RustM core.cmp.Ordering
   := do
   alloc.vec.Vec.Insts.CoreCmpOrd.cmp (core.Pair.Insts.CoreCmpOrd
-    (alloc.vec.Vec.Insts.CoreCmpOrd alloc.alloc.Global corecmpOrdInst)
-    core.U8.Insts.CoreCmpOrd) self other
+    (PolyKey.Insts.CoreCmpOrd corecmpOrdInst) core.U8.Insts.CoreCmpOrd) self
+    other
 
 /-- [volar_ir_common::{impl core::hash::Hash for volar_ir_common::PolyCoeffs<V>}::hash]:
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 286:48-286:52
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 345:48-345:52
     Visibility: public -/
 def PolyCoeffs.Insts.CoreHashHash.hash
   {V : Type} {__H : Type} (corehashHashInst : core.hash.Hash V)
@@ -2596,11 +2751,11 @@ def PolyCoeffs.Insts.CoreHashHash.hash
   RustM __H
   := do
   alloc.vec.Vec.Insts.CoreHashHash.hash (core.Pair.Insts.CoreHashHash
-    (alloc.vec.Vec.Insts.CoreHashHash corehashHashInst)
-    core.U8.Insts.CoreHashHash) corehashHasherInst self state
+    (PolyKey.Insts.CoreHashHash corehashHashInst) core.U8.Insts.CoreHashHash)
+    corehashHasherInst self state
 
 /-- [volar_ir_common::{impl core::cmp::PartialEq<volar_ir_common::ActionTarget<Addr, Stor>> for volar_ir_common::ActionTarget<Addr, Stor>}::eq]:
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 695:16-695:25
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 792:16-792:25
     Visibility: public -/
 def ActionTarget.Insts.CoreCmpPartialEqActionTarget.eq
   {Addr : Type} {Stor : Type} (corecmpPartialEqInst : core.cmp.PartialEq Addr
@@ -2614,7 +2769,7 @@ def ActionTarget.Insts.CoreCmpPartialEqActionTarget.eq
   else ok false
 
 /-- Trait implementation: [volar_ir_common::{impl core::cmp::PartialEq<volar_ir_common::ActionTarget<Addr, Stor>> for volar_ir_common::ActionTarget<Addr, Stor>}]
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 695:16-695:25 -/
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 792:16-792:25 -/
 @[reducible]
 impl_def ActionTarget.Insts.CoreCmpPartialEqActionTarget {Addr : Type} {Stor :
   Type} (corecmpPartialEqInst : core.cmp.PartialEq Addr Addr)
@@ -2628,7 +2783,7 @@ impl_def ActionTarget.Insts.CoreCmpPartialEqActionTarget {Addr : Type} {Stor :
 }
 
 /-- Trait implementation: [volar_ir_common::{impl core::cmp::Eq for volar_ir_common::ActionTarget<Addr, Stor>}]
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 695:27-695:29 -/
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 792:27-792:29 -/
 @[reducible]
 def ActionTarget.Insts.CoreCmpEq {Addr : Type} {Stor : Type} (corecmpEqInst :
   core.cmp.Eq Addr) (corecmpEqInst1 : core.cmp.Eq Stor) : core.cmp.Eq
@@ -2638,7 +2793,7 @@ def ActionTarget.Insts.CoreCmpEq {Addr : Type} {Stor : Type} (corecmpEqInst :
 }
 
 /-- [volar_ir_common::{impl core::cmp::PartialOrd<volar_ir_common::ActionTarget<Addr, Stor>> for volar_ir_common::ActionTarget<Addr, Stor>}::partial_cmp]:
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 695:31-695:41
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 792:31-792:41
     Visibility: public -/
 def ActionTarget.Insts.CoreCmpPartialOrdActionTarget.partial_cmp
   {Addr : Type} {Stor : Type} (corecmpPartialOrdInst : core.cmp.PartialOrd Addr
@@ -2657,7 +2812,7 @@ def ActionTarget.Insts.CoreCmpPartialOrdActionTarget.partial_cmp
     | core.cmp.Ordering.Greater => ok o
 
 /-- Trait implementation: [volar_ir_common::{impl core::cmp::PartialOrd<volar_ir_common::ActionTarget<Addr, Stor>> for volar_ir_common::ActionTarget<Addr, Stor>}]
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 695:31-695:41 -/
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 792:31-792:41 -/
 @[reducible]
 impl_def ActionTarget.Insts.CoreCmpPartialOrdActionTarget {Addr : Type} {Stor :
   Type} (corecmpPartialOrdInst : core.cmp.PartialOrd Addr Addr)
@@ -2682,7 +2837,7 @@ impl_def ActionTarget.Insts.CoreCmpPartialOrdActionTarget {Addr : Type} {Stor :
 }
 
 /-- [volar_ir_common::{impl core::cmp::Ord for volar_ir_common::ActionTarget<Addr, Stor>}::cmp]:
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 695:43-695:46
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 792:43-792:46
     Visibility: public -/
 def ActionTarget.Insts.CoreCmpOrd.cmp
   {Addr : Type} {Stor : Type} (corecmpOrdInst : core.cmp.Ord Addr)
@@ -2697,7 +2852,7 @@ def ActionTarget.Insts.CoreCmpOrd.cmp
   | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
 
 /-- Trait implementation: [volar_ir_common::{impl core::cmp::Ord for volar_ir_common::ActionTarget<Addr, Stor>}]
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 695:43-695:46 -/
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 792:43-792:46 -/
 @[reducible]
 def ActionTarget.Insts.CoreCmpOrd {Addr : Type} {Stor : Type} (corecmpOrdInst :
   core.cmp.Ord Addr) (corecmpOrdInst1 : core.cmp.Ord Stor) : core.cmp.Ord
@@ -2710,7 +2865,7 @@ def ActionTarget.Insts.CoreCmpOrd {Addr : Type} {Stor : Type} (corecmpOrdInst :
 }
 
 /-- [volar_ir_common::{impl core::hash::Hash for volar_ir_common::ActionTarget<Addr, Stor>}::hash]:
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 695:48-695:52
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 792:48-792:52
     Visibility: public -/
 def ActionTarget.Insts.CoreHashHash.hash
   {Addr : Type} {Stor : Type} {__H : Type} (corehashHashInst : core.hash.Hash
@@ -2722,7 +2877,7 @@ def ActionTarget.Insts.CoreHashHash.hash
   corehashHashInst.hash corehashHasherInst self.addr state1
 
 /-- Trait implementation: [volar_ir_common::{impl core::hash::Hash for volar_ir_common::ActionTarget<Addr, Stor>}]
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 695:48-695:52 -/
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 792:48-792:52 -/
 @[reducible]
 def ActionTarget.Insts.CoreHashHash {Addr : Type} {Stor : Type}
   (corehashHashInst : core.hash.Hash Addr) (corehashHashInst1 : core.hash.Hash
@@ -2732,8 +2887,708 @@ def ActionTarget.Insts.CoreHashHash {Addr : Type} {Stor : Type}
     corehashHasherInst
 }
 
+/-- [volar_ir_common::{impl core::cmp::PartialEq<volar_ir_common::OracleCallData<Var, Ty>> for volar_ir_common::OracleCallData<Var, Ty>}::eq]:
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 876:16-876:25
+    Visibility: public -/
+def OracleCallData.Insts.CoreCmpPartialEqOracleCallData.eq
+  {Var : Type} {Ty : Type} (corecmpPartialEqInst : core.cmp.PartialEq Var Var)
+  (corecmpPartialEqInst1 : core.cmp.PartialEq Ty Ty)
+  (self : OracleCallData Var Ty) (other : OracleCallData Var Ty) :
+  RustM Bool
+  := do
+  let b ←
+    alloc.string.String.Insts.CoreCmpPartialEqString.eq self.name other.name
+  if b
+  then
+    let b1 ←
+      alloc.vec.Vec.Insts.CoreCmpPartialEqVec.eq corecmpPartialEqInst 
+        self.args other.args
+    if b1
+    then
+      let b2 ←
+        alloc.vec.Vec.Insts.CoreCmpPartialEqVec.eq corecmpPartialEqInst1
+          self.output_tys other.output_tys
+      if b2
+      then corecmpPartialEqInst1.eq self.result_ty other.result_ty
+      else ok false
+    else ok false
+  else ok false
+
+/-- Trait implementation: [volar_ir_common::{impl core::cmp::PartialEq<volar_ir_common::OracleCallData<Var, Ty>> for volar_ir_common::OracleCallData<Var, Ty>}]
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 876:16-876:25 -/
+@[reducible]
+impl_def OracleCallData.Insts.CoreCmpPartialEqOracleCallData {Var : Type} {Ty :
+  Type} (corecmpPartialEqInst : core.cmp.PartialEq Var Var)
+  (corecmpPartialEqInst1 : core.cmp.PartialEq Ty Ty) : core.cmp.PartialEq
+  (OracleCallData Var Ty) (OracleCallData Var Ty) := {
+  eq := OracleCallData.Insts.CoreCmpPartialEqOracleCallData.eq
+    corecmpPartialEqInst corecmpPartialEqInst1
+  ne := core.cmp.PartialEq.ne.default
+    (OracleCallData.Insts.CoreCmpPartialEqOracleCallData corecmpPartialEqInst
+    corecmpPartialEqInst1)
+}
+
+/-- Trait implementation: [volar_ir_common::{impl core::cmp::Eq for volar_ir_common::OracleCallData<Var, Ty>}]
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 876:27-876:29 -/
+@[reducible]
+def OracleCallData.Insts.CoreCmpEq {Var : Type} {Ty : Type} (corecmpEqInst :
+  core.cmp.Eq Var) (corecmpEqInst1 : core.cmp.Eq Ty) : core.cmp.Eq
+  (OracleCallData Var Ty) := {
+  PartialEqInst := OracleCallData.Insts.CoreCmpPartialEqOracleCallData
+    corecmpEqInst.PartialEqInst corecmpEqInst1.PartialEqInst
+}
+
+/-- [volar_ir_common::{impl core::cmp::PartialOrd<volar_ir_common::OracleCallData<Var, Ty>> for volar_ir_common::OracleCallData<Var, Ty>}::partial_cmp]:
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 876:31-876:41
+    Visibility: public -/
+def OracleCallData.Insts.CoreCmpPartialOrdOracleCallData.partial_cmp
+  {Var : Type} {Ty : Type} (corecmpPartialOrdInst : core.cmp.PartialOrd Var
+  Var) (corecmpPartialOrdInst1 : core.cmp.PartialOrd Ty Ty)
+  (self : OracleCallData Var Ty) (other : OracleCallData Var Ty) :
+  RustM (core.option.Option core.cmp.Ordering)
+  := do
+  let o ←
+    alloc.string.String.Insts.CoreCmpPartialOrdString.partial_cmp self.name
+      other.name
+  match o with
+  | core.option.Option.None => ok core.option.Option.None
+  | core.option.Option.Some o1 =>
+    match o1 with
+    | core.cmp.Ordering.Less => ok o
+    | core.cmp.Ordering.Equal =>
+      let o2 ←
+        alloc.vec.Vec.Insts.CoreCmpPartialOrdVec.partial_cmp
+          corecmpPartialOrdInst self.args other.args
+      match o2 with
+      | core.option.Option.None => ok core.option.Option.None
+      | core.option.Option.Some o3 =>
+        match o3 with
+        | core.cmp.Ordering.Less => ok o2
+        | core.cmp.Ordering.Equal =>
+          let o4 ←
+            alloc.vec.Vec.Insts.CoreCmpPartialOrdVec.partial_cmp
+              corecmpPartialOrdInst1 self.output_tys other.output_tys
+          match o4 with
+          | core.option.Option.None => ok core.option.Option.None
+          | core.option.Option.Some o5 =>
+            match o5 with
+            | core.cmp.Ordering.Less => ok o4
+            | core.cmp.Ordering.Equal =>
+              corecmpPartialOrdInst1.partial_cmp self.result_ty other.result_ty
+            | core.cmp.Ordering.Greater => ok o4
+        | core.cmp.Ordering.Greater => ok o2
+    | core.cmp.Ordering.Greater => ok o
+
+/-- Trait implementation: [volar_ir_common::{impl core::cmp::PartialOrd<volar_ir_common::OracleCallData<Var, Ty>> for volar_ir_common::OracleCallData<Var, Ty>}]
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 876:31-876:41 -/
+@[reducible]
+impl_def OracleCallData.Insts.CoreCmpPartialOrdOracleCallData {Var : Type} {Ty
+  : Type} (corecmpPartialOrdInst : core.cmp.PartialOrd Var Var)
+  (corecmpPartialOrdInst1 : core.cmp.PartialOrd Ty Ty) : core.cmp.PartialOrd
+  (OracleCallData Var Ty) (OracleCallData Var Ty) := {
+  PartialEqInst := OracleCallData.Insts.CoreCmpPartialEqOracleCallData
+    corecmpPartialOrdInst.PartialEqInst corecmpPartialOrdInst1.PartialEqInst
+  partial_cmp :=
+    OracleCallData.Insts.CoreCmpPartialOrdOracleCallData.partial_cmp
+    corecmpPartialOrdInst corecmpPartialOrdInst1
+  lt := core.cmp.PartialOrd.lt.default
+    (OracleCallData.Insts.CoreCmpPartialOrdOracleCallData corecmpPartialOrdInst
+    corecmpPartialOrdInst1)
+  le := core.cmp.PartialOrd.le.default
+    (OracleCallData.Insts.CoreCmpPartialOrdOracleCallData corecmpPartialOrdInst
+    corecmpPartialOrdInst1)
+  gt := core.cmp.PartialOrd.gt.default
+    (OracleCallData.Insts.CoreCmpPartialOrdOracleCallData corecmpPartialOrdInst
+    corecmpPartialOrdInst1)
+  ge := core.cmp.PartialOrd.ge.default
+    (OracleCallData.Insts.CoreCmpPartialOrdOracleCallData corecmpPartialOrdInst
+    corecmpPartialOrdInst1)
+}
+
+/-- [volar_ir_common::{impl core::cmp::Ord for volar_ir_common::OracleCallData<Var, Ty>}::cmp]:
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 876:43-876:46
+    Visibility: public -/
+def OracleCallData.Insts.CoreCmpOrd.cmp
+  {Var : Type} {Ty : Type} (corecmpOrdInst : core.cmp.Ord Var) (corecmpOrdInst1
+  : core.cmp.Ord Ty) (self : OracleCallData Var Ty)
+  (other : OracleCallData Var Ty) :
+  RustM core.cmp.Ordering
+  := do
+  let o ← alloc.string.String.Insts.CoreCmpOrd.cmp self.name other.name
+  match o with
+  | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
+  | core.cmp.Ordering.Equal =>
+    let o1 ←
+      alloc.vec.Vec.Insts.CoreCmpOrd.cmp corecmpOrdInst self.args other.args
+    match o1 with
+    | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
+    | core.cmp.Ordering.Equal =>
+      let o2 ←
+        alloc.vec.Vec.Insts.CoreCmpOrd.cmp corecmpOrdInst1 self.output_tys
+          other.output_tys
+      match o2 with
+      | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
+      | core.cmp.Ordering.Equal =>
+        corecmpOrdInst1.cmp self.result_ty other.result_ty
+      | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
+    | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
+  | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
+
+/-- Trait implementation: [volar_ir_common::{impl core::cmp::Ord for volar_ir_common::OracleCallData<Var, Ty>}]
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 876:43-876:46 -/
+@[reducible]
+def OracleCallData.Insts.CoreCmpOrd {Var : Type} {Ty : Type} (corecmpOrdInst :
+  core.cmp.Ord Var) (corecmpOrdInst1 : core.cmp.Ord Ty) : core.cmp.Ord
+  (OracleCallData Var Ty) := {
+  EqInst := OracleCallData.Insts.CoreCmpEq corecmpOrdInst.EqInst
+    corecmpOrdInst1.EqInst
+  PartialOrdInst := OracleCallData.Insts.CoreCmpPartialOrdOracleCallData
+    corecmpOrdInst.PartialOrdInst corecmpOrdInst1.PartialOrdInst
+  cmp := OracleCallData.Insts.CoreCmpOrd.cmp corecmpOrdInst corecmpOrdInst1
+}
+
+/-- [volar_ir_common::{impl core::hash::Hash for volar_ir_common::OracleCallData<Var, Ty>}::hash]:
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 876:48-876:52
+    Visibility: public -/
+def OracleCallData.Insts.CoreHashHash.hash
+  {Var : Type} {Ty : Type} {__H : Type} (corehashHashInst : core.hash.Hash Var)
+  (corehashHashInst1 : core.hash.Hash Ty) (corehashHasherInst :
+  core.hash.Hasher __H) (self : OracleCallData Var Ty) (state : __H) :
+  RustM __H
+  := do
+  let state1 ←
+    alloc.string.String.Insts.CoreHashHash.hash corehashHasherInst self.name
+      state
+  let state2 ←
+    alloc.vec.Vec.Insts.CoreHashHash.hash corehashHashInst corehashHasherInst
+      self.args state1
+  let state3 ←
+    alloc.vec.Vec.Insts.CoreHashHash.hash corehashHashInst1 corehashHasherInst
+      self.output_tys state2
+  corehashHashInst1.hash corehashHasherInst self.result_ty state3
+
+/-- Trait implementation: [volar_ir_common::{impl core::hash::Hash for volar_ir_common::OracleCallData<Var, Ty>}]
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 876:48-876:52 -/
+@[reducible]
+def OracleCallData.Insts.CoreHashHash {Var : Type} {Ty : Type}
+  (corehashHashInst : core.hash.Hash Var) (corehashHashInst1 : core.hash.Hash
+  Ty) : core.hash.Hash (OracleCallData Var Ty) := {
+  hash := fun {H : Type} (corehashHasherInst : core.hash.Hasher H) =>
+    OracleCallData.Insts.CoreHashHash.hash corehashHashInst corehashHashInst1
+    corehashHasherInst
+}
+
+/-- [volar_ir_common::{impl core::cmp::PartialEq<volar_ir_common::ActionCallData<Var, Ty>> for volar_ir_common::ActionCallData<Var, Ty>}::eq]:
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 893:16-893:25
+    Visibility: public -/
+def ActionCallData.Insts.CoreCmpPartialEqActionCallData.eq
+  {Var : Type} {Ty : Type} (corecmpPartialEqInst : core.cmp.PartialEq Var Var)
+  (corecmpPartialEqInst1 : core.cmp.PartialEq Ty Ty)
+  (self : ActionCallData Var Ty) (other : ActionCallData Var Ty) :
+  RustM Bool
+  := do
+  let b ←
+    alloc.string.String.Insts.CoreCmpPartialEqString.eq self.name other.name
+  if b
+  then
+    let b1 ← corecmpPartialEqInst.eq self.guard other.guard
+    if b1
+    then
+      let b2 ←
+        alloc.vec.Vec.Insts.CoreCmpPartialEqVec.eq corecmpPartialEqInst
+          self.args other.args
+      if b2
+      then
+        let b3 ←
+          alloc.vec.Vec.Insts.CoreCmpPartialEqVec.eq corecmpPartialEqInst
+            self.fallbacks other.fallbacks
+        if b3
+        then
+          let b4 ←
+            alloc.vec.Vec.Insts.CoreCmpPartialEqVec.eq corecmpPartialEqInst1
+              self.output_tys other.output_tys
+          if b4
+          then corecmpPartialEqInst1.eq self.result_ty other.result_ty
+          else ok false
+        else ok false
+      else ok false
+    else ok false
+  else ok false
+
+/-- Trait implementation: [volar_ir_common::{impl core::cmp::PartialEq<volar_ir_common::ActionCallData<Var, Ty>> for volar_ir_common::ActionCallData<Var, Ty>}]
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 893:16-893:25 -/
+@[reducible]
+impl_def ActionCallData.Insts.CoreCmpPartialEqActionCallData {Var : Type} {Ty :
+  Type} (corecmpPartialEqInst : core.cmp.PartialEq Var Var)
+  (corecmpPartialEqInst1 : core.cmp.PartialEq Ty Ty) : core.cmp.PartialEq
+  (ActionCallData Var Ty) (ActionCallData Var Ty) := {
+  eq := ActionCallData.Insts.CoreCmpPartialEqActionCallData.eq
+    corecmpPartialEqInst corecmpPartialEqInst1
+  ne := core.cmp.PartialEq.ne.default
+    (ActionCallData.Insts.CoreCmpPartialEqActionCallData corecmpPartialEqInst
+    corecmpPartialEqInst1)
+}
+
+/-- Trait implementation: [volar_ir_common::{impl core::cmp::Eq for volar_ir_common::ActionCallData<Var, Ty>}]
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 893:27-893:29 -/
+@[reducible]
+def ActionCallData.Insts.CoreCmpEq {Var : Type} {Ty : Type} (corecmpEqInst :
+  core.cmp.Eq Var) (corecmpEqInst1 : core.cmp.Eq Ty) : core.cmp.Eq
+  (ActionCallData Var Ty) := {
+  PartialEqInst := ActionCallData.Insts.CoreCmpPartialEqActionCallData
+    corecmpEqInst.PartialEqInst corecmpEqInst1.PartialEqInst
+}
+
+/-- [volar_ir_common::{impl core::cmp::PartialOrd<volar_ir_common::ActionCallData<Var, Ty>> for volar_ir_common::ActionCallData<Var, Ty>}::partial_cmp]:
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 893:31-893:41
+    Visibility: public -/
+def ActionCallData.Insts.CoreCmpPartialOrdActionCallData.partial_cmp
+  {Var : Type} {Ty : Type} (corecmpPartialOrdInst : core.cmp.PartialOrd Var
+  Var) (corecmpPartialOrdInst1 : core.cmp.PartialOrd Ty Ty)
+  (self : ActionCallData Var Ty) (other : ActionCallData Var Ty) :
+  RustM (core.option.Option core.cmp.Ordering)
+  := do
+  let o ←
+    alloc.string.String.Insts.CoreCmpPartialOrdString.partial_cmp self.name
+      other.name
+  match o with
+  | core.option.Option.None => ok core.option.Option.None
+  | core.option.Option.Some o1 =>
+    match o1 with
+    | core.cmp.Ordering.Less => ok o
+    | core.cmp.Ordering.Equal =>
+      let o2 ← corecmpPartialOrdInst.partial_cmp self.guard other.guard
+      match o2 with
+      | core.option.Option.None => ok core.option.Option.None
+      | core.option.Option.Some o3 =>
+        match o3 with
+        | core.cmp.Ordering.Less => ok o2
+        | core.cmp.Ordering.Equal =>
+          let o4 ←
+            alloc.vec.Vec.Insts.CoreCmpPartialOrdVec.partial_cmp
+              corecmpPartialOrdInst self.args other.args
+          match o4 with
+          | core.option.Option.None => ok core.option.Option.None
+          | core.option.Option.Some o5 =>
+            match o5 with
+            | core.cmp.Ordering.Less => ok o4
+            | core.cmp.Ordering.Equal =>
+              let o6 ←
+                alloc.vec.Vec.Insts.CoreCmpPartialOrdVec.partial_cmp
+                  corecmpPartialOrdInst self.fallbacks other.fallbacks
+              match o6 with
+              | core.option.Option.None => ok core.option.Option.None
+              | core.option.Option.Some o7 =>
+                match o7 with
+                | core.cmp.Ordering.Less => ok o6
+                | core.cmp.Ordering.Equal =>
+                  let o8 ←
+                    alloc.vec.Vec.Insts.CoreCmpPartialOrdVec.partial_cmp
+                      corecmpPartialOrdInst1 self.output_tys other.output_tys
+                  match o8 with
+                  | core.option.Option.None => ok core.option.Option.None
+                  | core.option.Option.Some o9 =>
+                    match o9 with
+                    | core.cmp.Ordering.Less => ok o8
+                    | core.cmp.Ordering.Equal =>
+                      corecmpPartialOrdInst1.partial_cmp self.result_ty
+                        other.result_ty
+                    | core.cmp.Ordering.Greater => ok o8
+                | core.cmp.Ordering.Greater => ok o6
+            | core.cmp.Ordering.Greater => ok o4
+        | core.cmp.Ordering.Greater => ok o2
+    | core.cmp.Ordering.Greater => ok o
+
+/-- Trait implementation: [volar_ir_common::{impl core::cmp::PartialOrd<volar_ir_common::ActionCallData<Var, Ty>> for volar_ir_common::ActionCallData<Var, Ty>}]
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 893:31-893:41 -/
+@[reducible]
+impl_def ActionCallData.Insts.CoreCmpPartialOrdActionCallData {Var : Type} {Ty
+  : Type} (corecmpPartialOrdInst : core.cmp.PartialOrd Var Var)
+  (corecmpPartialOrdInst1 : core.cmp.PartialOrd Ty Ty) : core.cmp.PartialOrd
+  (ActionCallData Var Ty) (ActionCallData Var Ty) := {
+  PartialEqInst := ActionCallData.Insts.CoreCmpPartialEqActionCallData
+    corecmpPartialOrdInst.PartialEqInst corecmpPartialOrdInst1.PartialEqInst
+  partial_cmp :=
+    ActionCallData.Insts.CoreCmpPartialOrdActionCallData.partial_cmp
+    corecmpPartialOrdInst corecmpPartialOrdInst1
+  lt := core.cmp.PartialOrd.lt.default
+    (ActionCallData.Insts.CoreCmpPartialOrdActionCallData corecmpPartialOrdInst
+    corecmpPartialOrdInst1)
+  le := core.cmp.PartialOrd.le.default
+    (ActionCallData.Insts.CoreCmpPartialOrdActionCallData corecmpPartialOrdInst
+    corecmpPartialOrdInst1)
+  gt := core.cmp.PartialOrd.gt.default
+    (ActionCallData.Insts.CoreCmpPartialOrdActionCallData corecmpPartialOrdInst
+    corecmpPartialOrdInst1)
+  ge := core.cmp.PartialOrd.ge.default
+    (ActionCallData.Insts.CoreCmpPartialOrdActionCallData corecmpPartialOrdInst
+    corecmpPartialOrdInst1)
+}
+
+/-- [volar_ir_common::{impl core::cmp::Ord for volar_ir_common::ActionCallData<Var, Ty>}::cmp]:
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 893:43-893:46
+    Visibility: public -/
+def ActionCallData.Insts.CoreCmpOrd.cmp
+  {Var : Type} {Ty : Type} (corecmpOrdInst : core.cmp.Ord Var) (corecmpOrdInst1
+  : core.cmp.Ord Ty) (self : ActionCallData Var Ty)
+  (other : ActionCallData Var Ty) :
+  RustM core.cmp.Ordering
+  := do
+  let o ← alloc.string.String.Insts.CoreCmpOrd.cmp self.name other.name
+  match o with
+  | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
+  | core.cmp.Ordering.Equal =>
+    let o1 ← corecmpOrdInst.cmp self.guard other.guard
+    match o1 with
+    | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
+    | core.cmp.Ordering.Equal =>
+      let o2 ←
+        alloc.vec.Vec.Insts.CoreCmpOrd.cmp corecmpOrdInst self.args other.args
+      match o2 with
+      | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
+      | core.cmp.Ordering.Equal =>
+        let o3 ←
+          alloc.vec.Vec.Insts.CoreCmpOrd.cmp corecmpOrdInst self.fallbacks
+            other.fallbacks
+        match o3 with
+        | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
+        | core.cmp.Ordering.Equal =>
+          let o4 ←
+            alloc.vec.Vec.Insts.CoreCmpOrd.cmp corecmpOrdInst1 self.output_tys
+              other.output_tys
+          match o4 with
+          | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
+          | core.cmp.Ordering.Equal =>
+            corecmpOrdInst1.cmp self.result_ty other.result_ty
+          | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
+        | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
+      | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
+    | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
+  | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
+
+/-- Trait implementation: [volar_ir_common::{impl core::cmp::Ord for volar_ir_common::ActionCallData<Var, Ty>}]
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 893:43-893:46 -/
+@[reducible]
+def ActionCallData.Insts.CoreCmpOrd {Var : Type} {Ty : Type} (corecmpOrdInst :
+  core.cmp.Ord Var) (corecmpOrdInst1 : core.cmp.Ord Ty) : core.cmp.Ord
+  (ActionCallData Var Ty) := {
+  EqInst := ActionCallData.Insts.CoreCmpEq corecmpOrdInst.EqInst
+    corecmpOrdInst1.EqInst
+  PartialOrdInst := ActionCallData.Insts.CoreCmpPartialOrdActionCallData
+    corecmpOrdInst.PartialOrdInst corecmpOrdInst1.PartialOrdInst
+  cmp := ActionCallData.Insts.CoreCmpOrd.cmp corecmpOrdInst corecmpOrdInst1
+}
+
+/-- [volar_ir_common::{impl core::hash::Hash for volar_ir_common::ActionCallData<Var, Ty>}::hash]:
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 893:48-893:52
+    Visibility: public -/
+def ActionCallData.Insts.CoreHashHash.hash
+  {Var : Type} {Ty : Type} {__H : Type} (corehashHashInst : core.hash.Hash Var)
+  (corehashHashInst1 : core.hash.Hash Ty) (corehashHasherInst :
+  core.hash.Hasher __H) (self : ActionCallData Var Ty) (state : __H) :
+  RustM __H
+  := do
+  let state1 ←
+    alloc.string.String.Insts.CoreHashHash.hash corehashHasherInst self.name
+      state
+  let state2 ← corehashHashInst.hash corehashHasherInst self.guard state1
+  let state3 ←
+    alloc.vec.Vec.Insts.CoreHashHash.hash corehashHashInst corehashHasherInst
+      self.args state2
+  let state4 ←
+    alloc.vec.Vec.Insts.CoreHashHash.hash corehashHashInst corehashHasherInst
+      self.fallbacks state3
+  let state5 ←
+    alloc.vec.Vec.Insts.CoreHashHash.hash corehashHashInst1 corehashHasherInst
+      self.output_tys state4
+  corehashHashInst1.hash corehashHasherInst self.result_ty state5
+
+/-- Trait implementation: [volar_ir_common::{impl core::hash::Hash for volar_ir_common::ActionCallData<Var, Ty>}]
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 893:48-893:52 -/
+@[reducible]
+def ActionCallData.Insts.CoreHashHash {Var : Type} {Ty : Type}
+  (corehashHashInst : core.hash.Hash Var) (corehashHashInst1 : core.hash.Hash
+  Ty) : core.hash.Hash (ActionCallData Var Ty) := {
+  hash := fun {H : Type} (corehashHasherInst : core.hash.Hasher H) =>
+    ActionCallData.Insts.CoreHashHash.hash corehashHashInst corehashHashInst1
+    corehashHasherInst
+}
+
+/-- [volar_ir_common::{impl core::cmp::PartialEq<volar_ir_common::ActionStoreData<Var, Addr, Ty, Stor>> for volar_ir_common::ActionStoreData<Var, Addr, Ty, Stor>}::eq]:
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 913:16-913:25
+    Visibility: public -/
+def ActionStoreData.Insts.CoreCmpPartialEqActionStoreData.eq
+  {Var : Type} {Addr : Type} {Ty : Type} {Stor : Type} (corecmpPartialEqInst :
+  core.cmp.PartialEq Var Var) (corecmpPartialEqInst1 : core.cmp.PartialEq Addr
+  Addr) (corecmpPartialEqInst2 : core.cmp.PartialEq Ty Ty)
+  (corecmpPartialEqInst3 : core.cmp.PartialEq Stor Stor)
+  (self : ActionStoreData Var Addr Ty Stor)
+  (other : ActionStoreData Var Addr Ty Stor) :
+  RustM Bool
+  := do
+  let b ←
+    alloc.string.String.Insts.CoreCmpPartialEqString.eq self.name other.name
+  if b
+  then
+    let b1 ← corecmpPartialEqInst.eq self.guard other.guard
+    if b1
+    then
+      let b2 ←
+        alloc.vec.Vec.Insts.CoreCmpPartialEqVec.eq corecmpPartialEqInst
+          self.args other.args
+      if b2
+      then
+        let b3 ←
+          alloc.vec.Vec.Insts.CoreCmpPartialEqVec.eq corecmpPartialEqInst
+            self.fallbacks other.fallbacks
+        if b3
+        then
+          let b4 ←
+            alloc.vec.Vec.Insts.CoreCmpPartialEqVec.eq corecmpPartialEqInst2
+              self.output_tys other.output_tys
+          if b4
+          then
+            alloc.vec.Vec.Insts.CoreCmpPartialEqVec.eq
+              (ActionTarget.Insts.CoreCmpPartialEqActionTarget
+              corecmpPartialEqInst1 corecmpPartialEqInst3) self.targets
+              other.targets
+          else ok false
+        else ok false
+      else ok false
+    else ok false
+  else ok false
+
+/-- Trait implementation: [volar_ir_common::{impl core::cmp::PartialEq<volar_ir_common::ActionStoreData<Var, Addr, Ty, Stor>> for volar_ir_common::ActionStoreData<Var, Addr, Ty, Stor>}]
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 913:16-913:25 -/
+@[reducible]
+impl_def ActionStoreData.Insts.CoreCmpPartialEqActionStoreData {Var : Type}
+  {Addr : Type} {Ty : Type} {Stor : Type} (corecmpPartialEqInst :
+  core.cmp.PartialEq Var Var) (corecmpPartialEqInst1 : core.cmp.PartialEq Addr
+  Addr) (corecmpPartialEqInst2 : core.cmp.PartialEq Ty Ty)
+  (corecmpPartialEqInst3 : core.cmp.PartialEq Stor Stor) : core.cmp.PartialEq
+  (ActionStoreData Var Addr Ty Stor) (ActionStoreData Var Addr Ty Stor) := {
+  eq := ActionStoreData.Insts.CoreCmpPartialEqActionStoreData.eq
+    corecmpPartialEqInst corecmpPartialEqInst1 corecmpPartialEqInst2
+    corecmpPartialEqInst3
+  ne := core.cmp.PartialEq.ne.default
+    (ActionStoreData.Insts.CoreCmpPartialEqActionStoreData corecmpPartialEqInst
+    corecmpPartialEqInst1 corecmpPartialEqInst2 corecmpPartialEqInst3)
+}
+
+/-- Trait implementation: [volar_ir_common::{impl core::cmp::Eq for volar_ir_common::ActionStoreData<Var, Addr, Ty, Stor>}]
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 913:27-913:29 -/
+@[reducible]
+def ActionStoreData.Insts.CoreCmpEq {Var : Type} {Addr : Type} {Ty : Type}
+  {Stor : Type} (corecmpEqInst : core.cmp.Eq Var) (corecmpEqInst1 : core.cmp.Eq
+  Addr) (corecmpEqInst2 : core.cmp.Eq Ty) (corecmpEqInst3 : core.cmp.Eq Stor) :
+  core.cmp.Eq (ActionStoreData Var Addr Ty Stor) := {
+  PartialEqInst := ActionStoreData.Insts.CoreCmpPartialEqActionStoreData
+    corecmpEqInst.PartialEqInst corecmpEqInst1.PartialEqInst
+    corecmpEqInst2.PartialEqInst corecmpEqInst3.PartialEqInst
+}
+
+/-- [volar_ir_common::{impl core::cmp::PartialOrd<volar_ir_common::ActionStoreData<Var, Addr, Ty, Stor>> for volar_ir_common::ActionStoreData<Var, Addr, Ty, Stor>}::partial_cmp]:
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 913:31-913:41
+    Visibility: public -/
+def ActionStoreData.Insts.CoreCmpPartialOrdActionStoreData.partial_cmp
+  {Var : Type} {Addr : Type} {Ty : Type} {Stor : Type} (corecmpPartialOrdInst :
+  core.cmp.PartialOrd Var Var) (corecmpPartialOrdInst1 : core.cmp.PartialOrd
+  Addr Addr) (corecmpPartialOrdInst2 : core.cmp.PartialOrd Ty Ty)
+  (corecmpPartialOrdInst3 : core.cmp.PartialOrd Stor Stor)
+  (self : ActionStoreData Var Addr Ty Stor)
+  (other : ActionStoreData Var Addr Ty Stor) :
+  RustM (core.option.Option core.cmp.Ordering)
+  := do
+  let o ←
+    alloc.string.String.Insts.CoreCmpPartialOrdString.partial_cmp self.name
+      other.name
+  match o with
+  | core.option.Option.None => ok core.option.Option.None
+  | core.option.Option.Some o1 =>
+    match o1 with
+    | core.cmp.Ordering.Less => ok o
+    | core.cmp.Ordering.Equal =>
+      let o2 ← corecmpPartialOrdInst.partial_cmp self.guard other.guard
+      match o2 with
+      | core.option.Option.None => ok core.option.Option.None
+      | core.option.Option.Some o3 =>
+        match o3 with
+        | core.cmp.Ordering.Less => ok o2
+        | core.cmp.Ordering.Equal =>
+          let o4 ←
+            alloc.vec.Vec.Insts.CoreCmpPartialOrdVec.partial_cmp
+              corecmpPartialOrdInst self.args other.args
+          match o4 with
+          | core.option.Option.None => ok core.option.Option.None
+          | core.option.Option.Some o5 =>
+            match o5 with
+            | core.cmp.Ordering.Less => ok o4
+            | core.cmp.Ordering.Equal =>
+              let o6 ←
+                alloc.vec.Vec.Insts.CoreCmpPartialOrdVec.partial_cmp
+                  corecmpPartialOrdInst self.fallbacks other.fallbacks
+              match o6 with
+              | core.option.Option.None => ok core.option.Option.None
+              | core.option.Option.Some o7 =>
+                match o7 with
+                | core.cmp.Ordering.Less => ok o6
+                | core.cmp.Ordering.Equal =>
+                  let o8 ←
+                    alloc.vec.Vec.Insts.CoreCmpPartialOrdVec.partial_cmp
+                      corecmpPartialOrdInst2 self.output_tys other.output_tys
+                  match o8 with
+                  | core.option.Option.None => ok core.option.Option.None
+                  | core.option.Option.Some o9 =>
+                    match o9 with
+                    | core.cmp.Ordering.Less => ok o8
+                    | core.cmp.Ordering.Equal =>
+                      alloc.vec.Vec.Insts.CoreCmpPartialOrdVec.partial_cmp
+                        (ActionTarget.Insts.CoreCmpPartialOrdActionTarget
+                        corecmpPartialOrdInst1 corecmpPartialOrdInst3)
+                        self.targets other.targets
+                    | core.cmp.Ordering.Greater => ok o8
+                | core.cmp.Ordering.Greater => ok o6
+            | core.cmp.Ordering.Greater => ok o4
+        | core.cmp.Ordering.Greater => ok o2
+    | core.cmp.Ordering.Greater => ok o
+
+/-- Trait implementation: [volar_ir_common::{impl core::cmp::PartialOrd<volar_ir_common::ActionStoreData<Var, Addr, Ty, Stor>> for volar_ir_common::ActionStoreData<Var, Addr, Ty, Stor>}]
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 913:31-913:41 -/
+@[reducible]
+impl_def ActionStoreData.Insts.CoreCmpPartialOrdActionStoreData {Var : Type}
+  {Addr : Type} {Ty : Type} {Stor : Type} (corecmpPartialOrdInst :
+  core.cmp.PartialOrd Var Var) (corecmpPartialOrdInst1 : core.cmp.PartialOrd
+  Addr Addr) (corecmpPartialOrdInst2 : core.cmp.PartialOrd Ty Ty)
+  (corecmpPartialOrdInst3 : core.cmp.PartialOrd Stor Stor) :
+  core.cmp.PartialOrd (ActionStoreData Var Addr Ty Stor) (ActionStoreData Var
+  Addr Ty Stor) := {
+  PartialEqInst := ActionStoreData.Insts.CoreCmpPartialEqActionStoreData
+    corecmpPartialOrdInst.PartialEqInst corecmpPartialOrdInst1.PartialEqInst
+    corecmpPartialOrdInst2.PartialEqInst corecmpPartialOrdInst3.PartialEqInst
+  partial_cmp :=
+    ActionStoreData.Insts.CoreCmpPartialOrdActionStoreData.partial_cmp
+    corecmpPartialOrdInst corecmpPartialOrdInst1 corecmpPartialOrdInst2
+    corecmpPartialOrdInst3
+  lt := core.cmp.PartialOrd.lt.default
+    (ActionStoreData.Insts.CoreCmpPartialOrdActionStoreData
+    corecmpPartialOrdInst corecmpPartialOrdInst1 corecmpPartialOrdInst2
+    corecmpPartialOrdInst3)
+  le := core.cmp.PartialOrd.le.default
+    (ActionStoreData.Insts.CoreCmpPartialOrdActionStoreData
+    corecmpPartialOrdInst corecmpPartialOrdInst1 corecmpPartialOrdInst2
+    corecmpPartialOrdInst3)
+  gt := core.cmp.PartialOrd.gt.default
+    (ActionStoreData.Insts.CoreCmpPartialOrdActionStoreData
+    corecmpPartialOrdInst corecmpPartialOrdInst1 corecmpPartialOrdInst2
+    corecmpPartialOrdInst3)
+  ge := core.cmp.PartialOrd.ge.default
+    (ActionStoreData.Insts.CoreCmpPartialOrdActionStoreData
+    corecmpPartialOrdInst corecmpPartialOrdInst1 corecmpPartialOrdInst2
+    corecmpPartialOrdInst3)
+}
+
+/-- [volar_ir_common::{impl core::cmp::Ord for volar_ir_common::ActionStoreData<Var, Addr, Ty, Stor>}::cmp]:
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 913:43-913:46
+    Visibility: public -/
+def ActionStoreData.Insts.CoreCmpOrd.cmp
+  {Var : Type} {Addr : Type} {Ty : Type} {Stor : Type} (corecmpOrdInst :
+  core.cmp.Ord Var) (corecmpOrdInst1 : core.cmp.Ord Addr) (corecmpOrdInst2 :
+  core.cmp.Ord Ty) (corecmpOrdInst3 : core.cmp.Ord Stor)
+  (self : ActionStoreData Var Addr Ty Stor)
+  (other : ActionStoreData Var Addr Ty Stor) :
+  RustM core.cmp.Ordering
+  := do
+  let o ← alloc.string.String.Insts.CoreCmpOrd.cmp self.name other.name
+  match o with
+  | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
+  | core.cmp.Ordering.Equal =>
+    let o1 ← corecmpOrdInst.cmp self.guard other.guard
+    match o1 with
+    | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
+    | core.cmp.Ordering.Equal =>
+      let o2 ←
+        alloc.vec.Vec.Insts.CoreCmpOrd.cmp corecmpOrdInst self.args other.args
+      match o2 with
+      | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
+      | core.cmp.Ordering.Equal =>
+        let o3 ←
+          alloc.vec.Vec.Insts.CoreCmpOrd.cmp corecmpOrdInst self.fallbacks
+            other.fallbacks
+        match o3 with
+        | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
+        | core.cmp.Ordering.Equal =>
+          let o4 ←
+            alloc.vec.Vec.Insts.CoreCmpOrd.cmp corecmpOrdInst2 self.output_tys
+              other.output_tys
+          match o4 with
+          | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
+          | core.cmp.Ordering.Equal =>
+            alloc.vec.Vec.Insts.CoreCmpOrd.cmp (ActionTarget.Insts.CoreCmpOrd
+              corecmpOrdInst1 corecmpOrdInst3) self.targets other.targets
+          | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
+        | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
+      | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
+    | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
+  | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
+
+/-- Trait implementation: [volar_ir_common::{impl core::cmp::Ord for volar_ir_common::ActionStoreData<Var, Addr, Ty, Stor>}]
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 913:43-913:46 -/
+@[reducible]
+def ActionStoreData.Insts.CoreCmpOrd {Var : Type} {Addr : Type} {Ty : Type}
+  {Stor : Type} (corecmpOrdInst : core.cmp.Ord Var) (corecmpOrdInst1 :
+  core.cmp.Ord Addr) (corecmpOrdInst2 : core.cmp.Ord Ty) (corecmpOrdInst3 :
+  core.cmp.Ord Stor) : core.cmp.Ord (ActionStoreData Var Addr Ty Stor) := {
+  EqInst := ActionStoreData.Insts.CoreCmpEq corecmpOrdInst.EqInst
+    corecmpOrdInst1.EqInst corecmpOrdInst2.EqInst corecmpOrdInst3.EqInst
+  PartialOrdInst := ActionStoreData.Insts.CoreCmpPartialOrdActionStoreData
+    corecmpOrdInst.PartialOrdInst corecmpOrdInst1.PartialOrdInst
+    corecmpOrdInst2.PartialOrdInst corecmpOrdInst3.PartialOrdInst
+  cmp := ActionStoreData.Insts.CoreCmpOrd.cmp corecmpOrdInst corecmpOrdInst1
+    corecmpOrdInst2 corecmpOrdInst3
+}
+
+/-- [volar_ir_common::{impl core::hash::Hash for volar_ir_common::ActionStoreData<Var, Addr, Ty, Stor>}::hash]:
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 913:48-913:52
+    Visibility: public -/
+def ActionStoreData.Insts.CoreHashHash.hash
+  {Var : Type} {Addr : Type} {Ty : Type} {Stor : Type} {__H : Type}
+  (corehashHashInst : core.hash.Hash Var) (corehashHashInst1 : core.hash.Hash
+  Addr) (corehashHashInst2 : core.hash.Hash Ty) (corehashHashInst3 :
+  core.hash.Hash Stor) (corehashHasherInst : core.hash.Hasher __H)
+  (self : ActionStoreData Var Addr Ty Stor) (state : __H) :
+  RustM __H
+  := do
+  let state1 ←
+    alloc.string.String.Insts.CoreHashHash.hash corehashHasherInst self.name
+      state
+  let state2 ← corehashHashInst.hash corehashHasherInst self.guard state1
+  let state3 ←
+    alloc.vec.Vec.Insts.CoreHashHash.hash corehashHashInst corehashHasherInst
+      self.args state2
+  let state4 ←
+    alloc.vec.Vec.Insts.CoreHashHash.hash corehashHashInst corehashHasherInst
+      self.fallbacks state3
+  let state5 ←
+    alloc.vec.Vec.Insts.CoreHashHash.hash corehashHashInst2 corehashHasherInst
+      self.output_tys state4
+  alloc.vec.Vec.Insts.CoreHashHash.hash (ActionTarget.Insts.CoreHashHash
+    corehashHashInst1 corehashHashInst3) corehashHasherInst self.targets state5
+
+/-- Trait implementation: [volar_ir_common::{impl core::hash::Hash for volar_ir_common::ActionStoreData<Var, Addr, Ty, Stor>}]
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 913:48-913:52 -/
+@[reducible]
+def ActionStoreData.Insts.CoreHashHash {Var : Type} {Addr : Type} {Ty : Type}
+  {Stor : Type} (corehashHashInst : core.hash.Hash Var) (corehashHashInst1 :
+  core.hash.Hash Addr) (corehashHashInst2 : core.hash.Hash Ty)
+  (corehashHashInst3 : core.hash.Hash Stor) : core.hash.Hash (ActionStoreData
+  Var Addr Ty Stor) := {
+  hash := fun {H : Type} (corehashHasherInst : core.hash.Hasher H) =>
+    ActionStoreData.Insts.CoreHashHash.hash corehashHashInst corehashHashInst1
+    corehashHashInst2 corehashHashInst3 corehashHasherInst
+}
+
 /-- [volar_ir_common::{impl core::cmp::PartialEq<volar_ir_common::Stmt<Var, Addr, Ty, Stor>> for volar_ir_common::Stmt<Var, Addr, Ty, Stor>}::eq]:
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 793:16-793:25
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 947:16-947:25
     Visibility: public -/
 def Stmt.Insts.CoreCmpPartialEqStmt.eq
   {Var : Type} {Addr : Type} {Ty : Type} {Stor : Type} (corecmpPartialEqInst :
@@ -2774,10 +3629,10 @@ def Stmt.Insts.CoreCmpPartialEqStmt.eq
       | Stmt.Merge _ _ => fail panic
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
     | Stmt.StorageWrite __self_0 __self_1 __self_2 __self_3 =>
@@ -2812,10 +3667,10 @@ def Stmt.Insts.CoreCmpPartialEqStmt.eq
       | Stmt.Merge _ _ => fail panic
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
     | Stmt.Const __self_0 __self_1 =>
@@ -2838,10 +3693,10 @@ def Stmt.Insts.CoreCmpPartialEqStmt.eq
       | Stmt.Merge _ _ => fail panic
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
     | Stmt.Transmute __self_0 __self_1 __self_2 =>
@@ -2870,10 +3725,10 @@ def Stmt.Insts.CoreCmpPartialEqStmt.eq
       | Stmt.Merge _ _ => fail panic
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
     | Stmt.Poly __self_0 __self_1 __self_2 =>
@@ -2902,10 +3757,10 @@ def Stmt.Insts.CoreCmpPartialEqStmt.eq
       | Stmt.Merge _ _ => fail panic
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
     | Stmt.Rol __self_0 __self_1 __self_2 =>
@@ -2932,10 +3787,10 @@ def Stmt.Insts.CoreCmpPartialEqStmt.eq
       | Stmt.Merge _ _ => fail panic
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
     | Stmt.Ror __self_0 __self_1 __self_2 =>
@@ -2962,10 +3817,10 @@ def Stmt.Insts.CoreCmpPartialEqStmt.eq
       | Stmt.Merge _ _ => fail panic
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
     | Stmt.Merge __self_0 __self_1 =>
@@ -2988,10 +3843,10 @@ def Stmt.Insts.CoreCmpPartialEqStmt.eq
         else ok false
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
     | Stmt.Splat __self_0 __self_1 =>
@@ -3014,10 +3869,10 @@ def Stmt.Insts.CoreCmpPartialEqStmt.eq
             __self_1 __arg1_1
         else ok false
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
     | Stmt.Shuffle __self_0 __self_1 =>
@@ -3042,13 +3897,13 @@ def Stmt.Insts.CoreCmpPartialEqStmt.eq
           core.Shared1A.Insts.CoreCmpPartialEqShared0B.eq corecmpPartialEqInst2
             __self_1 __arg1_1
         else ok false
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
-    | Stmt.OracleCall __self_0 __self_1 __self_2 __self_3 =>
+    | Stmt.OracleCall __self_0 =>
       match other with
       | Stmt.StorageRead _ _ _ => fail panic
       | Stmt.StorageWrite _ _ _ _ => fail panic
@@ -3060,29 +3915,12 @@ def Stmt.Insts.CoreCmpPartialEqStmt.eq
       | Stmt.Merge _ _ => fail panic
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall __arg1_0 __arg1_1 __arg1_2 __arg1_3 =>
-        let b ←
-          alloc.string.String.Insts.CoreCmpPartialEqString.eq __self_0 __arg1_0
-        if b
-        then
-          let b1 ←
-            alloc.vec.Vec.Insts.CoreCmpPartialEqVec.eq corecmpPartialEqInst
-              __self_1 __arg1_1
-          if b1
-          then
-            let b2 ←
-              alloc.vec.Vec.Insts.CoreCmpPartialEqVec.eq corecmpPartialEqInst2
-                __self_2 __arg1_2
-            if b2
-            then
-              core.Shared1A.Insts.CoreCmpPartialEqShared0B.eq
-                corecmpPartialEqInst2 __self_3 __arg1_3
-            else ok false
-          else ok false
-        else ok false
+      | Stmt.OracleCall __arg1_0 =>
+        OracleCallData.Insts.CoreCmpPartialEqOracleCallData.eq
+          corecmpPartialEqInst corecmpPartialEqInst2 __self_0 __arg1_0
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
     | Stmt.OracleOutput __self_0 __self_1 __self_2 =>
@@ -3097,7 +3935,7 @@ def Stmt.Insts.CoreCmpPartialEqStmt.eq
       | Stmt.Merge _ _ => fail panic
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput __arg1_0 __arg1_1 __arg1_2 =>
         let b ←
           core.Shared1A.Insts.CoreCmpPartialEqShared0B.eq corecmpPartialEqInst
@@ -3112,11 +3950,11 @@ def Stmt.Insts.CoreCmpPartialEqStmt.eq
               corecmpPartialEqInst2 __self_2 __arg1_2
           else ok false
         else ok false
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
-    | Stmt.ActionCall __self_0 __self_1 __self_2 __self_3 __self_4 __self_5 =>
+    | Stmt.ActionCall __self_0 =>
       match other with
       | Stmt.StorageRead _ _ _ => fail panic
       | Stmt.StorageWrite _ _ _ _ => fail panic
@@ -3128,45 +3966,15 @@ def Stmt.Insts.CoreCmpPartialEqStmt.eq
       | Stmt.Merge _ _ => fail panic
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall __arg1_0 __arg1_1 __arg1_2 __arg1_3 __arg1_4 __arg1_5
-        =>
-        let b ←
-          alloc.string.String.Insts.CoreCmpPartialEqString.eq __self_0 __arg1_0
-        if b
-        then
-          let b1 ←
-            core.Shared1A.Insts.CoreCmpPartialEqShared0B.eq
-              corecmpPartialEqInst __self_1 __arg1_1
-          if b1
-          then
-            let b2 ←
-              alloc.vec.Vec.Insts.CoreCmpPartialEqVec.eq corecmpPartialEqInst
-                __self_2 __arg1_2
-            if b2
-            then
-              let b3 ←
-                alloc.vec.Vec.Insts.CoreCmpPartialEqVec.eq corecmpPartialEqInst
-                  __self_3 __arg1_3
-              if b3
-              then
-                let b4 ←
-                  alloc.vec.Vec.Insts.CoreCmpPartialEqVec.eq
-                    corecmpPartialEqInst2 __self_4 __arg1_4
-                if b4
-                then
-                  core.Shared1A.Insts.CoreCmpPartialEqShared0B.eq
-                    corecmpPartialEqInst2 __self_5 __arg1_5
-                else ok false
-              else ok false
-            else ok false
-          else ok false
-        else ok false
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall __arg1_0 =>
+        ActionCallData.Insts.CoreCmpPartialEqActionCallData.eq
+          corecmpPartialEqInst corecmpPartialEqInst2 __self_0 __arg1_0
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
-    | Stmt.ActionStore __self_0 __self_1 __self_2 __self_3 __self_4 __self_5 =>
+    | Stmt.ActionStore __self_0 =>
       match other with
       | Stmt.StorageRead _ _ _ => fail panic
       | Stmt.StorageWrite _ _ _ _ => fail panic
@@ -3178,44 +3986,13 @@ def Stmt.Insts.CoreCmpPartialEqStmt.eq
       | Stmt.Merge _ _ => fail panic
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore __arg1_0 __arg1_1 __arg1_2 __arg1_3 __arg1_4 __arg1_5
-        =>
-        let b ←
-          alloc.string.String.Insts.CoreCmpPartialEqString.eq __self_0 __arg1_0
-        if b
-        then
-          let b1 ←
-            core.Shared1A.Insts.CoreCmpPartialEqShared0B.eq
-              corecmpPartialEqInst __self_1 __arg1_1
-          if b1
-          then
-            let b2 ←
-              alloc.vec.Vec.Insts.CoreCmpPartialEqVec.eq corecmpPartialEqInst
-                __self_2 __arg1_2
-            if b2
-            then
-              let b3 ←
-                alloc.vec.Vec.Insts.CoreCmpPartialEqVec.eq corecmpPartialEqInst
-                  __self_3 __arg1_3
-              if b3
-              then
-                let b4 ←
-                  alloc.vec.Vec.Insts.CoreCmpPartialEqVec.eq
-                    corecmpPartialEqInst2 __self_4 __arg1_4
-                if b4
-                then
-                  alloc.vec.Vec.Insts.CoreCmpPartialEqVec.eq
-                    (ActionTarget.Insts.CoreCmpPartialEqActionTarget
-                    corecmpPartialEqInst1 corecmpPartialEqInst3) __self_5
-                    __arg1_5
-                else ok false
-              else ok false
-            else ok false
-          else ok false
-        else ok false
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore __arg1_0 =>
+        ActionStoreData.Insts.CoreCmpPartialEqActionStoreData.eq
+          corecmpPartialEqInst corecmpPartialEqInst1 corecmpPartialEqInst2
+          corecmpPartialEqInst3 __self_0 __arg1_0
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
     | Stmt.ActionOutput __self_0 __self_1 __self_2 =>
@@ -3230,10 +4007,10 @@ def Stmt.Insts.CoreCmpPartialEqStmt.eq
       | Stmt.Merge _ _ => fail panic
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput __arg1_0 __arg1_1 __arg1_2 =>
         let b ←
           core.Shared1A.Insts.CoreCmpPartialEqShared0B.eq corecmpPartialEqInst
@@ -3261,10 +4038,10 @@ def Stmt.Insts.CoreCmpPartialEqStmt.eq
       | Stmt.Merge _ _ => fail panic
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng __arg1_0 __arg1_1 =>
         let b ←
@@ -3277,7 +4054,7 @@ def Stmt.Insts.CoreCmpPartialEqStmt.eq
   else ok false
 
 /-- Trait implementation: [volar_ir_common::{impl core::cmp::PartialEq<volar_ir_common::Stmt<Var, Addr, Ty, Stor>> for volar_ir_common::Stmt<Var, Addr, Ty, Stor>}]
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 793:16-793:25 -/
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 947:16-947:25 -/
 @[reducible]
 impl_def Stmt.Insts.CoreCmpPartialEqStmt {Var : Type} {Addr : Type} {Ty : Type}
   {Stor : Type} (corecmpPartialEqInst : core.cmp.PartialEq Var Var)
@@ -3293,7 +4070,7 @@ impl_def Stmt.Insts.CoreCmpPartialEqStmt {Var : Type} {Addr : Type} {Ty : Type}
 }
 
 /-- Trait implementation: [volar_ir_common::{impl core::cmp::Eq for volar_ir_common::Stmt<Var, Addr, Ty, Stor>}]
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 793:27-793:29 -/
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 947:27-947:29 -/
 @[reducible]
 def Stmt.Insts.CoreCmpEq {Var : Type} {Addr : Type} {Ty : Type} {Stor : Type}
   (corecmpEqInst : core.cmp.Eq Var) (corecmpEqInst1 : core.cmp.Eq Addr)
@@ -3305,7 +4082,7 @@ def Stmt.Insts.CoreCmpEq {Var : Type} {Addr : Type} {Ty : Type} {Stor : Type}
 }
 
 /-- [volar_ir_common::{impl core::cmp::PartialOrd<volar_ir_common::Stmt<Var, Addr, Ty, Stor>> for volar_ir_common::Stmt<Var, Addr, Ty, Stor>}::partial_cmp]:
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 793:31-793:41
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 947:31-947:41
     Visibility: public -/
 def Stmt.Insts.CoreCmpPartialOrdStmt.partial_cmp
   {Var : Type} {Addr : Type} {Ty : Type} {Stor : Type} (corecmpPartialOrdInst :
@@ -3356,13 +4133,13 @@ def Stmt.Insts.CoreCmpPartialOrdStmt.partial_cmp
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.Shuffle _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.OracleCall _ _ _ _ =>
+    | Stmt.OracleCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.OracleOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionCall _ _ _ _ _ _ =>
+    | Stmt.ActionCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionStore _ _ _ _ _ _ =>
+    | Stmt.ActionStore _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.ActionOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
@@ -3414,13 +4191,13 @@ def Stmt.Insts.CoreCmpPartialOrdStmt.partial_cmp
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.Shuffle _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.OracleCall _ _ _ _ =>
+    | Stmt.OracleCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.OracleOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionCall _ _ _ _ _ _ =>
+    | Stmt.ActionCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionStore _ _ _ _ _ _ =>
+    | Stmt.ActionStore _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.ActionOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
@@ -3458,13 +4235,13 @@ def Stmt.Insts.CoreCmpPartialOrdStmt.partial_cmp
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.Shuffle _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.OracleCall _ _ _ _ =>
+    | Stmt.OracleCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.OracleOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionCall _ _ _ _ _ _ =>
+    | Stmt.ActionCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionStore _ _ _ _ _ _ =>
+    | Stmt.ActionStore _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.ActionOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
@@ -3508,13 +4285,13 @@ def Stmt.Insts.CoreCmpPartialOrdStmt.partial_cmp
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.Shuffle _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.OracleCall _ _ _ _ =>
+    | Stmt.OracleCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.OracleOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionCall _ _ _ _ _ _ =>
+    | Stmt.ActionCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionStore _ _ _ _ _ _ =>
+    | Stmt.ActionStore _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.ActionOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
@@ -3561,13 +4338,13 @@ def Stmt.Insts.CoreCmpPartialOrdStmt.partial_cmp
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.Shuffle _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.OracleCall _ _ _ _ =>
+    | Stmt.OracleCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.OracleOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionCall _ _ _ _ _ _ =>
+    | Stmt.ActionCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionStore _ _ _ _ _ _ =>
+    | Stmt.ActionStore _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.ActionOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
@@ -3612,13 +4389,13 @@ def Stmt.Insts.CoreCmpPartialOrdStmt.partial_cmp
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.Shuffle _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.OracleCall _ _ _ _ =>
+    | Stmt.OracleCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.OracleOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionCall _ _ _ _ _ _ =>
+    | Stmt.ActionCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionStore _ _ _ _ _ _ =>
+    | Stmt.ActionStore _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.ActionOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
@@ -3663,13 +4440,13 @@ def Stmt.Insts.CoreCmpPartialOrdStmt.partial_cmp
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.Shuffle _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.OracleCall _ _ _ _ =>
+    | Stmt.OracleCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.OracleOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionCall _ _ _ _ _ _ =>
+    | Stmt.ActionCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionStore _ _ _ _ _ _ =>
+    | Stmt.ActionStore _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.ActionOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
@@ -3707,13 +4484,13 @@ def Stmt.Insts.CoreCmpPartialOrdStmt.partial_cmp
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.Shuffle _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.OracleCall _ _ _ _ =>
+    | Stmt.OracleCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.OracleOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionCall _ _ _ _ _ _ =>
+    | Stmt.ActionCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionStore _ _ _ _ _ _ =>
+    | Stmt.ActionStore _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.ActionOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
@@ -3749,13 +4526,13 @@ def Stmt.Insts.CoreCmpPartialOrdStmt.partial_cmp
         | core.cmp.Ordering.Greater => ok o
     | Stmt.Shuffle _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.OracleCall _ _ _ _ =>
+    | Stmt.OracleCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.OracleOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionCall _ _ _ _ _ _ =>
+    | Stmt.ActionCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionStore _ _ _ _ _ _ =>
+    | Stmt.ActionStore _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.ActionOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
@@ -3795,19 +4572,19 @@ def Stmt.Insts.CoreCmpPartialOrdStmt.partial_cmp
         | core.cmp.Ordering.Equal =>
           corecmpPartialOrdInst2.partial_cmp __self_1 __arg1_1
         | core.cmp.Ordering.Greater => ok o
-    | Stmt.OracleCall _ _ _ _ =>
+    | Stmt.OracleCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.OracleOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionCall _ _ _ _ _ _ =>
+    | Stmt.ActionCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionStore _ _ _ _ _ _ =>
+    | Stmt.ActionStore _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.ActionOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.Rng _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-  | Stmt.OracleCall __self_0 __self_1 __self_2 __self_3 =>
+  | Stmt.OracleCall __self_0 =>
     match other with
     | Stmt.StorageRead _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
@@ -3829,43 +4606,15 @@ def Stmt.Insts.CoreCmpPartialOrdStmt.partial_cmp
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.Shuffle _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.OracleCall __arg1_0 __arg1_1 __arg1_2 __arg1_3 =>
-      let o ←
-        alloc.string.String.Insts.CoreCmpPartialOrdString.partial_cmp __self_0
-          __arg1_0
-      match o with
-      | core.option.Option.None => ok core.option.Option.None
-      | core.option.Option.Some o1 =>
-        match o1 with
-        | core.cmp.Ordering.Less => ok o
-        | core.cmp.Ordering.Equal =>
-          let o2 ←
-            alloc.vec.Vec.Insts.CoreCmpPartialOrdVec.partial_cmp
-              corecmpPartialOrdInst __self_1 __arg1_1
-          match o2 with
-          | core.option.Option.None => ok core.option.Option.None
-          | core.option.Option.Some o3 =>
-            match o3 with
-            | core.cmp.Ordering.Less => ok o2
-            | core.cmp.Ordering.Equal =>
-              let o4 ←
-                alloc.vec.Vec.Insts.CoreCmpPartialOrdVec.partial_cmp
-                  corecmpPartialOrdInst2 __self_2 __arg1_2
-              match o4 with
-              | core.option.Option.None => ok core.option.Option.None
-              | core.option.Option.Some o5 =>
-                match o5 with
-                | core.cmp.Ordering.Less => ok o4
-                | core.cmp.Ordering.Equal =>
-                  corecmpPartialOrdInst2.partial_cmp __self_3 __arg1_3
-                | core.cmp.Ordering.Greater => ok o4
-            | core.cmp.Ordering.Greater => ok o2
-        | core.cmp.Ordering.Greater => ok o
+    | Stmt.OracleCall __arg1_0 =>
+      alloc.Box.Insts.CoreCmpPartialOrdBox.partial_cmp
+        (OracleCallData.Insts.CoreCmpPartialOrdOracleCallData
+        corecmpPartialOrdInst corecmpPartialOrdInst2) __self_0 __arg1_0
     | Stmt.OracleOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionCall _ _ _ _ _ _ =>
+    | Stmt.ActionCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionStore _ _ _ _ _ _ =>
+    | Stmt.ActionStore _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.ActionOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
@@ -3893,7 +4642,7 @@ def Stmt.Insts.CoreCmpPartialOrdStmt.partial_cmp
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.Shuffle _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.OracleCall _ _ _ _ =>
+    | Stmt.OracleCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.OracleOutput __arg1_0 __arg1_1 __arg1_2 =>
       let o ← corecmpPartialOrdInst.partial_cmp __self_0 __arg1_0
@@ -3915,15 +4664,15 @@ def Stmt.Insts.CoreCmpPartialOrdStmt.partial_cmp
               corecmpPartialOrdInst2.partial_cmp __self_2 __arg1_2
             | core.cmp.Ordering.Greater => ok o2
         | core.cmp.Ordering.Greater => ok o
-    | Stmt.ActionCall _ _ _ _ _ _ =>
+    | Stmt.ActionCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionStore _ _ _ _ _ _ =>
+    | Stmt.ActionStore _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.ActionOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.Rng _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-  | Stmt.ActionCall __self_0 __self_1 __self_2 __self_3 __self_4 __self_5 =>
+  | Stmt.ActionCall __self_0 =>
     match other with
     | Stmt.StorageRead _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
@@ -3945,67 +4694,21 @@ def Stmt.Insts.CoreCmpPartialOrdStmt.partial_cmp
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.Shuffle _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.OracleCall _ _ _ _ =>
+    | Stmt.OracleCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.OracleOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionCall __arg1_0 __arg1_1 __arg1_2 __arg1_3 __arg1_4 __arg1_5 =>
-      let o ←
-        alloc.string.String.Insts.CoreCmpPartialOrdString.partial_cmp __self_0
-          __arg1_0
-      match o with
-      | core.option.Option.None => ok core.option.Option.None
-      | core.option.Option.Some o1 =>
-        match o1 with
-        | core.cmp.Ordering.Less => ok o
-        | core.cmp.Ordering.Equal =>
-          let o2 ← corecmpPartialOrdInst.partial_cmp __self_1 __arg1_1
-          match o2 with
-          | core.option.Option.None => ok core.option.Option.None
-          | core.option.Option.Some o3 =>
-            match o3 with
-            | core.cmp.Ordering.Less => ok o2
-            | core.cmp.Ordering.Equal =>
-              let o4 ←
-                alloc.vec.Vec.Insts.CoreCmpPartialOrdVec.partial_cmp
-                  corecmpPartialOrdInst __self_2 __arg1_2
-              match o4 with
-              | core.option.Option.None => ok core.option.Option.None
-              | core.option.Option.Some o5 =>
-                match o5 with
-                | core.cmp.Ordering.Less => ok o4
-                | core.cmp.Ordering.Equal =>
-                  let o6 ←
-                    alloc.vec.Vec.Insts.CoreCmpPartialOrdVec.partial_cmp
-                      corecmpPartialOrdInst __self_3 __arg1_3
-                  match o6 with
-                  | core.option.Option.None => ok core.option.Option.None
-                  | core.option.Option.Some o7 =>
-                    match o7 with
-                    | core.cmp.Ordering.Less => ok o6
-                    | core.cmp.Ordering.Equal =>
-                      let o8 ←
-                        alloc.vec.Vec.Insts.CoreCmpPartialOrdVec.partial_cmp
-                          corecmpPartialOrdInst2 __self_4 __arg1_4
-                      match o8 with
-                      | core.option.Option.None => ok core.option.Option.None
-                      | core.option.Option.Some o9 =>
-                        match o9 with
-                        | core.cmp.Ordering.Less => ok o8
-                        | core.cmp.Ordering.Equal =>
-                          corecmpPartialOrdInst2.partial_cmp __self_5 __arg1_5
-                        | core.cmp.Ordering.Greater => ok o8
-                    | core.cmp.Ordering.Greater => ok o6
-                | core.cmp.Ordering.Greater => ok o4
-            | core.cmp.Ordering.Greater => ok o2
-        | core.cmp.Ordering.Greater => ok o
-    | Stmt.ActionStore _ _ _ _ _ _ =>
+    | Stmt.ActionCall __arg1_0 =>
+      alloc.Box.Insts.CoreCmpPartialOrdBox.partial_cmp
+        (ActionCallData.Insts.CoreCmpPartialOrdActionCallData
+        corecmpPartialOrdInst corecmpPartialOrdInst2) __self_0 __arg1_0
+    | Stmt.ActionStore _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.ActionOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.Rng _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-  | Stmt.ActionStore __self_0 __self_1 __self_2 __self_3 __self_4 __self_5 =>
+  | Stmt.ActionStore __self_0 =>
     match other with
     | Stmt.StorageRead _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
@@ -4027,65 +4730,17 @@ def Stmt.Insts.CoreCmpPartialOrdStmt.partial_cmp
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.Shuffle _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.OracleCall _ _ _ _ =>
+    | Stmt.OracleCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.OracleOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionCall _ _ _ _ _ _ =>
+    | Stmt.ActionCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionStore __arg1_0 __arg1_1 __arg1_2 __arg1_3 __arg1_4 __arg1_5 =>
-      let o ←
-        alloc.string.String.Insts.CoreCmpPartialOrdString.partial_cmp __self_0
-          __arg1_0
-      match o with
-      | core.option.Option.None => ok core.option.Option.None
-      | core.option.Option.Some o1 =>
-        match o1 with
-        | core.cmp.Ordering.Less => ok o
-        | core.cmp.Ordering.Equal =>
-          let o2 ← corecmpPartialOrdInst.partial_cmp __self_1 __arg1_1
-          match o2 with
-          | core.option.Option.None => ok core.option.Option.None
-          | core.option.Option.Some o3 =>
-            match o3 with
-            | core.cmp.Ordering.Less => ok o2
-            | core.cmp.Ordering.Equal =>
-              let o4 ←
-                alloc.vec.Vec.Insts.CoreCmpPartialOrdVec.partial_cmp
-                  corecmpPartialOrdInst __self_2 __arg1_2
-              match o4 with
-              | core.option.Option.None => ok core.option.Option.None
-              | core.option.Option.Some o5 =>
-                match o5 with
-                | core.cmp.Ordering.Less => ok o4
-                | core.cmp.Ordering.Equal =>
-                  let o6 ←
-                    alloc.vec.Vec.Insts.CoreCmpPartialOrdVec.partial_cmp
-                      corecmpPartialOrdInst __self_3 __arg1_3
-                  match o6 with
-                  | core.option.Option.None => ok core.option.Option.None
-                  | core.option.Option.Some o7 =>
-                    match o7 with
-                    | core.cmp.Ordering.Less => ok o6
-                    | core.cmp.Ordering.Equal =>
-                      let o8 ←
-                        alloc.vec.Vec.Insts.CoreCmpPartialOrdVec.partial_cmp
-                          corecmpPartialOrdInst2 __self_4 __arg1_4
-                      match o8 with
-                      | core.option.Option.None => ok core.option.Option.None
-                      | core.option.Option.Some o9 =>
-                        match o9 with
-                        | core.cmp.Ordering.Less => ok o8
-                        | core.cmp.Ordering.Equal =>
-                          alloc.vec.Vec.Insts.CoreCmpPartialOrdVec.partial_cmp
-                            (ActionTarget.Insts.CoreCmpPartialOrdActionTarget
-                            corecmpPartialOrdInst1 corecmpPartialOrdInst3)
-                            __self_5 __arg1_5
-                        | core.cmp.Ordering.Greater => ok o8
-                    | core.cmp.Ordering.Greater => ok o6
-                | core.cmp.Ordering.Greater => ok o4
-            | core.cmp.Ordering.Greater => ok o2
-        | core.cmp.Ordering.Greater => ok o
+    | Stmt.ActionStore __arg1_0 =>
+      alloc.Box.Insts.CoreCmpPartialOrdBox.partial_cmp
+        (ActionStoreData.Insts.CoreCmpPartialOrdActionStoreData
+        corecmpPartialOrdInst corecmpPartialOrdInst1 corecmpPartialOrdInst2
+        corecmpPartialOrdInst3) __self_0 __arg1_0
     | Stmt.ActionOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.Rng _ _ =>
@@ -4112,13 +4767,13 @@ def Stmt.Insts.CoreCmpPartialOrdStmt.partial_cmp
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.Shuffle _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.OracleCall _ _ _ _ =>
+    | Stmt.OracleCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.OracleOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionCall _ _ _ _ _ _ =>
+    | Stmt.ActionCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionStore _ _ _ _ _ _ =>
+    | Stmt.ActionStore _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.ActionOutput __arg1_0 __arg1_1 __arg1_2 =>
       let o ← corecmpPartialOrdInst.partial_cmp __self_0 __arg1_0
@@ -4164,13 +4819,13 @@ def Stmt.Insts.CoreCmpPartialOrdStmt.partial_cmp
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.Shuffle _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.OracleCall _ _ _ _ =>
+    | Stmt.OracleCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.OracleOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionCall _ _ _ _ _ _ =>
+    | Stmt.ActionCall _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
-    | Stmt.ActionStore _ _ _ _ _ _ =>
+    | Stmt.ActionStore _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
     | Stmt.ActionOutput _ _ _ =>
       core.Isize.Insts.CoreCmpPartialOrdIsize.partial_cmp self1 other1
@@ -4188,7 +4843,7 @@ def Stmt.Insts.CoreCmpPartialOrdStmt.partial_cmp
         | core.cmp.Ordering.Greater => ok o
 
 /-- Trait implementation: [volar_ir_common::{impl core::cmp::PartialOrd<volar_ir_common::Stmt<Var, Addr, Ty, Stor>> for volar_ir_common::Stmt<Var, Addr, Ty, Stor>}]
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 793:31-793:41 -/
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 947:31-947:41 -/
 @[reducible]
 impl_def Stmt.Insts.CoreCmpPartialOrdStmt {Var : Type} {Addr : Type} {Ty :
   Type} {Stor : Type} (corecmpPartialOrdInst : core.cmp.PartialOrd Var Var)
@@ -4217,7 +4872,7 @@ impl_def Stmt.Insts.CoreCmpPartialOrdStmt {Var : Type} {Addr : Type} {Ty :
 }
 
 /-- [volar_ir_common::{impl core::cmp::Ord for volar_ir_common::Stmt<Var, Addr, Ty, Stor>}::cmp]:
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 793:43-793:46
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 947:43-947:46
     Visibility: public -/
 def Stmt.Insts.CoreCmpOrd.cmp
   {Var : Type} {Addr : Type} {Ty : Type} {Stor : Type} (corecmpOrdInst :
@@ -4255,10 +4910,10 @@ def Stmt.Insts.CoreCmpOrd.cmp
       | Stmt.Merge _ _ => fail panic
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
     | Stmt.StorageWrite __self_0 __self_1 __self_2 __self_3 =>
@@ -4288,10 +4943,10 @@ def Stmt.Insts.CoreCmpOrd.cmp
       | Stmt.Merge _ _ => fail panic
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
     | Stmt.Const __self_0 __self_1 =>
@@ -4311,10 +4966,10 @@ def Stmt.Insts.CoreCmpOrd.cmp
       | Stmt.Merge _ _ => fail panic
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
     | Stmt.Transmute __self_0 __self_1 __self_2 =>
@@ -4339,10 +4994,10 @@ def Stmt.Insts.CoreCmpOrd.cmp
       | Stmt.Merge _ _ => fail panic
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
     | Stmt.Poly __self_0 __self_1 __self_2 =>
@@ -4369,10 +5024,10 @@ def Stmt.Insts.CoreCmpOrd.cmp
       | Stmt.Merge _ _ => fail panic
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
     | Stmt.Rol __self_0 __self_1 __self_2 =>
@@ -4398,10 +5053,10 @@ def Stmt.Insts.CoreCmpOrd.cmp
       | Stmt.Merge _ _ => fail panic
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
     | Stmt.Ror __self_0 __self_1 __self_2 =>
@@ -4427,10 +5082,10 @@ def Stmt.Insts.CoreCmpOrd.cmp
       | Stmt.Merge _ _ => fail panic
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
     | Stmt.Merge __self_0 __self_1 =>
@@ -4451,10 +5106,10 @@ def Stmt.Insts.CoreCmpOrd.cmp
         | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
     | Stmt.Splat __self_0 __self_1 =>
@@ -4474,10 +5129,10 @@ def Stmt.Insts.CoreCmpOrd.cmp
         | core.cmp.Ordering.Equal => corecmpOrdInst2.cmp __self_1 __arg1_1
         | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
     | Stmt.Shuffle __self_0 __self_1 =>
@@ -4499,13 +5154,13 @@ def Stmt.Insts.CoreCmpOrd.cmp
         | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
         | core.cmp.Ordering.Equal => corecmpOrdInst2.cmp __self_1 __arg1_1
         | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
-    | Stmt.OracleCall __self_0 __self_1 __self_2 __self_3 =>
+    | Stmt.OracleCall __self_0 =>
       match other with
       | Stmt.StorageRead _ _ _ => fail panic
       | Stmt.StorageWrite _ _ _ _ => fail panic
@@ -4517,28 +5172,12 @@ def Stmt.Insts.CoreCmpOrd.cmp
       | Stmt.Merge _ _ => fail panic
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall __arg1_0 __arg1_1 __arg1_2 __arg1_3 =>
-        let o1 ← alloc.string.String.Insts.CoreCmpOrd.cmp __self_0 __arg1_0
-        match o1 with
-        | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
-        | core.cmp.Ordering.Equal =>
-          let o2 ←
-            alloc.vec.Vec.Insts.CoreCmpOrd.cmp corecmpOrdInst __self_1 __arg1_1
-          match o2 with
-          | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
-          | core.cmp.Ordering.Equal =>
-            let o3 ←
-              alloc.vec.Vec.Insts.CoreCmpOrd.cmp corecmpOrdInst2 __self_2
-                __arg1_2
-            match o3 with
-            | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
-            | core.cmp.Ordering.Equal => corecmpOrdInst2.cmp __self_3 __arg1_3
-            | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
-          | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
-        | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
+      | Stmt.OracleCall __arg1_0 =>
+        alloc.Box.Insts.CoreCmpOrd.cmp (OracleCallData.Insts.CoreCmpOrd
+          corecmpOrdInst corecmpOrdInst2) __self_0 __arg1_0
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
     | Stmt.OracleOutput __self_0 __self_1 __self_2 =>
@@ -4553,7 +5192,7 @@ def Stmt.Insts.CoreCmpOrd.cmp
       | Stmt.Merge _ _ => fail panic
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput __arg1_0 __arg1_1 __arg1_2 =>
         let o1 ← corecmpOrdInst.cmp __self_0 __arg1_0
         match o1 with
@@ -4565,11 +5204,11 @@ def Stmt.Insts.CoreCmpOrd.cmp
           | core.cmp.Ordering.Equal => corecmpOrdInst2.cmp __self_2 __arg1_2
           | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
         | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
-    | Stmt.ActionCall __self_0 __self_1 __self_2 __self_3 __self_4 __self_5 =>
+    | Stmt.ActionCall __self_0 =>
       match other with
       | Stmt.StorageRead _ _ _ => fail panic
       | Stmt.StorageWrite _ _ _ _ => fail panic
@@ -4581,46 +5220,15 @@ def Stmt.Insts.CoreCmpOrd.cmp
       | Stmt.Merge _ _ => fail panic
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall __arg1_0 __arg1_1 __arg1_2 __arg1_3 __arg1_4 __arg1_5
-        =>
-        let o1 ← alloc.string.String.Insts.CoreCmpOrd.cmp __self_0 __arg1_0
-        match o1 with
-        | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
-        | core.cmp.Ordering.Equal =>
-          let o2 ← corecmpOrdInst.cmp __self_1 __arg1_1
-          match o2 with
-          | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
-          | core.cmp.Ordering.Equal =>
-            let o3 ←
-              alloc.vec.Vec.Insts.CoreCmpOrd.cmp corecmpOrdInst __self_2
-                __arg1_2
-            match o3 with
-            | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
-            | core.cmp.Ordering.Equal =>
-              let o4 ←
-                alloc.vec.Vec.Insts.CoreCmpOrd.cmp corecmpOrdInst __self_3
-                  __arg1_3
-              match o4 with
-              | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
-              | core.cmp.Ordering.Equal =>
-                let o5 ←
-                  alloc.vec.Vec.Insts.CoreCmpOrd.cmp corecmpOrdInst2 __self_4
-                    __arg1_4
-                match o5 with
-                | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
-                | core.cmp.Ordering.Equal =>
-                  corecmpOrdInst2.cmp __self_5 __arg1_5
-                | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
-              | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
-            | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
-          | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
-        | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall __arg1_0 =>
+        alloc.Box.Insts.CoreCmpOrd.cmp (ActionCallData.Insts.CoreCmpOrd
+          corecmpOrdInst corecmpOrdInst2) __self_0 __arg1_0
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
-    | Stmt.ActionStore __self_0 __self_1 __self_2 __self_3 __self_4 __self_5 =>
+    | Stmt.ActionStore __self_0 =>
       match other with
       | Stmt.StorageRead _ _ _ => fail panic
       | Stmt.StorageWrite _ _ _ _ => fail panic
@@ -4632,45 +5240,13 @@ def Stmt.Insts.CoreCmpOrd.cmp
       | Stmt.Merge _ _ => fail panic
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore __arg1_0 __arg1_1 __arg1_2 __arg1_3 __arg1_4 __arg1_5
-        =>
-        let o1 ← alloc.string.String.Insts.CoreCmpOrd.cmp __self_0 __arg1_0
-        match o1 with
-        | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
-        | core.cmp.Ordering.Equal =>
-          let o2 ← corecmpOrdInst.cmp __self_1 __arg1_1
-          match o2 with
-          | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
-          | core.cmp.Ordering.Equal =>
-            let o3 ←
-              alloc.vec.Vec.Insts.CoreCmpOrd.cmp corecmpOrdInst __self_2
-                __arg1_2
-            match o3 with
-            | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
-            | core.cmp.Ordering.Equal =>
-              let o4 ←
-                alloc.vec.Vec.Insts.CoreCmpOrd.cmp corecmpOrdInst __self_3
-                  __arg1_3
-              match o4 with
-              | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
-              | core.cmp.Ordering.Equal =>
-                let o5 ←
-                  alloc.vec.Vec.Insts.CoreCmpOrd.cmp corecmpOrdInst2 __self_4
-                    __arg1_4
-                match o5 with
-                | core.cmp.Ordering.Less => ok core.cmp.Ordering.Less
-                | core.cmp.Ordering.Equal =>
-                  alloc.vec.Vec.Insts.CoreCmpOrd.cmp
-                    (ActionTarget.Insts.CoreCmpOrd corecmpOrdInst1
-                    corecmpOrdInst3) __self_5 __arg1_5
-                | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
-              | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
-            | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
-          | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
-        | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore __arg1_0 =>
+        alloc.Box.Insts.CoreCmpOrd.cmp (ActionStoreData.Insts.CoreCmpOrd
+          corecmpOrdInst corecmpOrdInst1 corecmpOrdInst2 corecmpOrdInst3)
+          __self_0 __arg1_0
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng _ _ => fail panic
     | Stmt.ActionOutput __self_0 __self_1 __self_2 =>
@@ -4685,10 +5261,10 @@ def Stmt.Insts.CoreCmpOrd.cmp
       | Stmt.Merge _ _ => fail panic
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput __arg1_0 __arg1_1 __arg1_2 =>
         let o1 ← corecmpOrdInst.cmp __self_0 __arg1_0
         match o1 with
@@ -4713,10 +5289,10 @@ def Stmt.Insts.CoreCmpOrd.cmp
       | Stmt.Merge _ _ => fail panic
       | Stmt.Splat _ _ => fail panic
       | Stmt.Shuffle _ _ => fail panic
-      | Stmt.OracleCall _ _ _ _ => fail panic
+      | Stmt.OracleCall _ => fail panic
       | Stmt.OracleOutput _ _ _ => fail panic
-      | Stmt.ActionCall _ _ _ _ _ _ => fail panic
-      | Stmt.ActionStore _ _ _ _ _ _ => fail panic
+      | Stmt.ActionCall _ => fail panic
+      | Stmt.ActionStore _ => fail panic
       | Stmt.ActionOutput _ _ _ => fail panic
       | Stmt.Rng __arg1_0 __arg1_1 =>
         let o1 ← alloc.string.String.Insts.CoreCmpOrd.cmp __self_0 __arg1_0
@@ -4727,7 +5303,7 @@ def Stmt.Insts.CoreCmpOrd.cmp
   | core.cmp.Ordering.Greater => ok core.cmp.Ordering.Greater
 
 /-- Trait implementation: [volar_ir_common::{impl core::cmp::Ord for volar_ir_common::Stmt<Var, Addr, Ty, Stor>}]
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 793:43-793:46 -/
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 947:43-947:46 -/
 @[reducible]
 def Stmt.Insts.CoreCmpOrd {Var : Type} {Addr : Type} {Ty : Type} {Stor : Type}
   (corecmpOrdInst : core.cmp.Ord Var) (corecmpOrdInst1 : core.cmp.Ord Addr)
@@ -4743,7 +5319,7 @@ def Stmt.Insts.CoreCmpOrd {Var : Type} {Addr : Type} {Ty : Type} {Stor : Type}
 }
 
 /-- [volar_ir_common::{impl core::hash::Hash for volar_ir_common::Stmt<Var, Addr, Ty, Stor>}::hash]:
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 793:48-793:52
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 947:48-947:52
     Visibility: public -/
 def Stmt.Insts.CoreHashHash.hash
   {Var : Type} {Addr : Type} {Ty : Type} {Stor : Type} {__H : Type}
@@ -4804,53 +5380,21 @@ def Stmt.Insts.CoreHashHash.hash
         core.U8.Insts.CoreHashHash corehashHashInst) corehashHasherInst
         __self_0 state1
     corehashHashInst2.hash corehashHasherInst __self_1 state2
-  | Stmt.OracleCall __self_0 __self_1 __self_2 __self_3 =>
-    let state2 ←
-      alloc.string.String.Insts.CoreHashHash.hash corehashHasherInst __self_0
-        state1
-    let state3 ←
-      alloc.vec.Vec.Insts.CoreHashHash.hash corehashHashInst corehashHasherInst
-        __self_1 state2
-    let state4 ←
-      alloc.vec.Vec.Insts.CoreHashHash.hash corehashHashInst2
-        corehashHasherInst __self_2 state3
-    corehashHashInst2.hash corehashHasherInst __self_3 state4
+  | Stmt.OracleCall __self_0 =>
+    alloc.Box.Insts.CoreHashHash.hash (OracleCallData.Insts.CoreHashHash
+      corehashHashInst corehashHashInst2) corehashHasherInst __self_0 state1
   | Stmt.OracleOutput __self_0 __self_1 __self_2 =>
     let state2 ← corehashHashInst.hash corehashHasherInst __self_0 state1
     let state3 ←
       core.Usize.Insts.CoreHashHash.hash corehashHasherInst __self_1 state2
     corehashHashInst2.hash corehashHasherInst __self_2 state3
-  | Stmt.ActionCall __self_0 __self_1 __self_2 __self_3 __self_4 __self_5 =>
-    let state2 ←
-      alloc.string.String.Insts.CoreHashHash.hash corehashHasherInst __self_0
-        state1
-    let state3 ← corehashHashInst.hash corehashHasherInst __self_1 state2
-    let state4 ←
-      alloc.vec.Vec.Insts.CoreHashHash.hash corehashHashInst corehashHasherInst
-        __self_2 state3
-    let state5 ←
-      alloc.vec.Vec.Insts.CoreHashHash.hash corehashHashInst corehashHasherInst
-        __self_3 state4
-    let state6 ←
-      alloc.vec.Vec.Insts.CoreHashHash.hash corehashHashInst2
-        corehashHasherInst __self_4 state5
-    corehashHashInst2.hash corehashHasherInst __self_5 state6
-  | Stmt.ActionStore __self_0 __self_1 __self_2 __self_3 __self_4 __self_5 =>
-    let state2 ←
-      alloc.string.String.Insts.CoreHashHash.hash corehashHasherInst __self_0
-        state1
-    let state3 ← corehashHashInst.hash corehashHasherInst __self_1 state2
-    let state4 ←
-      alloc.vec.Vec.Insts.CoreHashHash.hash corehashHashInst corehashHasherInst
-        __self_2 state3
-    let state5 ←
-      alloc.vec.Vec.Insts.CoreHashHash.hash corehashHashInst corehashHasherInst
-        __self_3 state4
-    let state6 ←
-      alloc.vec.Vec.Insts.CoreHashHash.hash corehashHashInst2
-        corehashHasherInst __self_4 state5
-    alloc.vec.Vec.Insts.CoreHashHash.hash (ActionTarget.Insts.CoreHashHash
-      corehashHashInst1 corehashHashInst3) corehashHasherInst __self_5 state6
+  | Stmt.ActionCall __self_0 =>
+    alloc.Box.Insts.CoreHashHash.hash (ActionCallData.Insts.CoreHashHash
+      corehashHashInst corehashHashInst2) corehashHasherInst __self_0 state1
+  | Stmt.ActionStore __self_0 =>
+    alloc.Box.Insts.CoreHashHash.hash (ActionStoreData.Insts.CoreHashHash
+      corehashHashInst corehashHashInst1 corehashHashInst2 corehashHashInst3)
+      corehashHasherInst __self_0 state1
   | Stmt.ActionOutput __self_0 __self_1 __self_2 =>
     let state2 ← corehashHashInst.hash corehashHasherInst __self_0 state1
     let state3 ←
@@ -4863,7 +5407,7 @@ def Stmt.Insts.CoreHashHash.hash
     corehashHashInst2.hash corehashHasherInst __self_1 state2
 
 /-- Trait implementation: [volar_ir_common::{impl core::hash::Hash for volar_ir_common::Stmt<Var, Addr, Ty, Stor>}]
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 793:48-793:52 -/
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 947:48-947:52 -/
 @[reducible]
 def Stmt.Insts.CoreHashHash {Var : Type} {Addr : Type} {Ty : Type} {Stor :
   Type} (corehashHashInst : core.hash.Hash Var) (corehashHashInst1 :
@@ -4876,7 +5420,7 @@ def Stmt.Insts.CoreHashHash {Var : Type} {Addr : Type} {Ty : Type} {Stor :
 }
 
 /-- Trait implementation: [volar_ir_common::{impl core::fmt::Debug for volar_ir_common::Stmt<Var, Addr, Ty, Stor>}]
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 793:54-793:59 -/
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 947:54-947:59 -/
 @[reducible]
 def Stmt.Insts.CoreFmtDebug {Var : Type} {Addr : Type} {Ty : Type} {Stor :
   Type} (corefmtDebugInst : core.fmt.Debug Var) (corefmtDebugInst1 :

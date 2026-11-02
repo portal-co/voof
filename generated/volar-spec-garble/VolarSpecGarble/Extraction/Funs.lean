@@ -248,8 +248,27 @@ impl_def garble.Garble.Insts.CoreCloneClone {N : Type} (corecloneCloneInst :
     voleVoleArrayNU8Inst)
 }
 
+/-- [volar_spec::garble::absorb_args_bases]:
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 27:0-35:1 -/
+def garble.absorb_args_bases
+  {N : Type} {D : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
+  (SpecDigestInst : SpecDigest D N) (d : D) (args : Slice (garble.Garble N)) :
+  RustM D
+  := do
+  let o ← core.slice.Slice.split_first args
+  match o with
+  | core.option.Option.None => ok d
+  | core.option.Option.Some p =>
+    let (first, rest) := p
+    let d1 ←
+      SpecDigestInst.update (core.Shared0T.Insts.CoreConvertAsRef
+        (array.Array.Insts.CoreConvertAsRefSlice Std.U8
+        voleVoleArrayNU8Inst.arrayArraySizeInst)) d first.base
+    garble.absorb_args_bases voleVoleArrayNU8Inst SpecDigestInst d1 rest
+partial_fixpoint
+
 /-- [volar_spec::garble::{volar_spec::garble::Garble<N>}::zero]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 25:4-29:5
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 39:4-43:5
     Visibility: public -/
 def garble.Garble.zero
   {N : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8) :
@@ -262,7 +281,7 @@ def garble.Garble.zero
   ok { base := a }
 
 /-- [volar_spec::garble::{volar_spec::garble::Garble<N>}::and_result::{impl core::ops::function::FnMut<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Garble<N>[TraitClause0]}::and_result::closure<'_0, N, D>}::call_mut]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 42:42-42:53 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 56:42-56:53 -/
 def
   garble.Garble.and_result.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut
   {N : Type} {D : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -276,7 +295,7 @@ def
   ok (i, c)
 
 /-- [volar_spec::garble::{volar_spec::garble::Garble<N>}::and_result::{impl core::ops::function::FnOnce<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Garble<N>[TraitClause0]}::and_result::closure<'_0, N, D>}::call_once]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 42:42-42:53 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 56:42-56:53 -/
 def
   garble.Garble.and_result.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8.call_once
   {N : Type} {D : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -290,7 +309,7 @@ def
   ok i1
 
 /-- Trait implementation: [volar_spec::garble::{volar_spec::garble::Garble<N>}::and_result::{impl core::ops::function::FnOnce<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Garble<N>[TraitClause0]}::and_result::closure<'_0, N, D>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 42:42-42:53 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 56:42-56:53 -/
 @[reducible]
 def garble.Garble.and_result.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8 {N
   : Type} {D : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -302,7 +321,7 @@ def garble.Garble.and_result.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8 {N
 }
 
 /-- Trait implementation: [volar_spec::garble::{volar_spec::garble::Garble<N>}::and_result::{impl core::ops::function::FnMut<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Garble<N>[TraitClause0]}::and_result::closure<'_0, N, D>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 42:42-42:53 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 56:42-56:53 -/
 @[reducible]
 def garble.Garble.and_result.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8 {N
   : Type} {D : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -317,7 +336,7 @@ def garble.Garble.and_result.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8 {N
 }
 
 /-- [volar_spec::garble::{volar_spec::garble::Garble<N>}::and_result]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 36:4-44:5
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 50:4-58:5
     Visibility: public -/
 def garble.Garble.and_result
   {N : Type} {D : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -342,7 +361,7 @@ def garble.Garble.and_result
   ok { base := a }
 
 /-- [volar_spec::garble::{volar_spec::garble::Garble<N>}::action_result_base::{impl core::ops::function::FnMut<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Garble<N>[TraitClause0]}::action_result_base::closure<'_0, N, D>}::call_mut]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 83:42-83:53 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 86:42-86:53 -/
 def
   garble.Garble.action_result_base.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut
   {N : Type} {D : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -357,7 +376,7 @@ def
   ok (i, c)
 
 /-- [volar_spec::garble::{volar_spec::garble::Garble<N>}::action_result_base::{impl core::ops::function::FnOnce<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Garble<N>[TraitClause0]}::action_result_base::closure<'_0, N, D>}::call_once]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 83:42-83:53 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 86:42-86:53 -/
 def
   garble.Garble.action_result_base.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8.call_once
   {N : Type} {D : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -371,7 +390,7 @@ def
   ok i1
 
 /-- Trait implementation: [volar_spec::garble::{volar_spec::garble::Garble<N>}::action_result_base::{impl core::ops::function::FnOnce<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Garble<N>[TraitClause0]}::action_result_base::closure<'_0, N, D>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 83:42-83:53 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 86:42-86:53 -/
 @[reducible]
 def
   garble.Garble.action_result_base.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8
@@ -384,7 +403,7 @@ def
 }
 
 /-- Trait implementation: [volar_spec::garble::{volar_spec::garble::Garble<N>}::action_result_base::{impl core::ops::function::FnMut<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Garble<N>[TraitClause0]}::action_result_base::closure<'_0, N, D>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 83:42-83:53 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 86:42-86:53 -/
 @[reducible]
 def
   garble.Garble.action_result_base.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8
@@ -399,32 +418,8 @@ def
     voleVoleArrayNU8Inst SpecDigestInst
 }
 
-/-- [volar_spec::garble::{volar_spec::garble::Garble<N>}::action_result_base::absorb_args]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 70:8-77:9 -/
-def garble.Garble.action_result_base.absorb_args
-  {N : Type} {D : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
-  (SpecDigestInst : SpecDigest D N) (d : D) (args : Slice (garble.Garble N)) :
-  RustM D
-  := do
-  let b ← core.slice.Slice.is_empty args
-  if b
-  then ok d
-  else
-    let g ← Slice.index_usize args 0#usize
-    let d1 ←
-      SpecDigestInst.update (core.Shared0T.Insts.CoreConvertAsRef
-        (array.Array.Insts.CoreConvertAsRefSlice Std.U8
-        voleVoleArrayNU8Inst.arrayArraySizeInst)) d g.base
-    let s ←
-      core.Slice.Insts.CoreOpsIndexIndex.index
-        (core.ops.range.RangeFromUsize.Insts.CoreSliceIndexSliceIndexSliceSlice
-        (garble.Garble N)) args { start := 1#usize }
-    garble.Garble.action_result_base.absorb_args voleVoleArrayNU8Inst
-      SpecDigestInst d1 s
-partial_fixpoint
-
 /-- [volar_spec::garble::{volar_spec::garble::Garble<N>}::action_result_base]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 62:4-85:5
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 76:4-88:5
     Visibility: public -/
 def garble.Garble.action_result_base
   {N : Type} {D : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -442,8 +437,7 @@ def garble.Garble.action_result_base
       (array.Array.Insts.CoreConvertAsRefSlice Std.U8
       voleVoleArrayNU8Inst.arrayArraySizeInst)) d1 self.base
   let d3 ←
-    garble.Garble.action_result_base.absorb_args voleVoleArrayNU8Inst
-      SpecDigestInst d2 args
+    garble.absorb_args_bases voleVoleArrayNU8Inst SpecDigestInst d2 args
   let i ← lift (UScalar.cast .U64 bit)
   let bit_bytes ← core.num.U64.to_le_bytes i
   let d4 ←
@@ -457,7 +451,7 @@ def garble.Garble.action_result_base
   ok { base := a }
 
 /-- [volar_spec::garble::{volar_spec::garble::Garble<N>}::share::{impl core::ops::function::FnMut<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Garble<N>[TraitClause0]}::share::closure<'_0, '_1, N>}::call_mut]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 89:44-89:72 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 92:44-92:72 -/
 def garble.Garble.share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut
   {N : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
   (c : garble.Garble.share.closure N) (tupled_args : Std.Usize) :
@@ -474,7 +468,7 @@ def garble.Garble.share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut
   ok (i2, c)
 
 /-- [volar_spec::garble::{volar_spec::garble::Garble<N>}::share::{impl core::ops::function::FnOnce<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Garble<N>[TraitClause0]}::share::closure<'_0, '_1, N>}::call_once]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 89:44-89:72 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 92:44-92:72 -/
 def
   garble.Garble.share.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8.call_once
   {N : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -487,7 +481,7 @@ def
   ok i1
 
 /-- Trait implementation: [volar_spec::garble::{volar_spec::garble::Garble<N>}::share::{impl core::ops::function::FnOnce<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Garble<N>[TraitClause0]}::share::closure<'_0, '_1, N>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 89:44-89:72 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 92:44-92:72 -/
 @[reducible]
 def garble.Garble.share.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8 {N :
   Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8) :
@@ -499,7 +493,7 @@ def garble.Garble.share.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8 {N :
 }
 
 /-- Trait implementation: [volar_spec::garble::{volar_spec::garble::Garble<N>}::share::{impl core::ops::function::FnMut<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Garble<N>[TraitClause0]}::share::closure<'_0, '_1, N>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 89:44-89:72 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 92:44-92:72 -/
 @[reducible]
 def garble.Garble.share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8 {N :
   Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8) :
@@ -513,7 +507,7 @@ def garble.Garble.share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8 {N :
 }
 
 /-- [volar_spec::garble::{volar_spec::garble::Garble<N>}::share]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 87:4-91:5
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 90:4-94:5
     Visibility: public -/
 def garble.Garble.share
   {N : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -527,7 +521,7 @@ def garble.Garble.share
   ok { target := a }
 
 /-- [volar_spec::garble::{volar_spec::garble::Garble<N>}::to_share::{impl core::ops::function::FnMut<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Garble<N>[TraitClause0]}::to_share::closure<'_0, N, O>}::call_mut]: loop body 0:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 99:16-102:17 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 102:16-105:17 -/
 @[rust_loop_body]
 def
   garble.Garble.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut_loop.body
@@ -554,7 +548,7 @@ def
     ok (cont (iter1, v1))
 
 /-- [volar_spec::garble::{volar_spec::garble::Garble<N>}::to_share::{impl core::ops::function::FnMut<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Garble<N>[TraitClause0]}::to_share::closure<'_0, N, O>}::call_mut]: loop 0:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 99:16-102:17 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 102:16-105:17 -/
 @[rust_loop]
 def
   garble.Garble.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut_loop
@@ -570,7 +564,7 @@ def
     (iter, v)
 
 /-- [volar_spec::garble::{volar_spec::garble::Garble<N>}::to_share::{impl core::ops::function::FnMut<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Garble<N>[TraitClause0]}::to_share::closure<'_0, N, O>}::call_mut]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 97:42-104:13 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 100:42-107:13 -/
 def
   garble.Garble.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut
   {N : Type} {O : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -589,7 +583,7 @@ def
   ok (v, g)
 
 /-- [volar_spec::garble::{volar_spec::garble::Garble<N>}::to_share::{impl core::ops::function::FnOnce<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Garble<N>[TraitClause0]}::to_share::closure<'_0, N, O>}::call_once]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 97:42-104:13 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 100:42-107:13 -/
 def
   garble.Garble.to_share.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8.call_once
   {N : Type} {O : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -607,7 +601,7 @@ def
   ok i1
 
 /-- Trait implementation: [volar_spec::garble::{volar_spec::garble::Garble<N>}::to_share::{impl core::ops::function::FnOnce<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Garble<N>[TraitClause0]}::to_share::closure<'_0, N, O>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 97:42-104:13 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 100:42-107:13 -/
 @[reducible]
 def garble.Garble.to_share.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8 {N :
   Type} {O : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -624,7 +618,7 @@ def garble.Garble.to_share.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8 {N :
 }
 
 /-- Trait implementation: [volar_spec::garble::{volar_spec::garble::Garble<N>}::to_share::{impl core::ops::function::FnMut<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Garble<N>[TraitClause0]}::to_share::closure<'_0, N, O>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 97:42-104:13 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 100:42-107:13 -/
 @[reducible]
 def garble.Garble.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8 {N :
   Type} {O : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -645,7 +639,7 @@ def garble.Garble.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8 {N :
 }
 
 /-- [volar_spec::garble::{volar_spec::garble::Garble<N>}::to_share]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 92:4-106:5
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 95:4-109:5
     Visibility: public -/
 def garble.Garble.to_share
   {N : Type} {O : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -664,7 +658,7 @@ def garble.Garble.to_share
   ok { base := a }
 
 /-- [volar_spec::garble::{volar_spec::garble::Eval<N>}::zero]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 110:4-114:5
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 113:4-117:5
     Visibility: public -/
 def garble.Eval.zero
   {N : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8) :
@@ -677,7 +671,7 @@ def garble.Eval.zero
   ok { target := a }
 
 /-- [volar_spec::garble::{volar_spec::garble::Eval<N>}::open::{impl core::ops::function::FnMut<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Eval<N>[TraitClause0]}::open::closure<'_0, '_1, N>}::call_mut]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 117:32-117:67 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 120:32-120:67 -/
 def garble.Eval.open.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut
   {N : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
   (c : garble.Eval.open.closure N) (tupled_args : Std.Usize) :
@@ -694,7 +688,7 @@ def garble.Eval.open.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut
   ok (i2, c)
 
 /-- [volar_spec::garble::{volar_spec::garble::Eval<N>}::open::{impl core::ops::function::FnOnce<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Eval<N>[TraitClause0]}::open::closure<'_0, '_1, N>}::call_once]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 117:32-117:67 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 120:32-120:67 -/
 def garble.Eval.open.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8.call_once
   {N : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
   (c : garble.Eval.open.closure N) (i : Std.Usize) :
@@ -706,7 +700,7 @@ def garble.Eval.open.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8.call_once
   ok i1
 
 /-- Trait implementation: [volar_spec::garble::{volar_spec::garble::Eval<N>}::open::{impl core::ops::function::FnOnce<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Eval<N>[TraitClause0]}::open::closure<'_0, '_1, N>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 117:32-117:67 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 120:32-120:67 -/
 @[reducible]
 def garble.Eval.open.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8 {N : Type}
   (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8) : core.ops.function.FnOnce
@@ -717,7 +711,7 @@ def garble.Eval.open.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8 {N : Type}
 }
 
 /-- Trait implementation: [volar_spec::garble::{volar_spec::garble::Eval<N>}::open::{impl core::ops::function::FnMut<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Eval<N>[TraitClause0]}::open::closure<'_0, '_1, N>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 117:32-117:67 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 120:32-120:67 -/
 @[reducible]
 def garble.Eval.open.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8 {N : Type}
   (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8) : core.ops.function.FnMut
@@ -731,7 +725,7 @@ def garble.Eval.open.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8 {N : Type}
 }
 
 /-- [volar_spec::garble::{volar_spec::garble::Eval<N>}::open]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 116:4-118:5
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 119:4-121:5
     Visibility: public -/
 def garble.Eval.open
   {N : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -743,7 +737,7 @@ def garble.Eval.open
     voleVoleArrayNU8Inst) (self, garble1)
 
 /-- [volar_spec::garble::{volar_spec::garble::Eval<N>}::to_share::{impl core::ops::function::FnMut<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Eval<N>[TraitClause0]}::to_share::closure<'_0, N, O>}::call_mut]: loop body 0:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 126:16-129:17 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 129:16-132:17 -/
 @[rust_loop_body]
 def
   garble.Eval.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut_loop.body
@@ -770,7 +764,7 @@ def
     ok (cont (iter1, v1))
 
 /-- [volar_spec::garble::{volar_spec::garble::Eval<N>}::to_share::{impl core::ops::function::FnMut<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Eval<N>[TraitClause0]}::to_share::closure<'_0, N, O>}::call_mut]: loop 0:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 126:16-129:17 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 129:16-132:17 -/
 @[rust_loop]
 def
   garble.Eval.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut_loop
@@ -786,7 +780,7 @@ def
     (iter, v)
 
 /-- [volar_spec::garble::{volar_spec::garble::Eval<N>}::to_share::{impl core::ops::function::FnMut<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Eval<N>[TraitClause0]}::to_share::closure<'_0, N, O>}::call_mut]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 124:44-131:13 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 127:44-134:13 -/
 def
   garble.Eval.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut
   {N : Type} {O : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -805,7 +799,7 @@ def
   ok (v, e)
 
 /-- [volar_spec::garble::{volar_spec::garble::Eval<N>}::to_share::{impl core::ops::function::FnOnce<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Eval<N>[TraitClause0]}::to_share::closure<'_0, N, O>}::call_once]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 124:44-131:13 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 127:44-134:13 -/
 def
   garble.Eval.to_share.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8.call_once
   {N : Type} {O : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -823,7 +817,7 @@ def
   ok i1
 
 /-- Trait implementation: [volar_spec::garble::{volar_spec::garble::Eval<N>}::to_share::{impl core::ops::function::FnOnce<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Eval<N>[TraitClause0]}::to_share::closure<'_0, N, O>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 124:44-131:13 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 127:44-134:13 -/
 @[reducible]
 def garble.Eval.to_share.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8 {N :
   Type} {O : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -840,7 +834,7 @@ def garble.Eval.to_share.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8 {N :
 }
 
 /-- Trait implementation: [volar_spec::garble::{volar_spec::garble::Eval<N>}::to_share::{impl core::ops::function::FnMut<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Eval<N>[TraitClause0]}::to_share::closure<'_0, N, O>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 124:44-131:13 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 127:44-134:13 -/
 @[reducible]
 def garble.Eval.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8 {N :
   Type} {O : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -861,7 +855,7 @@ def garble.Eval.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8 {N :
 }
 
 /-- [volar_spec::garble::{volar_spec::garble::Eval<N>}::to_share]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 119:4-133:5
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 122:4-136:5
     Visibility: public -/
 def garble.Eval.to_share
   {N : Type} {O : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -880,7 +874,7 @@ def garble.Eval.to_share
   ok { target := a }
 
 /-- [volar_spec::garble::{volar_spec::garble::Eval<N>}::and_via_table::{impl core::ops::function::FnMut<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Eval<N>[TraitClause0]}::and_via_table::closure<'_0, '_1, '_2, N, D>}::call_mut]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 144:44-144:79 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 147:44-147:79 -/
 def
   garble.Eval.and_via_table.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut
   {N : Type} {D : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -900,7 +894,7 @@ def
   ok (i3, c)
 
 /-- [volar_spec::garble::{volar_spec::garble::Eval<N>}::and_via_table::{impl core::ops::function::FnOnce<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Eval<N>[TraitClause0]}::and_via_table::closure<'_0, '_1, '_2, N, D>}::call_once]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 144:44-144:79 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 147:44-147:79 -/
 def
   garble.Eval.and_via_table.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8.call_once
   {N : Type} {D : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -914,7 +908,7 @@ def
   ok i1
 
 /-- Trait implementation: [volar_spec::garble::{volar_spec::garble::Eval<N>}::and_via_table::{impl core::ops::function::FnOnce<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Eval<N>[TraitClause0]}::and_via_table::closure<'_0, '_1, '_2, N, D>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 144:44-144:79 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 147:44-147:79 -/
 @[reducible]
 def garble.Eval.and_via_table.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8
   {N : Type} {D : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -926,7 +920,7 @@ def garble.Eval.and_via_table.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8
 }
 
 /-- Trait implementation: [volar_spec::garble::{volar_spec::garble::Eval<N>}::and_via_table::{impl core::ops::function::FnMut<(usize,), u8> for volar_spec::garble::{volar_spec::garble::Eval<N>[TraitClause0]}::and_via_table::closure<'_0, '_1, '_2, N, D>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 144:44-144:79 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 147:44-147:79 -/
 @[reducible]
 def garble.Eval.and_via_table.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8 {N
   : Type} {D : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -941,7 +935,7 @@ def garble.Eval.and_via_table.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8 {N
 }
 
 /-- [volar_spec::garble::{volar_spec::garble::Eval<N>}::and_via_table]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 134:4-146:5
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 137:4-149:5
     Visibility: public -/
 def garble.Eval.and_via_table
   {N : Type} {D : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -981,7 +975,7 @@ def garble.Eval.and_via_table
   ok { target := a }
 
 /-- [volar_spec::garble::{impl core::clone::Clone for volar_spec::garble::GarbleTable<N>}::clone]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 148:9-148:14
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 151:9-151:14
     Visibility: public -/
 def garble.GarbleTable.Insts.CoreCloneClone.clone
   {N : Type} (corecloneCloneInst : core.clone.Clone N) (voleVoleArrayNU8Inst :
@@ -995,7 +989,7 @@ def garble.GarbleTable.Insts.CoreCloneClone.clone
   ok { table := a }
 
 /-- Trait implementation: [volar_spec::garble::{impl core::clone::Clone for volar_spec::garble::GarbleTable<N>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 148:9-148:14 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 151:9-151:14 -/
 @[reducible]
 impl_def garble.GarbleTable.Insts.CoreCloneClone {N : Type} (corecloneCloneInst
   : core.clone.Clone N) (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8) :
@@ -1008,7 +1002,7 @@ impl_def garble.GarbleTable.Insts.CoreCloneClone {N : Type} (corecloneCloneInst
 }
 
 /-- [volar_spec::garble::{impl core::clone::Clone for volar_spec::garble::GlobalSecret<N>}::clone]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 152:9-152:14
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 155:9-155:14
     Visibility: public -/
 def garble.GlobalSecret.Insts.CoreCloneClone.clone
   {N : Type} (corecloneCloneInst : core.clone.Clone N) (voleVoleArrayNU8Inst :
@@ -1021,7 +1015,7 @@ def garble.GlobalSecret.Insts.CoreCloneClone.clone
   ok { secret := a }
 
 /-- Trait implementation: [volar_spec::garble::{impl core::clone::Clone for volar_spec::garble::GlobalSecret<N>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 152:9-152:14 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 155:9-155:14 -/
 @[reducible]
 impl_def garble.GlobalSecret.Insts.CoreCloneClone {N : Type}
   (corecloneCloneInst : core.clone.Clone N) (voleVoleArrayNU8Inst :
@@ -1034,7 +1028,7 @@ impl_def garble.GlobalSecret.Insts.CoreCloneClone {N : Type}
 }
 
 /-- [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::new]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 157:4-160:5
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 160:4-163:5
     Visibility: public -/
 def garble.GlobalSecret.new
   {N : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -1049,7 +1043,7 @@ def garble.GlobalSecret.new
   ok { secret := secret1 }
 
 /-- [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::secret]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 161:4-163:5
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 164:4-166:5
     Visibility: public -/
 def garble.GlobalSecret.impl.secret
   {N : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -1061,7 +1055,7 @@ def garble.GlobalSecret.impl.secret
     voleVoleArrayNU8Inst.arrayArraySizeInst self.secret
 
 /-- [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::encode::{impl core::ops::function::FnMut<(usize,), u8> for volar_spec::garble::{volar_spec::garble::GlobalSecret<N>[TraitClause0]}::encode::closure<'_0, '_1, '_2, N>}::call_mut]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 166:44-172:13 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 169:44-175:13 -/
 def
   garble.GlobalSecret.encode.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut
   {N : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -1086,7 +1080,7 @@ def
     ok (i, c)
 
 /-- [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::encode::{impl core::ops::function::FnOnce<(usize,), u8> for volar_spec::garble::{volar_spec::garble::GlobalSecret<N>[TraitClause0]}::encode::closure<'_0, '_1, '_2, N>}::call_once]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 166:44-172:13 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 169:44-175:13 -/
 def
   garble.GlobalSecret.encode.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8.call_once
   {N : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -1099,7 +1093,7 @@ def
   ok i1
 
 /-- Trait implementation: [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::encode::{impl core::ops::function::FnOnce<(usize,), u8> for volar_spec::garble::{volar_spec::garble::GlobalSecret<N>[TraitClause0]}::encode::closure<'_0, '_1, '_2, N>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 166:44-172:13 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 169:44-175:13 -/
 @[reducible]
 def garble.GlobalSecret.encode.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8
   {N : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8) :
@@ -1111,7 +1105,7 @@ def garble.GlobalSecret.encode.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8
 }
 
 /-- Trait implementation: [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::encode::{impl core::ops::function::FnMut<(usize,), u8> for volar_spec::garble::{volar_spec::garble::GlobalSecret<N>[TraitClause0]}::encode::closure<'_0, '_1, '_2, N>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 166:44-172:13 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 169:44-175:13 -/
 @[reducible]
 def garble.GlobalSecret.encode.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8
   {N : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8) :
@@ -1126,7 +1120,7 @@ def garble.GlobalSecret.encode.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8
 }
 
 /-- [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::encode]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 164:4-174:5
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 167:4-177:5
     Visibility: public -/
 def garble.GlobalSecret.encode
   {N : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -1140,7 +1134,7 @@ def garble.GlobalSecret.encode
   ok { target := a }
 
 /-- [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::one_wire_eval]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 176:4-178:5
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 179:4-181:5
     Visibility: public -/
 def garble.GlobalSecret.one_wire_eval
   {N : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -1151,7 +1145,7 @@ def garble.GlobalSecret.one_wire_eval
   garble.GlobalSecret.encode voleVoleArrayNU8Inst self g true
 
 /-- [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::not_garble::{impl core::ops::function::FnMut<(usize,), u8> for volar_spec::garble::{volar_spec::garble::GlobalSecret<N>[TraitClause0]}::not_garble::closure<'_0, '_1, N>}::call_mut]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 193:42-193:72 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 196:42-196:72 -/
 def
   garble.GlobalSecret.not_garble.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut
   {N : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -1169,7 +1163,7 @@ def
   ok (i2, c)
 
 /-- [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::not_garble::{impl core::ops::function::FnOnce<(usize,), u8> for volar_spec::garble::{volar_spec::garble::GlobalSecret<N>[TraitClause0]}::not_garble::closure<'_0, '_1, N>}::call_once]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 193:42-193:72 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 196:42-196:72 -/
 def
   garble.GlobalSecret.not_garble.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8.call_once
   {N : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -1182,7 +1176,7 @@ def
   ok i1
 
 /-- Trait implementation: [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::not_garble::{impl core::ops::function::FnOnce<(usize,), u8> for volar_spec::garble::{volar_spec::garble::GlobalSecret<N>[TraitClause0]}::not_garble::closure<'_0, '_1, N>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 193:42-193:72 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 196:42-196:72 -/
 @[reducible]
 def
   garble.GlobalSecret.not_garble.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8
@@ -1195,7 +1189,7 @@ def
 }
 
 /-- Trait implementation: [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::not_garble::{impl core::ops::function::FnMut<(usize,), u8> for volar_spec::garble::{volar_spec::garble::GlobalSecret<N>[TraitClause0]}::not_garble::closure<'_0, '_1, N>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 193:42-193:72 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 196:42-196:72 -/
 @[reducible]
 def
   garble.GlobalSecret.not_garble.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8
@@ -1211,7 +1205,7 @@ def
 }
 
 /-- [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::not_garble]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 191:4-195:5
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 194:4-198:5
     Visibility: public -/
 def garble.GlobalSecret.not_garble
   {N : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -1225,7 +1219,7 @@ def garble.GlobalSecret.not_garble
   ok { base := a1 }
 
 /-- [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::gen_and_table_pol::{impl core::ops::function::FnMut<(usize,), u8> for volar_spec::garble::{volar_spec::garble::GlobalSecret<N>[TraitClause0]}::gen_and_table_pol::closure#1<'_0, '_1, N, D>}::call_mut]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 233:49-233:85 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 236:49-236:85 -/
 def
   garble.GlobalSecret.gen_and_table_pol.closure_1.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut
   {N : Type} {D : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -1245,7 +1239,7 @@ def
   ok (i2, c)
 
 /-- [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::gen_and_table_pol::{impl core::ops::function::FnOnce<(usize,), u8> for volar_spec::garble::{volar_spec::garble::GlobalSecret<N>[TraitClause0]}::gen_and_table_pol::closure#1<'_0, '_1, N, D>}::call_once]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 233:49-233:85 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 236:49-236:85 -/
 def
   garble.GlobalSecret.gen_and_table_pol.closure_1.Insts.CoreOpsFunctionFnOnceTupleUsizeU8.call_once
   {N : Type} {D : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -1259,7 +1253,7 @@ def
   ok i1
 
 /-- Trait implementation: [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::gen_and_table_pol::{impl core::ops::function::FnOnce<(usize,), u8> for volar_spec::garble::{volar_spec::garble::GlobalSecret<N>[TraitClause0]}::gen_and_table_pol::closure#1<'_0, '_1, N, D>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 233:49-233:85 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 236:49-236:85 -/
 @[reducible]
 def
   garble.GlobalSecret.gen_and_table_pol.closure_1.Insts.CoreOpsFunctionFnOnceTupleUsizeU8
@@ -1272,7 +1266,7 @@ def
 }
 
 /-- Trait implementation: [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::gen_and_table_pol::{impl core::ops::function::FnMut<(usize,), u8> for volar_spec::garble::{volar_spec::garble::GlobalSecret<N>[TraitClause0]}::gen_and_table_pol::closure#1<'_0, '_1, N, D>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 233:49-233:85 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 236:49-236:85 -/
 @[reducible]
 def
   garble.GlobalSecret.gen_and_table_pol.closure_1.Insts.CoreOpsFunctionFnMutTupleUsizeU8
@@ -1288,7 +1282,7 @@ def
 }
 
 /-- [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::gen_and_table_pol::{impl core::ops::function::FnMut<(usize,), volar_spec::array::Array<u8, N>> for volar_spec::garble::{volar_spec::garble::GlobalSecret<N>[TraitClause0]}::gen_and_table_pol::closure<N, D>}::call_mut]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 217:45-217:74 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 220:45-220:74 -/
 def
   garble.GlobalSecret.gen_and_table_pol.closure.Insts.CoreOpsFunctionFnMutTupleUsizeArrayU8N.call_mut
   {N : Type} {D : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -1305,7 +1299,7 @@ def
   ok (a, c)
 
 /-- [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::gen_and_table_pol::{impl core::ops::function::FnOnce<(usize,), volar_spec::array::Array<u8, N>> for volar_spec::garble::{volar_spec::garble::GlobalSecret<N>[TraitClause0]}::gen_and_table_pol::closure<N, D>}::call_once]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 217:45-217:74 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 220:45-220:74 -/
 def
   garble.GlobalSecret.gen_and_table_pol.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeArrayU8N.call_once
   {N : Type} {D : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -1319,7 +1313,7 @@ def
   ok a
 
 /-- Trait implementation: [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::gen_and_table_pol::{impl core::ops::function::FnOnce<(usize,), volar_spec::array::Array<u8, N>> for volar_spec::garble::{volar_spec::garble::GlobalSecret<N>[TraitClause0]}::gen_and_table_pol::closure<N, D>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 217:45-217:74 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 220:45-220:74 -/
 @[reducible]
 def
   garble.GlobalSecret.gen_and_table_pol.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeArrayU8N
@@ -1333,7 +1327,7 @@ def
 }
 
 /-- Trait implementation: [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::gen_and_table_pol::{impl core::ops::function::FnMut<(usize,), volar_spec::array::Array<u8, N>> for volar_spec::garble::{volar_spec::garble::GlobalSecret<N>[TraitClause0]}::gen_and_table_pol::closure<N, D>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 217:45-217:74 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 220:45-220:74 -/
 @[reducible]
 def
   garble.GlobalSecret.gen_and_table_pol.closure.Insts.CoreOpsFunctionFnMutTupleUsizeArrayU8N
@@ -1350,7 +1344,7 @@ def
 }
 
 /-- [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::gen_and_table_pol]: loop body 0:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 218:8-234:9
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 221:8-237:9
     Visibility: public -/
 @[rust_loop_body]
 def garble.GlobalSecret.gen_and_table_pol_loop.body
@@ -1410,7 +1404,7 @@ def garble.GlobalSecret.gen_and_table_pol_loop.body
     ok (cont (iter1, a3))
 
 /-- [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::gen_and_table_pol]: loop 0:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 218:8-234:9
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 221:8-237:9
     Visibility: public -/
 @[rust_loop]
 def garble.GlobalSecret.gen_and_table_pol_loop
@@ -1428,7 +1422,7 @@ def garble.GlobalSecret.gen_and_table_pol_loop
     (iter, table)
 
 /-- [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::gen_and_table_pol]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 207:4-236:5
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 210:4-239:5
     Visibility: public -/
 def garble.GlobalSecret.gen_and_table_pol
   {N : Type} {D : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -1449,7 +1443,7 @@ def garble.GlobalSecret.gen_and_table_pol
   ok { table := table1 }
 
 /-- [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::gen_and_table]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 197:4-199:5
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 200:4-202:5
     Visibility: public -/
 def garble.GlobalSecret.gen_and_table
   {N : Type} {D : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -1461,7 +1455,7 @@ def garble.GlobalSecret.gen_and_table
     self a b false false
 
 /-- [volar_spec::garble::{impl core::ops::bit::BitXor<volar_spec::garble::Eval<N>, volar_spec::garble::Eval<N>> for volar_spec::garble::Eval<N>}::bitxor::{impl core::ops::function::FnMut<(usize,), u8> for volar_spec::garble::{impl core::ops::bit::BitXor<volar_spec::garble::Eval<N>, volar_spec::garble::Eval<N>> for volar_spec::garble::Eval<N>}::bitxor::closure<'_0, '_1, N>}::call_mut]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 243:44-243:78 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 246:44-246:78 -/
 def
   garble.BitXorEvalEvalEval.bitxor.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut
   {N : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -1479,7 +1473,7 @@ def
   ok (i2, c)
 
 /-- [volar_spec::garble::{impl core::ops::bit::BitXor<volar_spec::garble::Eval<N>, volar_spec::garble::Eval<N>> for volar_spec::garble::Eval<N>}::bitxor::{impl core::ops::function::FnOnce<(usize,), u8> for volar_spec::garble::{impl core::ops::bit::BitXor<volar_spec::garble::Eval<N>, volar_spec::garble::Eval<N>> for volar_spec::garble::Eval<N>}::bitxor::closure<'_0, '_1, N>}::call_once]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 243:44-243:78 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 246:44-246:78 -/
 def
   garble.BitXorEvalEvalEval.bitxor.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8.call_once
   {N : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -1492,7 +1486,7 @@ def
   ok i1
 
 /-- Trait implementation: [volar_spec::garble::{impl core::ops::bit::BitXor<volar_spec::garble::Eval<N>, volar_spec::garble::Eval<N>> for volar_spec::garble::Eval<N>}::bitxor::{impl core::ops::function::FnOnce<(usize,), u8> for volar_spec::garble::{impl core::ops::bit::BitXor<volar_spec::garble::Eval<N>, volar_spec::garble::Eval<N>> for volar_spec::garble::Eval<N>}::bitxor::closure<'_0, '_1, N>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 243:44-243:78 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 246:44-246:78 -/
 @[reducible]
 def
   garble.BitXorEvalEvalEval.bitxor.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeU8
@@ -1505,7 +1499,7 @@ def
 }
 
 /-- Trait implementation: [volar_spec::garble::{impl core::ops::bit::BitXor<volar_spec::garble::Eval<N>, volar_spec::garble::Eval<N>> for volar_spec::garble::Eval<N>}::bitxor::{impl core::ops::function::FnMut<(usize,), u8> for volar_spec::garble::{impl core::ops::bit::BitXor<volar_spec::garble::Eval<N>, volar_spec::garble::Eval<N>> for volar_spec::garble::Eval<N>}::bitxor::closure<'_0, '_1, N>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 243:44-243:78 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 246:44-246:78 -/
 @[reducible]
 def
   garble.BitXorEvalEvalEval.bitxor.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8
@@ -1521,7 +1515,7 @@ def
 }
 
 /-- [volar_spec::garble::{impl core::ops::bit::BitXor<volar_spec::garble::Eval<N>, volar_spec::garble::Eval<N>> for volar_spec::garble::Eval<N>}::bitxor]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 241:4-245:5
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 244:4-248:5
     Visibility: public -/
 def garble.Eval.Insts.CoreOpsBitBitXorEvalEval.bitxor
   {N : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -1535,7 +1529,7 @@ def garble.Eval.Insts.CoreOpsBitBitXorEvalEval.bitxor
   ok { target := a }
 
 /-- Trait implementation: [volar_spec::garble::{impl core::ops::bit::BitXor<volar_spec::garble::Eval<N>, volar_spec::garble::Eval<N>> for volar_spec::garble::Eval<N>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 238:0-246:1 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 241:0-249:1 -/
 @[reducible]
 def garble.Eval.Insts.CoreOpsBitBitXorEvalEval {N : Type} (voleVoleArrayNU8Inst
   : vole.VoleArray N Std.U8) : core.ops.bit.BitXor (garble.Eval N) (garble.Eval
@@ -1545,7 +1539,7 @@ def garble.Eval.Insts.CoreOpsBitBitXorEvalEval {N : Type} (voleVoleArrayNU8Inst
 }
 
 /-- [volar_spec::garble::{impl core::clone::Clone for volar_spec::garble::GarbledCircuit<N, I, A>}::clone]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 263:9-263:14
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 266:9-266:14
     Visibility: public -/
 def garble.GarbledCircuit.Insts.CoreCloneClone.clone
   {N : Type} {I : Std.Usize} {A : Std.Usize} (corecloneCloneInst :
@@ -1569,7 +1563,7 @@ def garble.GarbledCircuit.Insts.CoreCloneClone.clone
   ok { secret := gs, input_labels := a, tables := a1, output_label := g }
 
 /-- Trait implementation: [volar_spec::garble::{impl core::clone::Clone for volar_spec::garble::GarbledCircuit<N, I, A>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 263:9-263:14 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 266:9-266:14 -/
 @[reducible]
 impl_def garble.GarbledCircuit.Insts.CoreCloneClone {N : Type} (I : Std.Usize)
   (A : Std.Usize) (corecloneCloneInst : core.clone.Clone N)
@@ -1583,7 +1577,7 @@ impl_def garble.GarbledCircuit.Insts.CoreCloneClone {N : Type} (I : Std.Usize)
 }
 
 /-- [volar_spec::garble::{volar_spec::garble::GarbledCircuit<N, I, A>}::encode_inputs::{impl core::ops::function::FnMut<(usize,), volar_spec::garble::Eval<N>> for volar_spec::garble::{volar_spec::garble::GarbledCircuit<N, I, A>[TraitClause0]}::encode_inputs::closure<'_0, '_1, N, I, A>}::call_mut]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 275:29-275:83 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 278:29-278:83 -/
 def
   garble.GarbledCircuit.encode_inputs.closure.Insts.CoreOpsFunctionFnMutTupleUsizeEval.call_mut
   {N : Type} {I : Std.Usize} {A : Std.Usize} (voleVoleArrayNU8Inst :
@@ -1600,7 +1594,7 @@ def
   ok (e, c)
 
 /-- [volar_spec::garble::{volar_spec::garble::GarbledCircuit<N, I, A>}::encode_inputs::{impl core::ops::function::FnOnce<(usize,), volar_spec::garble::Eval<N>> for volar_spec::garble::{volar_spec::garble::GarbledCircuit<N, I, A>[TraitClause0]}::encode_inputs::closure<'_0, '_1, N, I, A>}::call_once]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 275:29-275:83 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 278:29-278:83 -/
 def
   garble.GarbledCircuit.encode_inputs.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeEval.call_once
   {N : Type} {I : Std.Usize} {A : Std.Usize} (voleVoleArrayNU8Inst :
@@ -1614,7 +1608,7 @@ def
   ok e
 
 /-- Trait implementation: [volar_spec::garble::{volar_spec::garble::GarbledCircuit<N, I, A>}::encode_inputs::{impl core::ops::function::FnOnce<(usize,), volar_spec::garble::Eval<N>> for volar_spec::garble::{volar_spec::garble::GarbledCircuit<N, I, A>[TraitClause0]}::encode_inputs::closure<'_0, '_1, N, I, A>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 275:29-275:83 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 278:29-278:83 -/
 @[reducible]
 def
   garble.GarbledCircuit.encode_inputs.closure.Insts.CoreOpsFunctionFnOnceTupleUsizeEval
@@ -1628,7 +1622,7 @@ def
 }
 
 /-- Trait implementation: [volar_spec::garble::{volar_spec::garble::GarbledCircuit<N, I, A>}::encode_inputs::{impl core::ops::function::FnMut<(usize,), volar_spec::garble::Eval<N>> for volar_spec::garble::{volar_spec::garble::GarbledCircuit<N, I, A>[TraitClause0]}::encode_inputs::closure<'_0, '_1, N, I, A>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 275:29-275:83 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 278:29-278:83 -/
 @[reducible]
 def
   garble.GarbledCircuit.encode_inputs.closure.Insts.CoreOpsFunctionFnMutTupleUsizeEval
@@ -1645,7 +1639,7 @@ def
 }
 
 /-- [volar_spec::garble::{volar_spec::garble::GarbledCircuit<N, I, A>}::encode_inputs]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 274:4-276:5
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 277:4-279:5
     Visibility: public -/
 def garble.GarbledCircuit.encode_inputs
   {N : Type} {I : Std.Usize} {A : Std.Usize} (voleVoleArrayNU8Inst :
@@ -1658,7 +1652,7 @@ def garble.GarbledCircuit.encode_inputs
     I A voleVoleArrayNU8Inst) (self, bits)
 
 /-- [volar_spec::garble::{volar_spec::garble::GarbledCircuit<N, I, A>}::eval_setup]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 281:4-287:5
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 284:4-290:5
     Visibility: public -/
 def garble.GarbledCircuit.eval_setup
   {N : Type} {I : Std.Usize} {A : Std.Usize} (voleVoleArrayNU8Inst :
@@ -1678,7 +1672,7 @@ def garble.GarbledCircuit.eval_setup
   ok { one_wire := e, tables := a, output_label := g }
 
 /-- [volar_spec::garble::{impl core::clone::Clone for volar_spec::garble::EvalSetup<N, A>}::clone]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 294:9-294:14
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 297:9-297:14
     Visibility: public -/
 def garble.EvalSetup.Insts.CoreCloneClone.clone
   {N : Type} {A : Std.Usize} (corecloneCloneInst : core.clone.Clone N)
@@ -1699,7 +1693,7 @@ def garble.EvalSetup.Insts.CoreCloneClone.clone
   ok { one_wire := e, tables := a, output_label := g }
 
 /-- Trait implementation: [volar_spec::garble::{impl core::clone::Clone for volar_spec::garble::EvalSetup<N, A>}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 294:9-294:14 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 297:9-297:14 -/
 @[reducible]
 impl_def garble.EvalSetup.Insts.CoreCloneClone {N : Type} (A : Std.Usize)
   (corecloneCloneInst : core.clone.Clone N) (voleVoleArrayNU8Inst :
@@ -1712,7 +1706,7 @@ impl_def garble.EvalSetup.Insts.CoreCloneClone {N : Type} (A : Std.Usize)
 }
 
 /-- [volar_spec::garble::{volar_spec::garble::EvalSetup<N, A>}::recover_output]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 303:4-307:5
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 306:4-310:5
     Visibility: public -/
 def garble.EvalSetup.recover_output
   {N : Type} {A : Std.Usize} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -1727,14 +1721,14 @@ def garble.EvalSetup.recover_output
   ok (i1 != 0#u8)
 
 /-- [volar_spec::garble::{impl core::clone::Clone for volar_spec::garble::GramOutput}::clone]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 328:9-328:14
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 331:9-331:14
     Visibility: public -/
 def garble.GramOutput.Insts.CoreCloneClone.clone
   (self : garble.GramOutput) : RustM garble.GramOutput := do
   ok self
 
 /-- Trait implementation: [volar_spec::garble::{impl core::clone::Clone for volar_spec::garble::GramOutput}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 328:9-328:14 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 331:9-331:14 -/
 @[reducible]
 impl_def garble.GramOutput.Insts.CoreCloneClone : core.clone.Clone
   garble.GramOutput := {
@@ -1744,7 +1738,7 @@ impl_def garble.GramOutput.Insts.CoreCloneClone : core.clone.Clone
 }
 
 /-- Trait implementation: [volar_spec::garble::{impl core::marker::Copy for volar_spec::garble::GramOutput}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 328:16-328:20 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 331:16-331:20 -/
 @[reducible]
 def garble.GramOutput.Insts.CoreMarkerCopy : core.marker.Copy garble.GramOutput
   := {
@@ -1752,14 +1746,14 @@ def garble.GramOutput.Insts.CoreMarkerCopy : core.marker.Copy garble.GramOutput
 }
 
 /-- Trait implementation: [volar_spec::garble::{impl core::marker::StructuralPartialEq for volar_spec::garble::GramOutput}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 328:22-328:31 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 331:22-331:31 -/
 @[reducible]
 def garble.GramOutput.Insts.CoreMarkerStructuralPartialEq :
   core.marker.StructuralPartialEq garble.GramOutput := {
 }
 
 /-- [volar_spec::garble::{impl core::cmp::PartialEq<volar_spec::garble::GramOutput> for volar_spec::garble::GramOutput}::eq]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 328:22-328:31
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 331:22-331:31
     Visibility: public -/
 def garble.GramOutput.Insts.CoreCmpPartialEqGramOutput.eq
   (self : garble.GramOutput) (other : garble.GramOutput) : RustM Bool := do
@@ -1768,7 +1762,7 @@ def garble.GramOutput.Insts.CoreCmpPartialEqGramOutput.eq
   ok (self1 = other1)
 
 /-- Trait implementation: [volar_spec::garble::{impl core::cmp::PartialEq<volar_spec::garble::GramOutput> for volar_spec::garble::GramOutput}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 328:22-328:31 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 331:22-331:31 -/
 @[reducible]
 impl_def garble.GramOutput.Insts.CoreCmpPartialEqGramOutput :
   core.cmp.PartialEq garble.GramOutput garble.GramOutput := {
@@ -1778,14 +1772,14 @@ impl_def garble.GramOutput.Insts.CoreCmpPartialEqGramOutput :
 }
 
 /-- Trait implementation: [volar_spec::garble::{impl core::cmp::Eq for volar_spec::garble::GramOutput}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 328:33-328:35 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 331:33-331:35 -/
 @[reducible]
 def garble.GramOutput.Insts.CoreCmpEq : core.cmp.Eq garble.GramOutput := {
   PartialEqInst := garble.GramOutput.Insts.CoreCmpPartialEqGramOutput
 }
 
 /-- Trait implementation: [volar_spec::garble::{impl core::fmt::Debug for volar_spec::garble::GramOutput}]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 328:37-328:42 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 331:37-331:42 -/
 @[reducible]
 def garble.GramOutput.Insts.CoreFmtDebug : core.fmt.Debug garble.GramOutput
   := {
@@ -1793,7 +1787,7 @@ def garble.GramOutput.Insts.CoreFmtDebug : core.fmt.Debug garble.GramOutput
 }
 
 /-- [volar_spec::garble::gram_decode_label]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 345:0-347:1
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 348:0-350:1
     Visibility: public -/
 def garble.gram_decode_label
   {N : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)
@@ -1808,7 +1802,7 @@ def garble.gram_decode_label
   ok (i1 != 0#u8)
 
 /-- [volar_spec::garble::gram_regarble]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 352:0-358:1
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 355:0-361:1
     Visibility: public -/
 def garble.gram_regarble
   {N : Type} (voleVoleArrayNU8Inst : vole.VoleArray N Std.U8)

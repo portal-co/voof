@@ -35,7 +35,7 @@ axiom complexity.generated.StructRef.Insts.CoreFmtDebug.fmt
     (core.fmt.Formatter → core.fmt.Formatter))
 
 /-- [volar_ir_common::complexity::generated::{impl core::clone::Clone for volar_ir_common::complexity::generated::ReentryHint}::clone]:
-    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 83:9-83:14
+    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 84:9-84:14
     Visibility: public -/
 axiom complexity.generated.ReentryHint.Insts.CoreCloneClone.clone
   : complexity.generated.ReentryHint → RustM complexity.generated.ReentryHint
@@ -47,7 +47,7 @@ axiom complexity.MeasureSpec.Insts.CoreCmpPartialEqMeasureSpec.eq
   : complexity.MeasureSpec → complexity.MeasureSpec → RustM Bool
 
 /-- [volar_ir_common::complexity::generated::{impl core::cmp::Ord for volar_ir_common::complexity::generated::ReentryHint}::cmp]:
-    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 83:43-83:46
+    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 84:43-84:46
     Visibility: public -/
 axiom complexity.generated.ReentryHint.Insts.CoreCmpOrd.cmp
   :
@@ -55,14 +55,14 @@ axiom complexity.generated.ReentryHint.Insts.CoreCmpOrd.cmp
     RustM core.cmp.Ordering
 
 /-- [volar_ir_common::complexity::generated::{impl core::hash::Hash for volar_ir_common::complexity::generated::ReentryHint}::hash]:
-    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 83:48-83:52
+    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 84:48-84:52
     Visibility: public -/
 axiom complexity.generated.ReentryHint.Insts.CoreHashHash.hash
   {__H : Type} (corehashHasherInst : core.hash.Hasher __H) :
   complexity.generated.ReentryHint → __H → RustM __H
 
 /-- [volar_ir_common::complexity::generated::{impl core::fmt::Debug for volar_ir_common::complexity::generated::ReentryHint}::fmt]:
-    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 83:54-83:59
+    Source: 'crates/ir/volar-ir-common/src/complexity/generated.rs', lines 84:54-84:59
     Visibility: public -/
 axiom complexity.generated.ReentryHint.Insts.CoreFmtDebug.fmt
   :
@@ -80,7 +80,7 @@ axiom generated.Type.Insts.CoreFmtDebug.fmt
     core.fmt.Formatter))
 
 /-- [volar_ir_common::generated::{impl core::fmt::Debug for volar_ir_common::generated::Constant}::fmt]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 67:60-67:65
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 65:60-65:65
     Visibility: public -/
 axiom generated.Constant.Insts.CoreFmtDebug.fmt
   :
@@ -89,7 +89,7 @@ axiom generated.Constant.Insts.CoreFmtDebug.fmt
     core.fmt.Formatter))
 
 /-- [volar_ir_common::generated::{impl core::fmt::Debug for volar_ir_common::generated::ExternalExecutor}::fmt]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 142:60-142:65
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 139:60-139:65
     Visibility: public -/
 axiom generated.ExternalExecutor.Insts.CoreFmtDebug.fmt
   :
@@ -98,7 +98,7 @@ axiom generated.ExternalExecutor.Insts.CoreFmtDebug.fmt
     (core.fmt.Formatter → core.fmt.Formatter))
 
 /-- [volar_ir_common::generated::{impl core::fmt::Debug for volar_ir_common::generated::ExternalRevealPolicy}::fmt]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 205:60-205:65
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 202:60-202:65
     Visibility: public -/
 axiom generated.ExternalRevealPolicy.Insts.CoreFmtDebug.fmt
   :
@@ -107,7 +107,7 @@ axiom generated.ExternalRevealPolicy.Insts.CoreFmtDebug.fmt
     (core.fmt.Formatter → core.fmt.Formatter))
 
 /-- [volar_ir_common::generated::{impl core::fmt::Debug for volar_ir_common::generated::OracleExecutionKind}::fmt]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 268:60-268:65
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 267:60-267:65
     Visibility: public -/
 axiom generated.OracleExecutionKind.Insts.CoreFmtDebug.fmt
   :
@@ -116,7 +116,7 @@ axiom generated.OracleExecutionKind.Insts.CoreFmtDebug.fmt
     (core.fmt.Formatter → core.fmt.Formatter))
 
 /-- [volar_ir_common::generated::{impl core::fmt::Debug for volar_ir_common::generated::ActionExecutionPolicy}::fmt]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 331:60-331:65
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 330:60-330:65
     Visibility: public -/
 axiom generated.ActionExecutionPolicy.Insts.CoreFmtDebug.fmt
   :
@@ -134,7 +134,7 @@ axiom generated.OracleExecutionPolicy.Insts.CoreFmtDebug.fmt
     (core.fmt.Formatter → core.fmt.Formatter))
 
 /-- [volar_ir_common::generated::{impl core::fmt::Debug for volar_ir_common::generated::OracleDecl}::fmt]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 512:54-512:59
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 513:54-513:59
     Visibility: public -/
 axiom generated.OracleDecl.Insts.CoreFmtDebug.fmt
   :
@@ -143,7 +143,7 @@ axiom generated.OracleDecl.Insts.CoreFmtDebug.fmt
     core.fmt.Formatter))
 
 /-- [volar_ir_common::generated::{impl core::fmt::Debug for volar_ir_common::generated::ActionDecl}::fmt]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 608:54-608:59
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 611:54-611:59
     Visibility: public -/
 axiom generated.ActionDecl.Insts.CoreFmtDebug.fmt
   :
@@ -152,7 +152,7 @@ axiom generated.ActionDecl.Insts.CoreFmtDebug.fmt
     core.fmt.Formatter))
 
 /-- [volar_ir_common::generated::{impl core::fmt::Debug for volar_ir_common::generated::RngDecl}::fmt]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 704:54-704:59
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 709:54-709:59
     Visibility: public -/
 axiom generated.RngDecl.Insts.CoreFmtDebug.fmt
   :
@@ -161,7 +161,7 @@ axiom generated.RngDecl.Insts.CoreFmtDebug.fmt
     core.fmt.Formatter))
 
 /-- [volar_ir_common::generated::{impl core::fmt::Debug for volar_ir_common::generated::PreInitSegment}::fmt]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 778:54-778:59
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 783:54-783:59
     Visibility: public -/
 axiom generated.PreInitSegment.Insts.CoreFmtDebug.fmt
   :
@@ -170,7 +170,7 @@ axiom generated.PreInitSegment.Insts.CoreFmtDebug.fmt
     (core.fmt.Formatter → core.fmt.Formatter))
 
 /-- [volar_ir_common::generated::{impl core::fmt::Debug for volar_ir_common::generated::TypeId}::fmt]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 874:60-874:65
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 881:60-881:65
     Visibility: public -/
 axiom generated.TypeId.Insts.CoreFmtDebug.fmt
   :
@@ -179,7 +179,7 @@ axiom generated.TypeId.Insts.CoreFmtDebug.fmt
     core.fmt.Formatter))
 
 /-- [volar_ir_common::generated::{impl core::fmt::Debug for volar_ir_common::generated::StorageId}::fmt]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 917:60-917:65
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 924:60-924:65
     Visibility: public -/
 axiom generated.StorageId.Insts.CoreFmtDebug.fmt
   :
@@ -188,7 +188,7 @@ axiom generated.StorageId.Insts.CoreFmtDebug.fmt
     core.fmt.Formatter))
 
 /-- [volar_ir_common::generated::{impl core::fmt::Debug for volar_ir_common::generated::Node<T, P>}::fmt]:
-    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 960:54-960:59
+    Source: 'crates/ir/volar-ir-common/src/generated.rs', lines 967:54-967:59
     Visibility: public -/
 axiom generated.Node.Insts.CoreFmtDebug.fmt
   {T : Type} {P : Type} (corefmtDebugInst : core.fmt.Debug T)
@@ -199,7 +199,7 @@ axiom generated.Node.Insts.CoreFmtDebug.fmt
     core.fmt.Formatter))
 
 /-- [volar_ir_common::{impl core::fmt::Debug for volar_ir_common::Stmt<Var, Addr, Ty, Stor>}::fmt]:
-    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 793:54-793:59
+    Source: 'crates/ir/volar-ir-common/src/lib.rs', lines 947:54-947:59
     Visibility: public -/
 axiom Stmt.Insts.CoreFmtDebug.fmt
   {Var : Type} {Addr : Type} {Ty : Type} {Stor : Type} (corefmtDebugInst :

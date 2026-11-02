@@ -3,11 +3,11 @@
 
 [repo.volar]
 url = "https://github.com/portal-co/volar.git"
-rev = "384db2263971837206c13f9c632b9c28a87e7b1b"
+rev = "3af91c0312d7ec8ea6f0c0b4f7b2c18ea1bc7b6b"
 
 [repo.volar-ir]
 url = "https://github.com/portal-co/volar-ir.git"
-rev = "b5061866696d90ef13d47dff35b875d70bf8c341"
+rev = "33c03f8d6f9aa47a7117e177574663067e994594"
 
 [repo.cirrus]
 url = "https://github.com/portal-co/cirrus.git"
