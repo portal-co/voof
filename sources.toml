@@ -3,7 +3,7 @@
 
 [repo.volar]
 url = "https://github.com/portal-co/volar.git"
-rev = "8ba8d3bf58cba400c46247f696cd319b1c7396be"
+rev = "9dd884bb9f9f36d9560d2cf58a823e4ba063138c"
 
 [repo.volar-ir]
 url = "https://github.com/portal-co/volar-ir.git"
