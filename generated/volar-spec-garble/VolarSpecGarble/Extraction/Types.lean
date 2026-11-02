@@ -64,80 +64,80 @@ structure SpecDigest (Self : Type) (N : Type) where
   finalize : Self → RustM (array.Array Std.U8 N)
 
 /-- [volar_spec::garble::{volar_spec::garble::Garble<N>}::and_result::closure]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 42:42-42:53 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 56:42-56:53 -/
 @[reducible]
 def garble.Garble.and_result.closure (N : Type) (D : Type) :=
   array.Array Std.U8 N
 
 /-- [volar_spec::garble::{volar_spec::garble::Garble<N>}::action_result_base::closure]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 83:42-83:53 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 86:42-86:53 -/
 @[reducible]
 def garble.Garble.action_result_base.closure (N : Type) (D : Type) :=
   array.Array Std.U8 N
 
 /-- [volar_spec::garble::{volar_spec::garble::Garble<N>}::share::closure]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 89:44-89:72 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 92:44-92:72 -/
 def garble.Garble.share.closure (N : Type) :=
   garble.Garble N × array.Array Std.U8 N
 
 /-- [volar_spec::garble::{volar_spec::garble::Garble<N>}::to_share::closure]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 97:42-104:13 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 100:42-107:13 -/
 @[reducible]
 def garble.Garble.to_share.closure (N : Type) (O : Type) := garble.Garble N
 
 /-- [volar_spec::garble::{volar_spec::garble::Eval<N>}::open::closure]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 117:32-117:67 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 120:32-120:67 -/
 def garble.Eval.open.closure (N : Type) := garble.Eval N × garble.Garble N
 
 /-- [volar_spec::garble::{volar_spec::garble::Eval<N>}::to_share::closure]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 124:44-131:13 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 127:44-134:13 -/
 @[reducible]
 def garble.Eval.to_share.closure (N : Type) (O : Type) := garble.Eval N
 
 /-- [volar_spec::garble::GarbleTable]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 149:0-151:1
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 152:0-154:1
     Visibility: public -/
 structure garble.GarbleTable (N : Type) where
   table : Array (array.Array Std.U8 N) 4#usize
 
 /-- [volar_spec::garble::{volar_spec::garble::Eval<N>}::and_via_table::closure]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 144:44-144:79 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 147:44-147:79 -/
 def garble.Eval.and_via_table.closure (N : Type) (D : Type) :=
   array.Array Std.U8 N × garble.GarbleTable N × Std.Usize
 
 /-- [volar_spec::garble::GlobalSecret]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 153:0-155:1
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 156:0-158:1
     Visibility: public -/
 structure garble.GlobalSecret (N : Type) where
   secret : array.Array Std.U8 N
 
 /-- [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::encode::closure]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 166:44-172:13 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 169:44-175:13 -/
 def garble.GlobalSecret.encode.closure (N : Type) :=
   Bool × garble.GlobalSecret N × garble.Garble N
 
 /-- [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::not_garble::closure]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 193:42-193:72 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 196:42-196:72 -/
 def garble.GlobalSecret.not_garble.closure (N : Type) :=
   garble.Garble N × garble.GlobalSecret N
 
 /-- [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::gen_and_table_pol::closure#1]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 233:49-233:85 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 236:49-236:85 -/
 def garble.GlobalSecret.gen_and_table_pol.closure_1 (N : Type) (D : Type) :=
   array.Array Std.U8 N × array.Array Std.U8 N
 
 /-- [volar_spec::garble::{volar_spec::garble::GlobalSecret<N>}::gen_and_table_pol::closure]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 217:45-217:74 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 220:45-220:74 -/
 @[reducible]
 def garble.GlobalSecret.gen_and_table_pol.closure (N : Type) (D : Type) := Unit
 
 /-- [volar_spec::garble::{impl core::ops::bit::BitXor<volar_spec::garble::Eval<N>, volar_spec::garble::Eval<N>> for volar_spec::garble::Eval<N>}::bitxor::closure]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 243:44-243:78 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 246:44-246:78 -/
 def garble.BitXorEvalEvalEval.bitxor.closure (N : Type) :=
   array.Array Std.U8 N × array.Array Std.U8 N
 
 /-- [volar_spec::garble::GarbledCircuit]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 264:0-269:1
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 267:0-272:1
     Visibility: public -/
 structure garble.GarbledCircuit (N : Type) (I : Std.Usize) (A : Std.Usize)
   where
@@ -147,13 +147,13 @@ structure garble.GarbledCircuit (N : Type) (I : Std.Usize) (A : Std.Usize)
   output_label : garble.Garble N
 
 /-- [volar_spec::garble::{volar_spec::garble::GarbledCircuit<N, I, A>}::encode_inputs::closure]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 275:29-275:83 -/
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 278:29-278:83 -/
 def garble.GarbledCircuit.encode_inputs.closure (N : Type) (I : Std.Usize) (A :
   Std.Usize) :=
   garble.GarbledCircuit N I A × Array Bool I
 
 /-- [volar_spec::garble::EvalSetup]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 295:0-299:1
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 298:0-302:1
     Visibility: public -/
 structure garble.EvalSetup (N : Type) (A : Std.Usize) where
   one_wire : garble.Eval N
@@ -161,7 +161,7 @@ structure garble.EvalSetup (N : Type) (A : Std.Usize) where
   output_label : garble.Garble N
 
 /-- [volar_spec::garble::GramOutput]
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 329:0-336:1
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 332:0-339:1
     Visibility: public -/
 @[discriminant isize]
 inductive garble.GramOutput where

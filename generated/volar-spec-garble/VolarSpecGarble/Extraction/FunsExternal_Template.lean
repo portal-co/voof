@@ -26,7 +26,7 @@ set_option maxRecDepth 2048
 open volar_spec
 
 /-- [volar_spec::garble::{impl core::fmt::Debug for volar_spec::garble::GramOutput}::fmt]:
-    Source: 'crates/spec/volar-spec/src/garble.rs', lines 328:37-328:42
+    Source: 'crates/spec/volar-spec/src/garble.rs', lines 331:37-331:42
     Visibility: public -/
 axiom garble.GramOutput.Insts.CoreFmtDebug.fmt
   :
