@@ -1,0 +1,12 @@
+# Scenario volar-spec-garble: the garbled-circuit spec (volar_spec::garble).
+# First crypto proof-binding target (plan §8 M4).
+repo = "volar"
+crate = "volar-spec"
+
+[scenario.volar-spec-garble]
+backend = "lean"
+include = ["volar_spec::garble"]
+# NOTE: hybrid_array is unreachable here — sync.sh applies
+# sources-patches/volar/apply.sh, which swaps it for the in-crate
+# Vec-backed shim `volar_spec::array` (the real hybrid_array is mutually
+# recursive with its traits in a way Aeneas cannot translate).

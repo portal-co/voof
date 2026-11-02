@@ -179,6 +179,49 @@ helpers. The `git-fetch-with-cli` setting in the local parent
 `.cargo/config.toml` exists only for the host's own git setup; CI can leave
 cargo's default fetcher alone.
 
+## 3a. Source-patch policy (post-M0 pivot)
+
+Two kinds of changes are needed to make Rust sources extractable, and they
+live in different places:
+
+1. **Source-level Aeneas-compat fixes** (no dependency replacement): nested
+   borrows, borrows of temporaries, loops over `&[&T]`, etc. These are valid
+   Rust and valid in the spec subset — they land **upstream in the source
+   repo's main**, and voof's pin is bumped in lockstep (same PR/round).
+   Examples landed in volar main: `action_result_base`'s let-bindings and
+   slice-tail recursion (volar@384db226).
+2. **Dependency replacements and subset-external constructs**: dependencies
+   Aeneas cannot translate (hybrid_array's trait recursion, digest's
+   hardwired `hybrid_array::Array` output), or constructs that cannot be
+   expressed in the spec subset without them. These stay as voof-side
+   patches in `sources-patches/<repo>/` applied to the scratch checkout only
+   (currently: volar-spec's trimmed lib.rs root, the `array.rs` Vec-backed
+   shim, and the `SpecDigest` trait).
+
+Long-term direction: the spec subset should be *required* to be
+Aeneas-valid given valid dependencies — i.e. upstream CI eventually runs the
+extraction scenarios itself, and voof patches shrink to true
+dependency-substitution cases only. The current volar-spec patch set is the
+interim state.
+
+## 3b. The cleaner-representation pipeline (pivot)
+
+The volar-side generator direction: volar will emit a **cleaner
+representation** of its specs (canonical, generated; think the existing
+`volar_ts_generated.ts` / `volar_dyn_generated.rs` machinery turned on the
+crypto specs), and voof proves the generated representation **equivalent to
+the extracted spec** in Lean. Concretely:
+
+- The generator lives upstream (volar xtask), keeping the spec subset
+  Aeneas-valid by construction (no hybrid_array, no digest assoc types, no
+  nested borrows — the rules discovered during M0/M1).
+- voof extracts both the spec modules and the generated representation, and
+  the equivalence proofs live in the scenario packages' `Verification/`
+  dirs (e.g. `garble.open (garble.share g x) g = x` for both
+  representations, plus a transport lemma between them).
+- This replaces the interim voof-side volar-spec patch: once the generated
+  repr exists, scenarios switch to it and the patch shrinks away.
+
 ## 4. Extraction configuration (hax.toml scenarios)
 
 Each extraction target is a **proof scenario** in a `hax.toml` *managed by
@@ -338,8 +381,12 @@ building green. Findings that shape later milestones:
   extracted and building green in CI with checked-in output; dedup gate
   (103 portal-co crates, one instance each); `sources-bump.yml` weekly PR
   workflow. Findings in §7a.
-- **M1 — Stage-1 coverage.** All four stage-1 scenarios green;
-  `sources-bump.yml` running.
+- **M1 — Stage-1 coverage (in progress).** `volar-spec-garble` extracts
+  and builds (with the §3a patch set). Remaining: `volar-ir-passes`
+  const-fold scenario, `cirrus-core` scenario, first `Verification/`
+  proof (garble open∘share correctness). Worktree mode
+  (`VOOF_SRC_MODE=worktree`) supports pinning any branch's rev for
+  coordinated in-flight work without touching sibling mains.
 - **M2 — IR remodeling.** Hand-written Lean semantics for the volar-ir core
   IR in `proofs/`, with a refinement/adequacy statement relating it to the
   extracted types.

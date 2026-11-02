@@ -18,3 +18,7 @@ path = "generated/volar-ir-common"
 [[require]]
 name = "VolarIrCore"
 path = "generated/volar-ir-core"
+
+[[require]]
+name = "VolarSpecGarble"
+path = "generated/volar-spec-garble"

@@ -64,5 +64,20 @@ for cfg in "${configs[@]}"; do
   rsync -a --exclude '/llbc/' --exclude '/aeneas-error.log' \
     "$cratedir/proofs/$scenario/lean/" "$ROOT/generated/$scenario/"
   rm -rf "$cratedir/proofs" "$cratedir/hax.toml"
+
+  # Post-process curated Assumptions: aeneas seeds Debug::fmt axioms with a
+  # borrow back-reference triple, but the core.fmt.Debug model wants a pair.
+  python3 - "$ROOT/generated/$scenario" <<'PYEOF'
+import re, sys, glob
+pat = re.compile(
+    r"RustM\s*\(\(\s*core\.result\.Result\s+Unit\s+core\.fmt\.Error\s*\)"
+    r"\s*\u00d7\s*core\.fmt\.Formatter\s*\u00d7\s*"
+    r"\(\s*core\.fmt\.Formatter\s*\u2192\s*core\.fmt\.Formatter\s*\)\s*\)")
+rep = "RustM ((core.result.Result Unit core.fmt.Error) × core.fmt.Formatter)"
+for f in glob.glob(sys.argv[1] + "/*/Assumptions/*.lean"):
+    s = open(f).read()
+    if pat.search(s):
+        open(f, "w").write(pat.sub(rep, s))
+PYEOF
 done
 echo "extract: done"

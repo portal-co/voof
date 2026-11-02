@@ -7,6 +7,13 @@
 # .sources/ instead of cloning. They MUST be at the sources.toml rev with an
 # empty diff, or the CI freshness check will disagree with local output.
 #
+# VOOF_SRC_MODE=worktree creates git worktrees of the sibling checkouts
+# (VOOF_BASE, default: parent of this repo) at the pinned revs, instead of
+# cloning. This lets pins point at ANY branch's rev — including in-flight
+# work — without touching the state of the sibling checkouts' main
+# worktrees. Worktrees are fetched first (origin), then `git worktree add`
+# --detach'ed at the pinned rev.
+#
 # VOOF_SOURCES_DIR overrides the checkout root (default <repo>/.sources).
 # Use a path outside any ancestor .cargo/config.toml that patches these
 # repos (e.g. "$TMPDIR/voof-sources" under portal-hot) to reproduce CI
@@ -47,6 +54,27 @@ sync_one() {
     echo "sync: $name -> $override (override)"
     return
   fi
+  if [ "${VOOF_SRC_MODE:-clone}" = "worktree" ]; then
+    local base_repo="${VOOF_BASE:-$(dirname "$ROOT")}/$name"
+    git -C "$base_repo" rev-parse --git-dir >/dev/null 2>&1 || {
+      echo "sync: worktree mode needs a local checkout at $base_repo" >&2
+      exit 1; }
+    git -C "$base_repo" fetch -q origin "$rev" 2>/dev/null || \
+      git -C "$base_repo" fetch -q origin
+    if [ -e "$dest" ]; then
+      if [ "$(git -C "$dest" rev-parse HEAD 2>/dev/null)" = "$rev" ]; then
+        echo "sync: $name worktree already at $rev"
+      else
+        git -C "$base_repo" worktree remove --force "$dest" 2>/dev/null || \
+          rm -rf "$dest"
+      fi
+    fi
+    if [ ! -d "$dest" ]; then
+      git -C "$base_repo" worktree add -q --detach "$dest" "$rev"
+      echo "sync: $name worktree at $rev"
+    fi
+    git -C "$dest" restore -- .
+  else
   if [ -d "$dest/.git" ] && [ "$(git -C "$dest" rev-parse HEAD)" = "$rev" ]; then
     echo "sync: $name already at $rev"
     # Restore pristine tracked state: cargo may have rewritten Cargo.lock
@@ -60,6 +88,7 @@ sync_one() {
     git -C "$dest" checkout -q FETCH_HEAD
     echo "sync: $name cloned at $rev"
   fi
+  fi
   # Member exclusions (scratch checkout only): some members do not resolve
   # from clean git pins because other portal-co repos carry unpublished
   # pre-publish state. Tracked in sources-patches/<repo>.exclude-members.
@@ -72,6 +101,11 @@ sync_one() {
       rm -f "$dest/Cargo.toml.bak"
     done < "$excl"
     echo "sync: $name: applied $(grep -cv '^\s*#\|^\s*$' "$excl") member exclusion(s)"
+  fi
+  # Overlay patches (scratch checkout only): e.g. the volar-spec array shim.
+  local apply="$ROOT/sources-patches/$name/apply.sh"
+  if [ -f "$apply" ]; then
+    bash "$apply" "$dest"
   fi
 }
 
