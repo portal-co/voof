@@ -50,3 +50,16 @@ impl_def core.marker.PhantomData.Insts.CoreCloneClone {T : Type} :
   clone_from := core.clone.Clone.clone_from.default
     core.marker.PhantomData.Insts.CoreCloneClone
 }
+
+/-- Model of `<[T]>::split_first` (missing from the pinned CoreModels):
+head/tail over the slice's list spine. -/
+def core.slice.Slice.split_first {T : Type} (s : Slice T) :
+    RustM (core.option.Option (T × Slice T)) := do
+  match hv : s.val with
+  | [] => ok core.option.Option.None
+  | x :: rest =>
+    ok (core.option.Option.Some (x, ⟨rest, by
+      have h := s.property
+      rw [hv] at h
+      simp only [List.length_cons] at h
+      omega⟩))
