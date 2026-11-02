@@ -204,23 +204,33 @@ extraction scenarios itself, and voof patches shrink to true
 dependency-substitution cases only. The current volar-spec patch set is the
 interim state.
 
-## 3b. The cleaner-representation pipeline (pivot)
+## 3b. The cleaner-representation pipeline (LANDED for garble, M1)
 
-The volar-side generator direction: volar will emit a **cleaner
-representation** of its specs (canonical, generated; think the existing
-`volar_ts_generated.ts` / `volar_dyn_generated.rs` machinery turned on the
-crypto specs), and voof proves the generated representation **equivalent to
-the extracted spec** in Lean. Concretely:
+The volar-side generator direction: volar emits a **cleaner
+representation** of its specs, and voof proves the generated representation
+**equivalent to the extracted spec** in Lean. Status after M1:
 
-- The generator lives upstream (volar xtask), keeping the spec subset
-  Aeneas-valid by construction (no hybrid_array, no digest assoc types, no
-  nested borrows — the rules discovered during M0/M1).
-- voof extracts both the spec modules and the generated representation, and
-  the equivalence proofs live in the scenario packages' `Verification/`
-  dirs (e.g. `garble.open (garble.share g x) g = x` for both
-  representations, plus a transport lemma between them).
-- This replaces the interim voof-side volar-spec patch: once the generated
-  repr exists, scenarios switch to it and the patch shrinks away.
+- **`volar-compiler/printer_lean.rs`** (upstream): a native Lean 4 printer
+  over the spec IR — plain functions, `structure`s, `List`-based arrays,
+  explicit `hash` parameters via a `DigestSt` accumulation-state model,
+  `Id.run do` for loops/mutation. Unsupported constructs fail generation
+  loudly (no silent wrong code). v1 covers the garble subset
+  (Eval/Garble/GarbleTable/GlobalSecret + `absorb_args_bases`).
+- `cargo xtask gen-specs` emits
+  `crates/spec/volar-spec-lean/volar_lean_generated.lean`, freshness-gated
+  by volar's existing `check-specs` CI (same as the TS/dyn outputs).
+- **voof `generated/volar-spec-native/`**: the `VolarSpecNative` Lake
+  package wrapping that file (copied by `scripts/prepare-native.sh` from
+  the pinned checkout; extract-check diffs it). Pure Lean core — no
+  mathlib/Aeneas dependency, which is the point.
+- **First proof landed**: `Eval_open_Garble_share` (open∘share = id under
+  the length invariant) in `VolarSpecNative/Verification.lean`.
+- Next (M2): the bridge theorems — `VolarSpecNative` (native) ≡
+  `VolarSpecGarble` (Aeneas extraction): transport `List` ↔ the Aeneas
+  `Slice` model and `DigestSt` ↔ the opaque digest axioms, then replay the
+  native proofs on the extracted side (or vice versa). The volar-spec
+  sources-patches patch stays until the emitted repr covers the whole
+  module set.
 
 ## 4. Extraction configuration (hax.toml scenarios)
 

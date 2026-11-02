@@ -3,3 +3,4 @@ import VolarSide
 import VolarIrCommon
 import VolarIrCore
 import VolarSpecGarble
+import VolarSpecNative

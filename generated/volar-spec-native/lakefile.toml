@@ -1,0 +1,6 @@
+name = "VolarSpecNative"
+version = "0.0.1"
+defaultTargets = ["VolarSpecNative"]
+
+[[lean_lib]]
+name = "VolarSpecNative"

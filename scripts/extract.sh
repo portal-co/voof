@@ -80,4 +80,8 @@ for f in glob.glob(sys.argv[1] + "/*/Assumptions/*.lean"):
         open(f, "w").write(pat.sub(rep, s))
 PYEOF
 done
+
+# native (printer_lean) representation from the pinned volar checkout
+scripts/prepare-native.sh
+
 echo "extract: done"
