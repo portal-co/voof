@@ -113,3 +113,21 @@ theorem table_sel_index_lt4 (b1 b2 : Std.U8) :
      (if b2 = 1#u8 then (2#usize : Std.Usize) else 0#usize)).val < 4 := by
   rw [table_sel_index_val]
   by_cases h1 : b1 = 1#u8 <;> by_cases h2 : b2 = 1#u8 <;> simp [h1, h2]
+
+/-- `u8ToUInt8` is an or-homomorphism. -/
+theorem u8ToUInt8_or (x y : Std.U8) :
+    u8ToUInt8 (x ||| y) = u8ToUInt8 x ||| u8ToUInt8 y := by
+  apply UInt8.toNat_inj.mp
+  simp [u8ToUInt8_val, UScalar.val_or, UInt8.toNat_or]
+
+/-- `map u8ToUInt8` commutes with `List.set`. -/
+theorem map_set_u8 (l : List Std.U8) (i : Nat) (x : Std.U8) :
+    (l.set i x).map u8ToUInt8 = (l.map u8ToUInt8).set i (u8ToUInt8 x) := by
+  induction l generalizing i with
+  | nil => rfl
+  | cons a l ih =>
+    cases i with
+    | zero => rfl
+    | succ i =>
+      show (u8ToUInt8 a :: (l.set i x).map u8ToUInt8) = u8ToUInt8 a :: (l.map u8ToUInt8).set i (u8ToUInt8 x)
+      rw [ih]

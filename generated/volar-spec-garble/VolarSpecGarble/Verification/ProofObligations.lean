@@ -949,3 +949,32 @@ theorem array_u8_clone_eq {N : Type} (d : vole.VoleArray N Std.U8)
   simp only [Bind.bind, Aeneas.Std.bind]
   simp only [core.marker.PhantomData.Insts.CoreCloneClone.clone, pure]
 
+/-! ## index_mut machinery (shim set-at-index)
+
+Used by the `GlobalSecret.new` bridge. -/
+/-- Shim-array `index_mut` at 0: returns the head and a set-back. -/
+theorem shim_index_mut_zero {N : Type} (d : vole.VoleArray N Std.U8)
+    (a : volar_spec.array.Array Std.U8 N) (h0 : 0 < (vecL a.data).length) :
+    array.Array.Insts.CoreOpsIndexIndexMutUsizeT.index_mut d.arrayArraySizeInst a 0#usize =
+      ok ((vecL a.data)[0]'h0, fun x =>
+        ({ data := (⟨a.data.val.set 0 x, (by rw [List.length_set]; exact a.data.property)⟩ :
+            alloc.vec.Vec Std.U8), _n := a._n } : volar_spec.array.Array Std.U8 N)) := by
+  simp only [array.Array.Insts.CoreOpsIndexIndexMutUsizeT.index_mut,
+    alloc.vec.Vec.Insts.CoreOpsIndexIndexMut.index_mut,
+    rust_primitives.sequence.seq_to_slice_mut,
+    core.Slice.Insts.CoreOpsIndexIndexMut.index_mut,
+    core.slice.Slice.get_unchecked_mut,
+    core.Usize.Insts.CoreSliceIndexSliceIndexSliceT.get_unchecked_mut,
+    rust_primitives.slice.slice_index_mut,
+    Slice.index_mut_usize]
+  have h0' : (0#usize : Std.Usize).val < a.data.val.length := by
+    have hz : (0#usize : Std.Usize).val = 0 := by decide
+    have h : a.data.val.length = (vecL a.data).length := rfl
+    omega
+  simp [Slice.index_usize, Slice.getElem?_Usize_eq, bind_tc_ok]
+  have h0'' : 0 < a.data.val.length := h0
+  rw [getElem?_pos a.data.val 0 h0'']
+  simp [bind_tc_ok]
+  exact ⟨rfl, rfl⟩
+
+
