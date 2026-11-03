@@ -1335,4 +1335,115 @@ theorem Garble_action_result_base_closure_spec {N : Type} {D : Type}
     decide_true, ↓reduceIte, getElem?_pos, spec_ok, bind_tc_ok, lift]
   simp [vecL, List.getD_eq_getElem?_getD, getElem?_pos, hl']
 
+/-! ## I32 range iteration (for `gen_and_table*`)
+
+Mirrors the `usize_range_next_spec` machinery for the `0..4` I32 loop in
+`gen_and_table_pol`; the I32 `forward_checked` path goes through
+`try_from` (Usize→U32), `hcast`, and `wrapping_add` with a `≥` check.
+-/
+/-- I32 clone is the identity. -/
+theorem i32_clone (x : Std.I32) :
+    core.I32.Insts.CoreCloneClone.clone x = ok x := rfl
+
+/-- I32 partial_cmp computes via the Int compare. -/
+theorem i32_partial_cmp (a b : Std.I32) :
+    core.I32.Insts.CoreCmpPartialOrdI32.partial_cmp a b =
+      ok (core.option.Option.Some (match compare a.val b.val with
+        | .lt => core.cmp.Ordering.Less | .eq => core.cmp.Ordering.Equal
+        | .gt => core.cmp.Ordering.Greater)) := by
+  rfl
+
+/-- I32 range-next spec. -/
+theorem i32_range_next_spec (range : core.ops.range.Range Std.I32) :
+    core.iter.range.IteratorRange.next core.I32.Insts.CoreIterRangeStep range
+    ⦃ opt range' =>
+      (range.start.val < range.end.val →
+        opt = core.option.Option.Some range.start ∧
+        range'.start.val = range.start.val + 1 ∧ range'.end = range.end) ∧
+      (range.start.val ≥ range.end.val →
+        opt = core.option.Option.None ∧ range' = range) ⦄ := by
+  unfold core.iter.range.IteratorRange.next
+  unfold CoreModels.core.IteratorRange.next
+  simp only [core.I32.Insts.CoreIterRangeStep, i32_partial_cmp, bind_tc_ok]
+  cases hcmp : compare range.start.val range.end.val with
+  | lt =>
+    have hlt : range.start.val < range.end.val := Int.compare_eq_lt.mp hcmp
+    simp only [i32_clone, bind_tc_ok, ↓reduceIte]
+    conv in (core.I32.Insts.CoreIterRangeStep.forward_checked range.start 1#usize) =>
+      simp only [core.I32.Insts.CoreIterRangeStep.forward_checked,
+        core.U32.Insts.CoreConvertTryFromUsizeTryFromIntError.try_from,
+        core.U32.Insts.CoreConvertTryFromUsizeTryFromIntError,
+        bind_tc_ok, lift]
+    have hmax : (UScalar.cast .Usize core.num.U32.MAX).val = 4294967295 := by
+      have h2 : (UScalar.cast .Usize core.num.U32.MAX).val =
+          4294967295 % 2 ^ System.Platform.numBits := by
+        simp [core.num.U32.MAX, UScalar.cast_val_eq, U32.rMax]
+      rw [h2]
+      cases System.Platform.numBits_eq with
+      | inl h => rw [h]; decide
+      | inr h => rw [h]; decide
+    have hmin : (UScalar.cast .Usize core.num.U32.MIN).val = 0 := by
+      have h2 : (UScalar.cast .Usize core.num.U32.MIN).val =
+          0 % 2 ^ System.Platform.numBits := by
+        simp [core.num.U32.MIN, UScalar.cast_val_eq]
+      rw [h2]
+      cases System.Platform.numBits_eq with
+      | inl h => rw [h]; decide
+      | inr h => rw [h]; decide
+    have hgt : ¬ ((1#usize : Std.Usize) > UScalar.cast .Usize core.num.U32.MAX) := by
+      intro h
+      have h1v : (1#usize : Std.Usize).val = 1 := by decide
+      have h2 := (UScalar.lt_equiv _ _).mp h
+      omega
+    have hlt1 : ¬ ((1#usize : Std.Usize) < UScalar.cast .Usize core.num.U32.MIN) := by
+      intro h
+      have h1v : (1#usize : Std.Usize).val = 1 := by decide
+      have h2 := (UScalar.lt_equiv _ _).mp h
+      omega
+    simp only [hgt, hlt1, ↓reduceIte, bind_tc_ok]
+    -- the hcasted 1: bv.toInt = 1
+    have hcast1v : (UScalar.hcast IScalarTy.I32 (UScalar.cast .U32 1#usize)).bv.toInt = 1 := by
+      have h1 : (UScalar.cast .U32 (1#usize : Std.Usize)).val = 1 := by
+        simp [UScalar.cast_val_eq]
+      simp only [UScalar.hcast]
+      show (((UScalar.cast .U32 (1#usize : Std.Usize)).bv.zeroExtend 32)).toInt = 1
+      rw [show (BitVec.zeroExtend 32 ((UScalar.cast .U32 (1#usize : Std.Usize)).bv)) = (UScalar.cast .U32 (1#usize : Std.Usize)).bv from by
+        rw [BitVec.zeroExtend_eq_setWidth]
+        exact BitVec.setWidth_eq _]
+      have h2 : (UScalar.cast .U32 (1#usize : Std.Usize)).bv.toNat = 1 := h1
+      rw [BitVec.toInt_eq_toNat_of_lt (by rw [h2]; decide)]
+      rw [h2]
+      rfl
+    simp only [core.num.I32.wrapping_add, rust_primitives.arithmetic.wrapping_add_i32,
+      Aeneas.Std.I32.wrapping_add, IScalar.wrapping_add, bind_tc_ok]
+    have hwv : (⟨range.start.bv + (UScalar.hcast IScalarTy.I32 (UScalar.cast .U32 1#usize)).bv⟩ : Std.I32).val
+        = range.start.val + 1 := by
+      have h1i : (1#i32 : Std.I32).bv.toInt = 1 := by decide
+      have hb := range.start.hBounds
+      have heb := range.end.hBounds
+      have hnb : IScalarTy.I32.numBits = 32 := by decide
+      rw [hnb] at hb heb
+      simp only [IScalar.val, BitVec.toInt_add, hcast1v]
+      have hlink : range.start.val = range.start.bv.toInt := rfl
+      show ((range.start.bv.toInt + 1).bmod (2 ^ 32)) = range.start.bv.toInt + 1
+      rw [Int.bmod_eq_of_le (by omega) (by omega)]
+    have hge : ((⟨range.start.bv + (UScalar.hcast IScalarTy.I32 (UScalar.cast .U32 1#usize)).bv⟩ : Std.I32) ≥ range.start) := by
+      show range.start ≤ (⟨range.start.bv + (UScalar.hcast IScalarTy.I32 (UScalar.cast .U32 1#usize)).bv⟩ : Std.I32)
+      apply (IScalar.le_equiv _ _).mpr
+      rw [hwv]
+      omega
+    rw [if_pos hge]
+    simp only [bind_tc_ok]
+    simp only [spec_ok]
+    refine ⟨fun _ => ⟨rfl, ?_, rfl⟩, fun hge2 => by omega⟩
+    show (⟨range.start.bv + (UScalar.hcast IScalarTy.I32 (UScalar.cast .U32 1#usize)).bv⟩ : Std.I32).val = range.start.val + 1
+    exact hwv
+  | eq =>
+    have heq : range.start.val = range.end.val := Int.compare_eq_eq.mp hcmp
+    simp only [i32_clone, bind_tc_ok, Bool.false_eq_true, ↓reduceIte, spec_ok]
+    exact ⟨fun h => by omega, fun _ => ⟨rfl, rfl⟩⟩
+  | gt =>
+    have hgt : range.end.val < range.start.val := Int.compare_eq_gt.mp hcmp
+    simp only [i32_clone, bind_tc_ok, Bool.false_eq_true, ↓reduceIte, spec_ok]
+    exact ⟨fun h => by omega, fun _ => ⟨rfl, rfl⟩⟩
 
