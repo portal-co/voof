@@ -433,3 +433,293 @@ theorem open_share_roundtrip {N : Type} (d : vole.VoleArray N Std.U8)
   cases a0; cases t
   congr 1
   · exact (Slice.eq_iff _ _).mpr (by simpa using hval)
+
+/-- The Usize Clone instance is the identity. -/
+theorem usize_clone (x : Std.Usize) : core.Usize.Insts.CoreCloneClone.clone x = ok x := by
+  rfl
+
+/-- The Usize PartialOrd `partial_cmp` computes the comparison. -/
+theorem usize_partial_cmp (a b : Std.Usize) :
+    core.Usize.Insts.CoreCmpPartialOrdUsize.partial_cmp a b =
+      ok (core.option.Option.Some (match compare a.val b.val with
+        | .lt => core.cmp.Ordering.Less
+        | .eq => core.cmp.Ordering.Equal
+        | .gt => core.cmp.Ordering.Greater)) := by
+  rfl
+
+/-- The Usize PartialOrd `lt` computes the comparison. -/
+theorem usize_partialOrd_lt (a b : Std.Usize) :
+    core.Usize.Insts.CoreCmpPartialOrdUsize.lt a b = ok (decide (a.val < b.val)) := by
+  simp only [core.Usize.Insts.CoreCmpPartialOrdUsize, CoreModels.core.mkUPartialOrd]
+  cases h : compare a.val b.val with
+  | lt => have h2 := Nat.compare_eq_lt.mp h; simp [h2]
+  | eq => have h2 := Nat.compare_eq_eq.mp h; simp [h2]
+  | gt => have h2 := Nat.compare_eq_gt.mp h; simp [show ¬ (a.val < b.val) from by omega]
+
+/-- (curated) next on a Usize range with the CoreModels step instance. -/
+theorem usize_range_next_spec (range : core.ops.range.Range Std.Usize) :
+    core.iter.range.IteratorRange.next core.Usize.Insts.CoreIterRangeStep range
+    ⦃ opt range' =>
+      (range.start.val < range.end.val →
+        opt = core.option.Option.Some range.start ∧
+        range'.start.val = range.start.val + 1 ∧ range'.end = range.end) ∧
+      (range.start.val ≥ range.end.val →
+        opt = core.option.Option.None ∧ range' = range) ⦄ := by
+  unfold core.iter.range.IteratorRange.next
+  unfold CoreModels.core.IteratorRange.next
+  simp only [core.Usize.Insts.CoreIterRangeStep, usize_partial_cmp, bind_tc_ok]
+  cases hcmp : compare range.start.val range.end.val with
+  | lt =>
+    have hlt : range.start.val < range.end.val := Nat.compare_eq_lt.mp hcmp
+    simp only [usize_clone, bind_tc_ok, ↓reduceIte]
+    conv in (core.Usize.Insts.CoreIterRangeStep.forward_checked range.start 1#usize) =>
+      simp only [core.Usize.Insts.CoreIterRangeStep.forward_checked,
+        core.convert.TryFromUTInfallible.Blanket.try_from, core.convert.From.Blanket.from,
+        core.num.Usize.checked_add, core.num.Usize.overflowing_add,
+        rust_primitives.arithmetic.overflowing_add_usize, bind_tc_ok]
+    have hno : BitVec.uaddOverflow range.start.bv (1#usize).bv = false := by
+      have hbv : range.start.bv.toNat < 2 ^ UScalarTy.Usize.numBits := range.start.hBounds
+      have heb : range.end.val < 2 ^ UScalarTy.Usize.numBits := range.end.hBounds
+      have h1 : (1#usize : Std.Usize).bv.toNat = 1 := by
+        simp [UScalar.ofNat, UScalar.ofNatCore_val_eq]
+      simp only [BitVec.uaddOverflow, decide_eq_false_iff_not, not_le, h1]
+      show range.start.bv.toNat + 1 < 2 ^ UScalarTy.Usize.numBits
+      have hlink : range.start.val = range.start.bv.toNat := rfl
+      omega
+    simp only [UScalar.overflowing_add, bind_tc_ok, hno, Bool.false_eq_true, ↓reduceIte, spec_ok]
+    refine ⟨?_, ?_⟩
+    · intro _
+      refine ⟨rfl, ?_, rfl⟩
+      have h1 : (1#usize : Std.Usize).bv.toNat = 1 := by
+        simp [UScalar.ofNat, UScalar.ofNatCore_val_eq]
+      have hb : range.start.bv.toNat < 2 ^ UScalarTy.Usize.numBits := range.start.hBounds
+      have he : range.end.val < 2 ^ UScalarTy.Usize.numBits := range.end.hBounds
+      show ((⟨range.start.bv + (1#usize : Std.Usize).bv⟩ : Std.Usize)).val = range.start.val + 1
+      have hlink : range.start.val = range.start.bv.toNat := rfl
+      have hel : range.end.val = range.end.bv.toNat := rfl
+      simp only [UScalar.val, BitVec.toNat_add, h1]
+      rw [Nat.mod_eq_of_lt]
+      omega
+    · intro hge
+      omega
+  | eq =>
+    have heq : range.start.val = range.end.val := Nat.compare_eq_eq.mp hcmp
+    simp only [usize_clone, bind_tc_ok, Bool.false_eq_true, ↓reduceIte, spec_ok]
+    exact ⟨fun h => by omega, fun _ => ⟨rfl, rfl⟩⟩
+  | gt =>
+    have hgt : range.end.val < range.start.val := Nat.compare_eq_gt.mp hcmp
+    simp only [usize_clone, bind_tc_ok, Bool.false_eq_true, ↓reduceIte, spec_ok]
+    exact ⟨fun h => by omega, fun _ => ⟨rfl, rfl⟩⟩
+
+/-- The bit-pack accumulated by to_share's inner loop from position `s`
+(BitVec-level so it is pure). -/
+def bitPackBvFrom (l : List Std.U8) (i s : Nat) (v : BitVec 8) : BitVec 8 :=
+  if s < 8 then
+    bitPackBvFrom l i (s + 1) (v ||| ((l[i * 8 + s]! &&& 1#u8).bv <<< s))
+  else v
+termination_by 8 - s
+
+/-- (curated) scalar ops as functions, for rewriting instance calls. -/
+theorem usize_mul_eq (a b : Std.Usize) : a * b = UScalar.mul a b := rfl
+theorem usize_add_eq (a b : Std.Usize) : a + b = UScalar.add a b := rfl
+theorem usize_one_val : (1#usize : Std.Usize).val = 1 := by
+  simp [UScalar.ofNat, UScalar.ofNatCore_val_eq]
+theorem usize_eight_val : (8#usize : Std.Usize).val = 8 := by
+  simp [UScalar.ofNat, UScalar.ofNatCore_val_eq]
+
+/-- (curated) U8 shift-left by a small amount: equation form. -/
+theorem u8_shl_eq (x : Std.U8) (j : Std.Usize) (hj : j.val < 8) :
+    ∃ z : Std.U8, x <<< j = ok z ∧ z.bv = x.bv <<< j.val := by
+  have h := U8.ShiftLeft_spec x j
+  cases hshl : x <<< j with
+  | ok z =>
+    rw [hshl] at h
+    exact ⟨z, rfl, h.2.1⟩
+  | fail e =>
+    rw [hshl] at h
+    simp only [partialSpec] at h
+    cases e <;> simp_all <;> omega
+  | div => rw [hshl] at h; simp [partialSpec] at h
+
+/-- bitPackBvFrom unfolds one step. -/
+theorem bitPackBvFrom_step (l : List Std.U8) (i s : Nat) (v : BitVec 8) (hs : s < 8) :
+    bitPackBvFrom l i s v =
+      bitPackBvFrom l i (s + 1) (v ||| ((l[i * 8 + s]! &&& 1#u8).bv <<< s)) := by
+  conv_lhs => rw [bitPackBvFrom.eq_def]
+  rw [if_pos hs]
+
+/-- (curated) one step of to_share's inner loop body, as a value-level
+equation: at a valid iterator state, the body continues with the packed bit
+or'd in. -/
+theorem to_share_loop_body_step {N : Type} (d : vole.VoleArray N Std.U8)
+    (g : garble.Garble N) (i : Std.Usize)
+    (m : Std.Usize) (hg : (vecL g.base.data).length = m.val)
+    (hi : i.val * 8 + 7 < m.val)
+    (iter : core.ops.range.Range Std.Usize) (v : Std.U8)
+    (hlt : iter.start.val < 8) (hend : iter.end = 8#usize) :
+    ∃ (it2 : core.ops.range.Range Std.Usize) (z4 : Std.U8),
+      garble.Garble.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut_loop.body
+          d g i iter v =
+        ok (cont (it2, v ||| z4)) ∧
+      it2.start.val = iter.start.val + 1 ∧
+      it2.end = iter.end ∧
+      z4.bv = ((vecL g.base.data)[i.val * 8 + iter.start.val]! &&& 1#u8).bv <<< iter.start.val := by
+  -- next
+  obtain ⟨⟨o, it2⟩, hr, hpost⟩ := spec_ok_elim (usize_range_next_spec iter)
+  have halias : core.ops.range.Range.Insts.CoreIterTraitsIteratorIterator.next
+      core.Usize.Insts.CoreIterRangeStep iter =
+      core.iter.range.IteratorRange.next core.Usize.Insts.CoreIterRangeStep iter := rfl
+  obtain ⟨hpost1, -⟩ := hpost
+  obtain ⟨hopt, hitstart, hitend⟩ := hpost1 (by
+    have he2 : iter.end.val = 8 := by rw [hend]; exact usize_eight_val
+    omega)
+  -- the body
+  simp only [garble.Garble.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut_loop.body]
+  rw [halias, hr]
+  simp only [Bind.bind, Aeneas.Std.bind]
+  rw [hopt]
+  simp
+  -- i * 8
+  rw [usize_mul_eq]
+  cases hmul : UScalar.mul i 8#usize with
+  | fail e =>
+    have hmule := UScalar.mul_equiv i 8#usize
+    rw [hmul] at hmule
+    obtain ⟨-, hnin⟩ := hmule
+    exfalso
+    simp only [UScalar.inBounds, usize_eight_val] at hnin
+    have hb : m.val < 2 ^ UScalarTy.Usize.numBits := m.hBounds
+    have hmax : UScalar.max UScalarTy.Usize = 2 ^ UScalarTy.Usize.numBits - 1 := by
+      simp [UScalar.max_USize_eq, Usize.max, Usize.numBits, UScalarTy.Usize_numBits_eq]
+    omega
+  | div =>
+    have hmule := UScalar.mul_equiv i 8#usize
+    rw [hmul] at hmule
+    simp at hmule
+  | ok z1 =>
+    have hmule := UScalar.mul_equiv i 8#usize
+    rw [hmul] at hmule
+    obtain ⟨hmin, hmv, -⟩ := hmule
+    simp only [usize_eight_val] at hmv
+    simp only [Bind.bind, Aeneas.Std.bind]
+    -- z1 + iter.start
+    cases hadd : z1 + iter.start with
+    | fail e =>
+      have hadde := UScalar.add_equiv z1 iter.start
+      rw [hadd] at hadde
+      obtain ⟨-, hnin⟩ := hadde
+      exfalso
+      simp only [UScalar.inBounds, usize_eight_val] at hnin
+      have hb : m.val < 2 ^ UScalarTy.Usize.numBits := m.hBounds
+      have hmax : UScalar.max UScalarTy.Usize = 2 ^ UScalarTy.Usize.numBits - 1 := by
+        simp [UScalar.max_USize_eq, Usize.max, Usize.numBits, UScalarTy.Usize_numBits_eq]
+      omega
+    | div =>
+      have hadde := UScalar.add_equiv z1 iter.start
+      rw [hadd] at hadde
+      simp at hadde
+    | ok z2 =>
+      have hadde := UScalar.add_equiv z1 iter.start
+      rw [hadd] at hadde
+      obtain ⟨hain, hav2, -⟩ := hadde
+      simp only [Bind.bind, Aeneas.Std.bind]
+      -- index
+      have hbnd : z2.val < g.base.data.val.length := by
+        have hgl : g.base.data.val.length = m.val := hg
+        rw [hav2, hmv]
+        omega
+      have hidx : array.Array.Insts.CoreOpsIndexIndexUsizeT.index d.arrayArraySizeInst g.base z2
+          = ok (g.base.data.val[z2.val]'hbnd) := by
+        simp only [array.Array.Insts.CoreOpsIndexIndexUsizeT.index,
+          alloc.vec.Vec.Insts.CoreOpsIndexIndex.index,
+          core.Slice.Insts.CoreOpsIndexIndex.index,
+          alloc.vec.Vec.Insts.CoreOpsDerefDerefSlice.deref, alloc.vec.Vec.as_slice,
+          rust_primitives.sequence.seq_to_slice,
+          core.Usize.Insts.CoreSliceIndexSliceIndexSliceT.get,
+          rust_primitives.slice.slice_length,
+          rust_primitives.slice.slice_index, Slice.index_usize,
+          UScalar.lt_equiv, Slice.len_val, Slice.length, Slice.getElem?_Usize_eq,
+          hbnd, decide_true, ↓reduceIte, getElem?_pos, spec_ok, bind_tc_ok, lift]
+      rw [hidx]
+      simp only [Bind.bind, Aeneas.Std.bind, lift]
+      -- shl
+      obtain ⟨z4, hshl, hshlbv⟩ := u8_shl_eq
+        (g.base.data.val[z2.val]'hbnd &&& 1#u8) iter.start (by omega)
+      rw [hshl]
+      simp only [Bind.bind, Aeneas.Std.bind, lift]
+      refine ⟨it2, z4, rfl, hitstart, hitend, ?_⟩
+      rw [hshlbv]
+      congr 1
+      congr 1
+      congr 1
+      -- (↑g.base.data)[↑z2] = (vecL g.base.data)[i*8+start]!
+      have hz2 : z2.val = i.val * 8 + iter.start.val := by rw [hav2, hmv]
+      rw [← hz2]
+      simp [vecL, List.getElem!_eq_getElem?_getD, getElem?_pos, hbnd]
+
+/-- (curated) the to_share inner loop packs the bits (equation form — avoids
+the `Post`/`⦃⦄` elaboration friction). -/
+theorem to_share_loop_eq {N : Type} (d : vole.VoleArray N Std.U8)
+    (g : garble.Garble N) (i : Std.Usize)
+    (m : Std.Usize) (hg : (vecL g.base.data).length = m.val)
+    (hi : i.val * 8 + 7 < m.val) :
+    ∀ (k : Nat) (iter : core.ops.range.Range Std.Usize) (v : Std.U8),
+      8 - iter.start.val = k → iter.start.val ≤ 8 → iter.end = 8#usize →
+      loop (fun x =>
+        garble.Garble.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut_loop.body
+          d g i x.1 x.2) (iter, v) =
+        ok (g, ⟨bitPackBvFrom (vecL g.base.data) i.val iter.start.val v.bv⟩) := by
+  intro k
+  induction k with
+  | zero =>
+    intro iter v hk hle hend
+    have hs : iter.start.val = 8 := by omega
+    have hs8 : iter.start.val = 8 := hs
+    rw [loop.eq_1]
+    conv in (garble.Garble.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut_loop.body
+        d g i (iter, v).1 (iter, v).2) =>
+      simp only [garble.Garble.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut_loop.body]
+    obtain ⟨⟨o, it2⟩, hr, hpost⟩ := spec_ok_elim (usize_range_next_spec iter)
+    have halias : core.ops.range.Range.Insts.CoreIterTraitsIteratorIterator.next
+        core.Usize.Insts.CoreIterRangeStep iter =
+        core.iter.range.IteratorRange.next core.Usize.Insts.CoreIterRangeStep iter := rfl
+    rw [halias, hr]
+    simp only [Bind.bind, Aeneas.Std.bind]
+    have hge : iter.start.val ≥ iter.end.val := by
+      have he := usize_eight_val
+      have he2 : iter.end.val = 8 := by rw [hend]; exact he
+      omega
+    obtain ⟨-, hpost2⟩ := hpost
+    obtain ⟨hopt, hiter'⟩ := hpost2 hge
+    rw [hopt]
+    simp
+    rw [hs]
+    unfold bitPackBvFrom
+    simp
+  | succ k ih =>
+    intro iter v hk hle hend
+    have hlt : iter.start.val < 8 := by
+      have he2 : iter.end.val = 8 := by rw [hend]; exact usize_eight_val
+      omega
+    -- one body step
+    obtain ⟨it2, z4, hstep⟩ := to_share_loop_body_step d g i m hg hi iter v hlt hend
+    rw [loop.eq_1]
+    rw [show (iter, v).1 = iter from rfl, show (iter, v).2 = v from rfl]
+    rw [hstep.1]
+    simp only [Bind.bind, Aeneas.Std.bind]
+    -- IH on the successor state
+    have hnext : loop (fun x =>
+        garble.Garble.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut_loop.body
+          d g i x.1 x.2) (it2, v ||| z4) =
+        ok (g, ⟨bitPackBvFrom (vecL g.base.data) i.val it2.start.val (v ||| z4).bv⟩) :=
+      ih it2 (v ||| z4) (by omega) (by omega) (by rw [hstep.2.2.1]; exact hend)
+    rw [hnext]
+    congr 1
+    congr 1
+    rw [hstep.2.1]
+    conv_rhs => rw [bitPackBvFrom_step _ _ _ _ hlt]
+    rw [UScalar.bv_or]
+    exact congrArg (fun x : BitVec 8 => (⟨x⟩ : Std.U8))
+      (congrArg (bitPackBvFrom (vecL g.base.data) i.val (iter.start.val + 1))
+        (congrArg (fun x => v.bv ||| x) hstep.2.2.2))
+
