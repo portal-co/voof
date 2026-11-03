@@ -149,3 +149,88 @@ theorem GlobalSecret_one_wire_eval_commutes {N : Type} (d : vole.VoleArray N Std
   simp only [GlobalSecret.one_wire_eval, GlobalSecret.encode, GarbleToNative, GlobalSecretToNative]
   rw [hbase]
 
+/-- native absorb accumulates the parts. -/
+theorem native_absorb_parts {n : Nat} (dn : DigestSt) (xs : List (Garble n)) :
+    _root_.absorb_args_bases dn xs = ⟨dn.parts ++ xs.map (fun g => g.base)⟩ := by
+  induction xs generalizing dn with
+  | nil =>
+    rw [show _root_.absorb_args_bases dn [] = dn from rfl]
+    cases dn
+    simp [List.append_nil]
+  | cons x rest ih =>
+    rw [List.map_cons, _root_.absorb_args_bases.eq_1]
+    simp only [DigestSt.update]
+    rw [ih]
+    simp [List.map_cons, List.append_assoc]
+
+/-- (curated) `Garble.action_result_base` commutes with the transport. -/
+theorem Garble_action_result_base_commutes {N : Type} {D : Type}
+    (d : vole.VoleArray N Std.U8) (dict : volar_spec.SpecDigest D N)
+    (m : Std.Usize)
+    (hsize : d.arrayArraySizeInst.typenummarker_traitsUnsignedInst.USIZE = ok m)
+    (self : volar_spec.garble.Garble N)
+    (hselfl : (vecL self.base.data).length = m.val)
+    (args : List (volar_spec.garble.Garble N)) (hargs : args.length ≤ Usize.max)
+    (bit : Std.Usize)
+    (hash : List UInt8 → List UInt8)
+    (d0 : D) (hnew : dict.new = ok d0)
+    (d1 : D) (hup1 : dict.update (core.Shared0T.Insts.CoreConvertAsRef
+      (core.Array.Insts.CoreConvertAsRefSlice Std.U8 1#usize)) d0
+      (Aeneas.Std.Array.make 1#usize [172#u8]) = ok d1)
+    (d2 : D) (hup2 : dict.update (core.Shared0T.Insts.CoreConvertAsRef
+      (array.Array.Insts.CoreConvertAsRefSlice Std.U8 d.arrayArraySizeInst)) d1 self.base = ok d2)
+    (d3 : D) (habs : volar_spec.garble.absorb_args_bases d dict d2 ⟨args, hargs⟩ = ok d3)
+    (c : Std.U64) (hcast : c = UScalar.cast .U64 bit)
+    (bb : Aeneas.Std.Array Std.U8 8#usize)
+    (hbb : core.num.U64.to_le_bytes c = ok bb)
+    (hbbnative : (Aeneas.Std.Array.v bb).map u8ToUInt8 = u64LeBytes (UInt64.ofNat c.val))
+    (d4 : D) (hup4 : dict.update (core.Shared0T.Insts.CoreConvertAsRef
+      (core.Array.Insts.CoreConvertAsRefSlice Std.U8 8#usize)) d3 bb = ok d4)
+    (r : volar_spec.array.Array Std.U8 N) (hfin : dict.finalize d4 = ok r)
+    (hr : arrToNative r = hash (172 :: ((vecL self.base.data).map u8ToUInt8 ++
+        ((args.map (fun g => (vecL g.base.data).map u8ToUInt8)).flatten ++ u64LeBytes (UInt64.ofNat bit.val)))))
+    (hrlen : (vecL r.data).length = m.val) :
+    (do let res ← volar_spec.garble.Garble.action_result_base d dict self ⟨args, hargs⟩ bit
+        ok (GarbleToNative m.val res)) =
+    ok (Garble.action_result_base (GarbleToNative m.val self) (args.map (GarbleToNative m.val)) bit.val hash) := by
+  simp only [volar_spec.garble.Garble.action_result_base]
+  rw [hnew]; simp only [Bind.bind, Aeneas.Std.bind]
+  rw [hup1]; simp only [Bind.bind, Aeneas.Std.bind]
+  rw [hup2]; simp only [Bind.bind, Aeneas.Std.bind]
+  rw [habs]; simp only [Bind.bind, Aeneas.Std.bind]
+  simp only [Aeneas.Std.lift, bind_tc_ok]
+  rw [← hcast]
+  rw [hbb]; simp only [Bind.bind, Aeneas.Std.bind]
+  rw [hup4]; simp only [Bind.bind, Aeneas.Std.bind]
+  rw [hfin]; simp only [Bind.bind, Aeneas.Std.bind]
+  obtain ⟨v, hv, hpost⟩ := spec_ok_elim (from_fn_spec d.arrayArraySizeInst
+    (volar_spec.garble.Garble.action_result_base.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8 d dict) m hsize r
+    (fun j => (vecL r.data).getD j default)
+    (by intro i hi; exact Garble_action_result_base_closure_spec d dict r i (by rw [hrlen]; exact hi)))
+  rw [hv]
+  simp only [Bind.bind, Aeneas.Std.bind]
+  congr 1
+  simp only [Garble.action_result_base, GarbleToNative, arrToNative, DigestSt.new, DigestSt.update, DigestSt.finalize]
+  rw [native_absorb_parts]
+  simp only [List.map_map]
+  have hmap : (fun g : Garble (m.val) => g.base) ∘ GarbleToNative m.val =
+      fun g : volar_spec.garble.Garble N => (vecL g.base.data).map u8ToUInt8 := by
+    funext g
+    simp [Function.comp_apply, GarbleToNative, arrToNative]
+  rw [hmap]
+  simp [Id.run, pure]
+  congr 1
+  rw [hpost, List.map_ofFn]
+  rw [← hr]
+  simp only [arrToNative]
+  apply List.ext_getElem
+  · simp
+  · intro i h1 h2
+    rw [List.getElem_ofFn, List.getElem_ofFn]
+    simp only [Function.comp_apply]
+    have hi : i < m.val := by simpa using h1
+    have hb : i < (vecL r.data).length := by rw [hrlen]; exact hi
+    rw [List.getD_eq_getElem?_getD]
+    rw [List.getElem?_map, List.getElem?_eq_getElem hb]
+    simp
+

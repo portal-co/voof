@@ -234,3 +234,69 @@ theorem bitPack_transport (ln : List UInt8) (l : List Std.U8) (hl : ln = l.map u
     exact ih (s + 1) ⟨v.bv ||| ((l[i * 8 + s]! &&& 1#u8).bv <<< s)⟩ hk'
 
 
+/-! ## `u64.to_le_bytes` correspondence (for `action_result_base`) -/
+/-- per-byte correspondence of the u64 little-endian expansions. -/
+theorem u64LeByte_native (c : Std.U64) (j : Nat) (hj : j < 8) :
+    u8ToUInt8 (u64LeByte c j) = (((UInt64.ofNat c.val) >>> (8 * j.toUInt64)) &&& 0xff).toUInt8 := by
+  rw [u8ToUInt8_mk]
+  apply UInt8.toNat_inj.mp
+  show (BitVec.ofNat 8 (c.val >>> (8 * j))).toNat =
+    ((((UInt64.ofNat c.val) >>> (8 * j.toUInt64)) &&& 0xff).toUInt8).toNat
+  rw [BitVec.toNat_ofNat]
+  rw [show (((UInt64.ofNat c.val) >>> (8 * j.toUInt64)) &&& 0xff).toUInt8
+      = UInt8.ofBitVec ((((UInt64.ofNat c.val) >>> (8 * j.toUInt64)) &&& 0xff).toBitVec.setWidth 8) from
+      (UInt8.ofBitVec_uInt64ToBitVec _).symm]
+  rw [UInt8.toNat_ofBitVec, BitVec.toNat_setWidth]
+  have hcv : (UInt64.ofNat c.val).toBitVec.toNat = c.val := by
+    show (BitVec.ofNat 64 c.val).toNat = c.val
+    rw [BitVec.toNat_ofNat]
+    apply Nat.mod_eq_of_lt
+    have := c.hBounds
+    simp [UScalarTy.U64_numBits_eq] at this
+    exact this
+  have hbv : (((UInt64.ofNat ↑c) >>> (8 * j.toUInt64)) &&& 255).toBitVec.toNat
+      = (c.val >>> (8 * j)) % 256 := by
+    show (((UInt64.ofNat ↑c).toBitVec >>> (((8 * j.toUInt64) % 64)).toBitVec) &&& 255#64).toNat = _
+    rw [BitVec.toNat_and]
+    rw [BitVec.toNat_ofNat, Nat.mod_eq_of_lt (by omega : 255 < 2 ^ 64)]
+    rw [show (255 : Nat) = 2 ^ 8 - 1 from rfl]
+    rw [Nat.and_two_pow_sub_one_eq_mod]
+    show ((UInt64.ofNat ↑c).toBitVec >>> (((8 * j.toUInt64) % 64)).toBitVec.toNat).toNat % 2 ^ 8
+        = ↑c >>> (8 * j) % 256
+    rw [BitVec.toNat_ushiftRight]
+    rw [hcv]
+    apply congrArg (fun k => (c.val >>> k) % 256)
+    show (((8 * j.toUInt64) % 64)).toBitVec.toNat = 8 * j
+    show (((8 * j.toUInt64).toBitVec) % (BitVec.ofNat 64 64)).toNat = 8 * j
+    rw [BitVec.toNat_umod]
+    rw [BitVec.toNat_ofNat]
+    show ((8 * j.toUInt64).toBitVec.toNat) % 64 = 8 * j
+    show (BitVec.ofNat 64 8 * BitVec.ofNat 64 j).toNat % 64 = 8 * j
+    rw [BitVec.toNat_mul, BitVec.toNat_ofNat, BitVec.toNat_ofNat]
+    rw [Nat.mod_eq_of_lt (by omega : j < 2 ^ 64)]
+    rw [Nat.mod_eq_of_lt (by omega : 8 * j < 2 ^ 64)]
+    exact Nat.mod_eq_of_lt (by omega)
+  rw [hbv]
+  rw [show (2 ^ 8 : Nat) = 256 from rfl]
+  rw [Nat.mod_mod]
+/-- `core.num.U64.to_le_bytes` returns the byte spine. -/
+theorem u64_to_le_bytes_spine (c : Std.U64) :
+    ∃ a, core.num.U64.to_le_bytes c = ok a ∧
+      (Aeneas.Std.Array.v a).map u8ToUInt8 = u64LeBytes (UInt64.ofNat c.val) := by
+  unfold core.num.U64.to_le_bytes
+  simp only [rust_primitives.slice.array_from_fn]
+  rw [array_from_fn_go_u64 c ((8#usize : Std.Usize)).val (by
+      have h : ((8#usize : Std.Usize)).val = 8 := by decide
+      omega)]
+  simp only [Bind.bind, Aeneas.Std.bind]
+  rw [dif_pos (by rw [List.length_map, List.length_range] :
+      ((List.range ((8#usize : Std.Usize)).val).map (u64LeByte c)).length = (8#usize : Std.Usize).val)]
+  refine ⟨_, rfl, ?_⟩
+  simp only [Aeneas.Std.Array.v]
+  rw [show ((8#usize : Std.Usize)).val = 8 from by decide]
+  rw [List.map_map]
+  unfold u64LeBytes
+  apply List.map_congr_left
+  intro j hj
+  exact u64LeByte_native c j (List.mem_range.mp hj)
+

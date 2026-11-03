@@ -1206,3 +1206,133 @@ theorem eval_to_share_spec {N O : Type} (d : vole.VoleArray N Std.U8)
   intro a ha
   rw [spec_ok]
   exact ha
+
+
+/-! ## u64 `to_le_bytes` model spine (for `action_result_base`) -/
+/-- the model byte of a u64 little-endian expansion. -/
+def u64LeByte (c : Std.U64) (j : Nat) : Std.U8 :=
+  ⟨BitVec.ofNat 8 (c.val >>> (8 * j))⟩
+
+/-- `to_le_bytes`' closure produces the model byte. -/
+theorem u64_le_bytes_byte (c : Std.U64) (i : Std.Usize) (hi : i.val < 8) :
+    core.num.U64.to_le_bytes.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut c i =
+      ok (u64LeByte c i.val, c) := by
+  simp only [core.num.U64.to_le_bytes.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut,
+    lift]
+  simp only [bind_tc_ok]
+  have hcast : (UScalar.cast .U32 i).val = i.val := by
+    simp [UScalar.cast_val_eq]
+    omega
+  have hmul : (8#u32 : Std.U32) * (UScalar.cast .U32 i) =
+      UScalar.mul 8#u32 (UScalar.cast .U32 i) := rfl
+  rw [hmul]
+  have hme := UScalar.mul_equiv (8#u32 : Std.U32) (UScalar.cast .U32 i)
+  cases hmul2 : UScalar.mul (8#u32 : Std.U32) (UScalar.cast .U32 i) with
+  | ok z =>
+    rw [hmul2] at hme
+    obtain ⟨hbound, hval, hbv⟩ := hme
+    simp only [Bind.bind, Aeneas.Std.bind]
+    obtain ⟨z2, hr2, hpost2⟩ := spec_ok_elim (UScalar.rem_spec z (by
+      show (64#u32 : Std.U32).val ≠ 0
+      simp [UScalar.ofNatCore_val_eq]))
+    rw [hr2]
+    simp only [Bind.bind, Aeneas.Std.bind]
+    have hsr := UScalar.ShiftRight_spec c z2
+    cases hshr : c >>> z2 with
+    | ok z3 =>
+      rw [hshr] at hsr
+      simp only [partialSpec] at hsr
+      obtain ⟨hv3, hbv3, hlt3⟩ := hsr
+      simp only [Bind.bind, Aeneas.Std.bind]
+      congr 1
+      congr 1
+      apply UScalar.eq_of_val_eq
+      have hv1 : z.val = 8 * i.val := by
+        rw [hval, hcast]
+        have h8v : (8#u32 : Std.U32).val = 8 := by decide
+        rw [h8v]
+      have hv2 : z2.val = z.val % 64 := hpost2
+      have hb : (u64LeByte c i.val).val = (c.val >>> (8 * i.val)) % 256 := by
+        show (BitVec.ofNat 8 (c.val >>> (8 * i.val))).toNat = (c.val >>> (8 * i.val)) % 256
+        exact BitVec.toNat_ofNat _ _
+      rw [hb]
+      simp only [UScalar.cast_val_eq]
+      rw [hv3]
+      rw [hv2, hv1]
+      have hmod : (8 * i.val) % 64 = 8 * i.val := Nat.mod_eq_of_lt (by omega)
+      rw [hmod]
+      have h8 : 2 ^ UScalarTy.U8.numBits = 256 := by
+        simp [UScalarTy.U8_numBits_eq]
+      rw [h8]
+    | fail e =>
+      rw [hshr] at hsr
+      simp only [partialSpec] at hsr
+      cases e <;> simp_all <;> omega
+    | div =>
+      rw [hshr] at hsr
+      simp [partialSpec] at hsr
+  | fail e =>
+    rw [hmul2] at hme
+    simp only [UScalar.mul_equiv] at hme
+    obtain ⟨-, hgt⟩ := hme
+    rw [hcast] at hgt
+    simp only [UScalar.ofNatCore_val_eq] at hgt
+    have hle : (8#u32 : Std.U32).val * i.val ≤ UScalar.max UScalarTy.U32 := by scalar_tac
+    simp only [UScalar.ofNatCore_val_eq] at hle
+    omega
+  | div =>
+    rw [hmul2] at hme
+    simp only [UScalar.mul_equiv] at hme
+
+/-- the `array_from_fn_go` spine for `u64.to_le_bytes`. -/
+theorem array_from_fn_go_u64 (c : Std.U64) :
+    ∀ (k : Nat), k ≤ 8 →
+    rust_primitives.slice.array_from_fn_go
+      core.num.U64.to_le_bytes.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8 c k =
+      ok ((List.range k).map (u64LeByte c), c) := by
+  intro k
+  induction k with
+  | zero => intro _; rfl
+  | succ k ih =>
+    intro hk
+    have hk' : k < 8 := by omega
+    have hidx : (⟨BitVec.ofNat _ k⟩ : Std.Usize).val = k := by
+      show (BitVec.ofNat _ k).toNat = k
+      rw [BitVec.toNat_ofNat]
+      apply Nat.mod_eq_of_lt
+      rw [UScalarTy.Usize_numBits_eq]
+      cases System.Platform.numBits_eq with
+      | inl h => rw [h]; omega
+      | inr h => rw [h]; omega
+    simp only [rust_primitives.slice.array_from_fn_go]
+    rw [ih (by omega)]
+    simp only [Bind.bind, Aeneas.Std.bind]
+    rw [u64_le_bytes_byte c ⟨BitVec.ofNat _ k⟩ (by rw [hidx]; exact hk')]
+    simp only [Bind.bind, Aeneas.Std.bind]
+    rw [hidx]
+    rw [List.range_succ, List.map_append, List.map_singleton]
+
+/-- closure spec for the `action_result_base` from_fn. -/
+theorem Garble_action_result_base_closure_spec {N : Type} {D : Type}
+    (d : vole.VoleArray N Std.U8) (dict : volar_spec.SpecDigest D N)
+    (h : volar_spec.array.Array Std.U8 N) (i : Std.Usize)
+    (hl : i.val < (vecL h.data).length) :
+    volar_spec.garble.Garble.action_result_base.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut
+      d dict h i =
+      ok ((vecL h.data).getD i.val default, h) := by
+  have hl' : i.val < h.data.val.length := hl
+  simp only [volar_spec.garble.Garble.action_result_base.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut,
+    array.Array.Insts.CoreOpsIndexIndexUsizeT.index,
+    alloc.vec.Vec.Insts.CoreOpsIndexIndex.index,
+    core.Slice.Insts.CoreOpsIndexIndex.index,
+    alloc.vec.Vec.Insts.CoreOpsDerefDerefSlice.deref, alloc.vec.Vec.as_slice,
+    rust_primitives.sequence.seq_to_slice,
+    core.Usize.Insts.CoreSliceIndexSliceIndexSliceT.get,
+    rust_primitives.slice.slice_length,
+    rust_primitives.slice.slice_index, Slice.index_usize,
+    UScalar.lt_equiv, Slice.len_val, Slice.length, Slice.getElem?_Usize_eq,
+    eq_true hl',
+    decide_true, ↓reduceIte, getElem?_pos, spec_ok, bind_tc_ok, lift]
+  simp [vecL, List.getD_eq_getElem?_getD, getElem?_pos, hl']
+
+
