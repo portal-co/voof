@@ -977,4 +977,232 @@ theorem shim_index_mut_zero {N : Type} (d : vole.VoleArray N Std.U8)
   simp [bind_tc_ok]
   exact ⟨rfl, rfl⟩
 
+/-! ## Eval.to_share bit-pack (the Garble.to_share chain, Eval side) -/
 
+/-- (curated) one step of to_share's inner loop body, as a value-level
+equation: at a valid iterator state, the body continues with the packed bit
+or'd in. -/
+theorem eval_to_share_loop_body_step {N : Type} (d : vole.VoleArray N Std.U8)
+    (e : garble.Eval N) (i : Std.Usize)
+    (m : Std.Usize) (hg : (vecL e.target.data).length = m.val)
+    (hi : i.val * 8 + 7 < m.val)
+    (iter : core.ops.range.Range Std.Usize) (v : Std.U8)
+    (hlt : iter.start.val < 8) (hend : iter.end = 8#usize) :
+    ∃ (it2 : core.ops.range.Range Std.Usize) (z4 : Std.U8),
+      garble.Eval.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut_loop.body
+          d e i iter v =
+        ok (cont (it2, v ||| z4)) ∧
+      it2.start.val = iter.start.val + 1 ∧
+      it2.end = iter.end ∧
+      z4.bv = ((vecL e.target.data)[i.val * 8 + iter.start.val]! &&& 1#u8).bv <<< iter.start.val := by
+  -- next
+  obtain ⟨⟨o, it2⟩, hr, hpost⟩ := spec_ok_elim (usize_range_next_spec iter)
+  have halias : core.ops.range.Range.Insts.CoreIterTraitsIteratorIterator.next
+      core.Usize.Insts.CoreIterRangeStep iter =
+      core.iter.range.IteratorRange.next core.Usize.Insts.CoreIterRangeStep iter := rfl
+  obtain ⟨hpost1, -⟩ := hpost
+  obtain ⟨hopt, hitstart, hitend⟩ := hpost1 (by
+    have he2 : iter.end.val = 8 := by rw [hend]; exact usize_eight_val
+    omega)
+  -- the body
+  simp only [garble.Eval.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut_loop.body]
+  rw [halias, hr]
+  simp only [Bind.bind, Aeneas.Std.bind]
+  rw [hopt]
+  simp
+  -- i * 8
+  rw [usize_mul_eq]
+  cases hmul : UScalar.mul i 8#usize with
+  | fail e =>
+    have hmule := UScalar.mul_equiv i 8#usize
+    rw [hmul] at hmule
+    obtain ⟨-, hnin⟩ := hmule
+    exfalso
+    simp only [UScalar.inBounds, usize_eight_val] at hnin
+    have hb : m.val < 2 ^ UScalarTy.Usize.numBits := m.hBounds
+    have hmax : UScalar.max UScalarTy.Usize = 2 ^ UScalarTy.Usize.numBits - 1 := by
+      simp [UScalar.max_USize_eq, Usize.max, Usize.numBits, UScalarTy.Usize_numBits_eq]
+    omega
+  | div =>
+    have hmule := UScalar.mul_equiv i 8#usize
+    rw [hmul] at hmule
+    simp at hmule
+  | ok z1 =>
+    have hmule := UScalar.mul_equiv i 8#usize
+    rw [hmul] at hmule
+    obtain ⟨hmin, hmv, -⟩ := hmule
+    simp only [usize_eight_val] at hmv
+    simp only [Bind.bind, Aeneas.Std.bind]
+    -- z1 + iter.start
+    cases hadd : z1 + iter.start with
+    | fail e =>
+      have hadde := UScalar.add_equiv z1 iter.start
+      rw [hadd] at hadde
+      obtain ⟨-, hnin⟩ := hadde
+      exfalso
+      simp only [UScalar.inBounds, usize_eight_val] at hnin
+      have hb : m.val < 2 ^ UScalarTy.Usize.numBits := m.hBounds
+      have hmax : UScalar.max UScalarTy.Usize = 2 ^ UScalarTy.Usize.numBits - 1 := by
+        simp [UScalar.max_USize_eq, Usize.max, Usize.numBits, UScalarTy.Usize_numBits_eq]
+      omega
+    | div =>
+      have hadde := UScalar.add_equiv z1 iter.start
+      rw [hadd] at hadde
+      simp at hadde
+    | ok z2 =>
+      have hadde := UScalar.add_equiv z1 iter.start
+      rw [hadd] at hadde
+      obtain ⟨hain, hav2, -⟩ := hadde
+      simp only [Bind.bind, Aeneas.Std.bind]
+      -- index
+      have hbnd : z2.val < e.target.data.val.length := by
+        have hgl : e.target.data.val.length = m.val := hg
+        rw [hav2, hmv]
+        omega
+      have hidx : array.Array.Insts.CoreOpsIndexIndexUsizeT.index d.arrayArraySizeInst e.target z2
+          = ok (e.target.data.val[z2.val]'hbnd) := by
+        simp only [array.Array.Insts.CoreOpsIndexIndexUsizeT.index,
+          alloc.vec.Vec.Insts.CoreOpsIndexIndex.index,
+          core.Slice.Insts.CoreOpsIndexIndex.index,
+          alloc.vec.Vec.Insts.CoreOpsDerefDerefSlice.deref, alloc.vec.Vec.as_slice,
+          rust_primitives.sequence.seq_to_slice,
+          core.Usize.Insts.CoreSliceIndexSliceIndexSliceT.get,
+          rust_primitives.slice.slice_length,
+          rust_primitives.slice.slice_index, Slice.index_usize,
+          UScalar.lt_equiv, Slice.len_val, Slice.length, Slice.getElem?_Usize_eq,
+          hbnd, decide_true, ↓reduceIte, getElem?_pos, spec_ok, bind_tc_ok, lift]
+      rw [hidx]
+      simp only [Bind.bind, Aeneas.Std.bind, lift]
+      -- shl
+      obtain ⟨z4, hshl, hshlbv⟩ := u8_shl_eq
+        (e.target.data.val[z2.val]'hbnd &&& 1#u8) iter.start (by omega)
+      rw [hshl]
+      simp only [Bind.bind, Aeneas.Std.bind, lift]
+      refine ⟨it2, z4, rfl, hitstart, hitend, ?_⟩
+      rw [hshlbv]
+      congr 1
+      congr 1
+      congr 1
+      -- (↑e.target.data)[↑z2] = (vecL e.target.data)[i*8+start]!
+      have hz2 : z2.val = i.val * 8 + iter.start.val := by rw [hav2, hmv]
+      rw [← hz2]
+      simp [vecL, List.getElem!_eq_getElem?_getD, getElem?_pos, hbnd]
+
+/-- (curated) the to_share inner loop packs the bits (equation form — avoids
+the `Post`/`⦃⦄` elaboration friction). -/
+theorem eval_to_share_loop_eq {N : Type} (d : vole.VoleArray N Std.U8)
+    (e : garble.Eval N) (i : Std.Usize)
+    (m : Std.Usize) (hg : (vecL e.target.data).length = m.val)
+    (hi : i.val * 8 + 7 < m.val) :
+    ∀ (k : Nat) (iter : core.ops.range.Range Std.Usize) (v : Std.U8),
+      8 - iter.start.val = k → iter.start.val ≤ 8 → iter.end = 8#usize →
+      loop (fun x =>
+        garble.Eval.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut_loop.body
+          d e i x.1 x.2) (iter, v) =
+        ok (e, ⟨bitPackBvFrom (vecL e.target.data) i.val iter.start.val v.bv⟩) := by
+  intro k
+  induction k with
+  | zero =>
+    intro iter v hk hle hend
+    have hs : iter.start.val = 8 := by omega
+    have hs8 : iter.start.val = 8 := hs
+    rw [loop.eq_1]
+    conv in (garble.Eval.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut_loop.body
+        d e i (iter, v).1 (iter, v).2) =>
+      simp only [garble.Eval.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut_loop.body]
+    obtain ⟨⟨o, it2⟩, hr, hpost⟩ := spec_ok_elim (usize_range_next_spec iter)
+    have halias : core.ops.range.Range.Insts.CoreIterTraitsIteratorIterator.next
+        core.Usize.Insts.CoreIterRangeStep iter =
+        core.iter.range.IteratorRange.next core.Usize.Insts.CoreIterRangeStep iter := rfl
+    rw [halias, hr]
+    simp only [Bind.bind, Aeneas.Std.bind]
+    have hge : iter.start.val ≥ iter.end.val := by
+      have he := usize_eight_val
+      have he2 : iter.end.val = 8 := by rw [hend]; exact he
+      omega
+    obtain ⟨-, hpost2⟩ := hpost
+    obtain ⟨hopt, hiter'⟩ := hpost2 hge
+    rw [hopt]
+    simp
+    rw [hs]
+    unfold bitPackBvFrom
+    simp
+  | succ k ih =>
+    intro iter v hk hle hend
+    have hlt : iter.start.val < 8 := by
+      have he2 : iter.end.val = 8 := by rw [hend]; exact usize_eight_val
+      omega
+    -- one body step
+    obtain ⟨it2, z4, hstep⟩ := eval_to_share_loop_body_step d e i m hg hi iter v hlt hend
+    rw [loop.eq_1]
+    rw [show (iter, v).1 = iter from rfl, show (iter, v).2 = v from rfl]
+    rw [hstep.1]
+    simp only [Bind.bind, Aeneas.Std.bind]
+    -- IH on the successor state
+    have hnext : loop (fun x =>
+        garble.Eval.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut_loop.body
+          d e i x.1 x.2) (it2, v ||| z4) =
+        ok (e, ⟨bitPackBvFrom (vecL e.target.data) i.val it2.start.val (v ||| z4).bv⟩) :=
+      ih it2 (v ||| z4) (by omega) (by omega) (by rw [hstep.2.2.1]; exact hend)
+    rw [hnext]
+    congr 1
+    congr 1
+    rw [hstep.2.1]
+    conv_rhs => rw [bitPackBvFrom_step _ _ _ _ hlt]
+    rw [UScalar.bv_or]
+    exact congrArg (fun x : BitVec 8 => (⟨x⟩ : Std.U8))
+      (congrArg (bitPackBvFrom (vecL e.target.data) i.val (iter.start.val + 1))
+        (congrArg (fun x => v.bv ||| x) hstep.2.2.2))
+
+/-- (curated) the to_share closure is the bit-pack. -/
+theorem Eval_to_share_closure_spec {N O : Type} (d : vole.VoleArray N Std.U8)
+    (dO : vole.VoleArray O Std.U8)
+    (divDict : core.ops.arith.Div N
+      (typenum.uint.UInt (typenum.uint.UInt (typenum.uint.UInt (typenum.uint.UInt
+        typenum.uint.UTerm typenum.bit.B1) typenum.bit.B0) typenum.bit.B0)
+      typenum.bit.B0) O)
+    (m : Std.Usize)
+    (e : garble.Eval N) (i : Std.Usize)
+    (hg : (vecL e.target.data).length = m.val)
+    (hi : i.val * 8 + 7 < m.val) :
+    garble.Eval.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut
+        d dO divDict e i =
+      ok (⟨bitPackBvFrom (vecL e.target.data) i.val 0 (0#u8).bv⟩, e) := by
+  simp only [garble.Eval.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut]
+  rw [show garble.Eval.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut_loop
+        d { start := 0#usize, «end» := 8#usize } e i 0#u8 =
+      loop (fun x =>
+        garble.Eval.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut_loop.body
+          d e i x.1 x.2) ({ start := 0#usize, «end» := 8#usize }, 0#u8) from rfl]
+  rw [eval_to_share_loop_eq d e i m hg hi 8 { start := 0#usize, «end» := 8#usize } 0#u8
+    (by simp [usize_eight_val]) (by simp [usize_eight_val]) rfl]
+  simp only [Bind.bind, Aeneas.Std.bind]
+  rfl
+
+/-- (curated) the extracted `Garble.to_share` bit-packs each output byte. -/
+theorem eval_to_share_spec {N O : Type} (d : vole.VoleArray N Std.U8)
+    (dO : vole.VoleArray O Std.U8)
+    (divDict : core.ops.arith.Div N
+      (typenum.uint.UInt (typenum.uint.UInt (typenum.uint.UInt (typenum.uint.UInt
+        typenum.uint.UTerm typenum.bit.B1) typenum.bit.B0) typenum.bit.B0)
+      typenum.bit.B0) O)
+    (m mo : Std.Usize)
+    (hsize : d.arrayArraySizeInst.typenummarker_traitsUnsignedInst.USIZE = ok m)
+    (hsizeO : dO.arrayArraySizeInst.typenummarker_traitsUnsignedInst.USIZE = ok mo)
+    (hdiv : mo.val * 8 = m.val)
+    (e : garble.Eval N)
+    (hgl : (vecL e.target.data).length = m.val) :
+    garble.Eval.to_share d dO divDict e
+      ⦃ r => vecL r.target.data = List.ofFn (fun j : Fin mo.val =>
+          ⟨bitPackBvFrom (vecL e.target.data) j.val 0 (0#u8).bv⟩) ⦄ := by
+  simp only [garble.Eval.to_share]
+  apply spec_bind (from_fn_spec dO.arrayArraySizeInst
+    (garble.Eval.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8 d dO divDict)
+    mo hsizeO e
+    (fun j => ⟨bitPackBvFrom (vecL e.target.data) j 0 (0#u8).bv⟩)
+    (by
+      intro i hi
+      exact Eval_to_share_closure_spec d dO divDict m e i hgl (by omega)))
+  intro a ha
+  rw [spec_ok]
+  exact ha

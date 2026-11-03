@@ -131,3 +131,106 @@ theorem map_set_u8 (l : List Std.U8) (i : Nat) (x : Std.U8) :
     | succ i =>
       show (u8ToUInt8 a :: (l.set i x).map u8ToUInt8) = u8ToUInt8 a :: (l.map u8ToUInt8).set i (u8ToUInt8 x)
       rw [ih]
+
+/-! ## Native-side bit-pack machinery (`to_share`)
+
+The native `to_share` emits an `Id.run` for-in loop over `[0:8]`, which is
+definitionally a `List.foldl` over `List.range' 0 8`; `bitPack_transport`
+transports the extracted `bitPackBvFrom` (curated in ProofObligations) to it.
+-/
+/-- the native inner loop is the foldl form. -/
+theorem to_share_inner_native (l : List UInt8) (i : Nat) :
+    (Id.run do
+      let mut v := (0 : UInt8)
+      for h : j in [(0):(8)] do
+        let bit := (l[((i * (8)) + j)]! &&& ((1) : UInt8))
+        v := v ||| (bit <<< (j).toUInt8)
+      return v) =
+    List.foldl (fun b a => b ||| (((l[i * 8 + a]?.getD default) &&& 1) <<< UInt8.ofNat a))
+      0 (List.range' 0 8) := by
+  simp
+
+/-- u8ToUInt8 of a BitVec-constructed U8. -/
+theorem u8ToUInt8_mk (bv : BitVec 8) :
+    u8ToUInt8 (⟨bv⟩ : Std.U8) = UInt8.ofBitVec bv := by
+  apply UInt8.toNat_inj.mp
+  show ((⟨bv⟩ : Std.U8)).bv.toNat = bv.toNat
+  rfl
+
+/-- u8ToUInt8 distributes over BitVec-or of mk's. -/
+theorem u8ToUInt8_mk_or (a b : BitVec 8) :
+    u8ToUInt8 (⟨a ||| b⟩ : Std.U8) = u8ToUInt8 ⟨a⟩ ||| u8ToUInt8 ⟨b⟩ := by
+  apply UInt8.toNat_inj.mp
+  show (a ||| b).toNat = (a.toNat ||| b.toNat : Nat)
+  exact BitVec.toNat_or a b
+
+/-- u8ToUInt8 distributes over BitVec-shift-left by a small Nat. -/
+theorem u8ToUInt8_mk_shl (bv : BitVec 8) (s : Nat) (hs : s < 8) :
+    u8ToUInt8 (⟨bv <<< s⟩ : Std.U8) = u8ToUInt8 ⟨bv⟩ <<< UInt8.ofNat s := by
+  apply UInt8.toNat_inj.mp
+  show (bv <<< s).toNat = (UInt8.ofBitVec bv <<< UInt8.ofNat s).toBitVec.toNat
+  rw [BitVec.toNat_shiftLeft]
+  show (bv.toNat <<< s) % 256 = (bv <<< ((UInt8.mod (UInt8.ofNat s) 8).toBitVec.toNat)).toNat
+  rw [BitVec.toNat_shiftLeft]
+  have h8 : (UInt8.mod (UInt8.ofNat s) 8).toBitVec.toNat = s := by
+    simp [UInt8.mod, UInt8.ofNat, UInt8.toNat, UInt8.toBitVec]
+    sorry
+  rw [h8]
+
+/-- map-getD: the mapped in-range-or-default read. -/
+theorem map_getD_u8 (l : List Std.U8) (k : Nat) :
+    ((l.map u8ToUInt8)[k]?.getD default) = u8ToUInt8 (l[k]!) := by
+  cases h : l[k]? with
+  | none =>
+    simp [h]
+    simp [u8ToUInt8_default]
+    rfl
+  | some x =>
+    simp [h]
+
+/-- u8ToUInt8 of a small shift, Std.U8-level form. -/
+theorem u8ToUInt8_shl (x : Std.U8) (s : Nat) (hs : s < 8) :
+    u8ToUInt8 (⟨x.bv <<< s⟩ : Std.U8) = (u8ToUInt8 x) <<< UInt8.ofNat s :=
+  u8ToUInt8_mk_shl x.bv s hs
+
+/-- the foldl bit-pack equals the transported extracted bit-pack. -/
+theorem bitPack_transport (ln : List UInt8) (l : List Std.U8) (hl : ln = l.map u8ToUInt8) (i : Nat) :
+    ∀ (k s : Nat) (v : Std.U8), 8 - s = k →
+    List.foldl (fun b a => b ||| (((ln[i * 8 + a]?.getD default) &&& 1) <<< UInt8.ofNat a))
+        (u8ToUInt8 v) (List.range' s k)
+    = u8ToUInt8 ⟨bitPackBvFrom l i s v.bv⟩ := by
+  intro k
+  induction k with
+  | zero =>
+    intro s v hk
+    have hs : ¬ s < 8 := by omega
+    have h1 : List.range' s 0 = [] := rfl
+    rw [h1]
+    show u8ToUInt8 v = u8ToUInt8 ⟨bitPackBvFrom l i s v.bv⟩
+    congr 1
+    rw [show bitPackBvFrom l i s v.bv = v.bv from by rw [bitPackBvFrom.eq_def]; rw [if_neg hs]]
+  | succ k ih =>
+    intro s v hk
+    have hs : s < 8 := by omega
+    have hk' : 8 - (s + 1) = k := by omega
+    rw [List.range'_succ]
+    rw [List.foldl_cons]
+    show (List.foldl (fun b a => b ||| (((ln[i * 8 + a]?.getD default) &&& 1) <<< UInt8.ofNat a))
+        (u8ToUInt8 v ||| (((ln[i * 8 + s]?.getD default) &&& 1) <<< UInt8.ofNat s))
+        (List.range' (s + 1) k)) = _
+    have hbyte : (u8ToUInt8 v) ||| (((ln[i * 8 + s]?.getD default) &&& 1) <<< UInt8.ofNat s)
+        = u8ToUInt8 (v ||| ⟨(l[i * 8 + s]! &&& 1#u8).bv <<< s⟩) := by
+      rw [hl, map_getD_u8]
+      have h1 : (u8ToUInt8 (l[i * 8 + s]!) &&& 1) = u8ToUInt8 (l[i * 8 + s]! &&& 1#u8) := by
+        rw [← u8ToUInt8_one, ← u8ToUInt8_and]
+      rw [h1]
+      rw [← u8ToUInt8_shl _ s hs]
+      rw [← u8ToUInt8_or]
+    rw [hbyte]
+    have hstep : bitPackBvFrom l i s v.bv = bitPackBvFrom l i (s + 1) (v.bv ||| ((l[i * 8 + s]! &&& 1#u8).bv <<< s)) := by
+      rw [bitPackBvFrom.eq_def]
+      rw [if_pos hs]
+    rw [hstep]
+    exact ih (s + 1) ⟨v.bv ||| ((l[i * 8 + s]! &&& 1#u8).bv <<< s)⟩ hk'
+
+
