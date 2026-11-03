@@ -777,3 +777,175 @@ theorem garble_to_share_spec {N O : Type} (d : vole.VoleArray N Std.U8)
   rw [spec_ok]
   exact ha
 
+
+/-! ## Clone machinery (shim/Vec clone is the identity on U8)
+
+Used by the `GlobalSecret.secret` bridge. `iterOf`/`seqOf`/`seqVal` keep
+goals well-typed at instances transparency (the `Iter`/`Seq` defs alias the
+slice subtype; anonymous constructors in argument position record the bare
+subtype and poison simp's progress check).
+-/
+
+/-- U8 clone is the identity. -/
+theorem core_u8_clone (x : Std.U8) :
+    core.U8.Insts.CoreCloneClone.clone x = ok x := rfl
+
+/-- Build a slice-`Iter` from a list without an anonymous constructor in
+argument position (keeps goals well-typed at instances transparency). -/
+def iterOf (l : List Std.U8) (hl : l.length ≤ Usize.max) : core.slice.iter.Iter Std.U8 :=
+  ⟨l, hl⟩
+
+/-- Build a `Seq` likewise. -/
+def seqOf (l : List Std.U8) (hl : l.length ≤ Usize.max) : rust_primitives.sequence.Seq Std.U8 :=
+  ⟨l, hl⟩
+
+/-- The list spine of a `Seq` (kept as a def so goals stay well-typed at
+instances transparency, like `vecL`). -/
+def seqVal (s : rust_primitives.sequence.Seq Std.U8) : List Std.U8 := s.val
+
+/-- seq_remove at 0 on a nonempty slice: head and tail. -/
+theorem seq_remove_zero_cons (x : Std.U8) (xs : List Std.U8) (hl : (x :: xs).length ≤ Usize.max) :
+    rust_primitives.sequence.seq_remove (iterOf (x :: xs) hl) 0#usize =
+      ok ((x, iterOf xs (by have h : xs.length + 1 ≤ Usize.max := hl; omega)) :
+        Std.U8 × core.slice.iter.Iter Std.U8) := by
+  simp only [rust_primitives.sequence.seq_remove]
+  have hbound0 : (0#usize : Std.Usize).val < (iterOf (x :: xs) hl).val.length := by
+    show (0#usize : Std.Usize).val < (x :: xs).length
+    have hz0 : (0#usize : Std.Usize).val = 0 := by decide
+    rw [hz0]
+    show 0 < xs.length + 1
+    omega
+  rw [dif_pos hbound0]
+  rfl
+
+
+/-- One clone-loop body step on a nonempty iterator (plain-application form so
+it can rewrite the loop scrutinee). -/
+theorem vec_u8_clone_body_cons (x : Std.U8) (xs : List Std.U8)
+    (hxs : (x :: xs).length ≤ Usize.max) (la : List Std.U8) (hla : la.length ≤ Usize.max)
+    (hacc : (la ++ [x]).length ≤ Usize.max) :
+    alloc.vec.Vec.Insts.CoreCloneClone.clone_loop.body core.U8.Insts.CoreCloneClone
+      (iterOf (x :: xs) hxs) (seqOf la hla) =
+      ok (cont (iterOf xs (by have h : xs.length + 1 ≤ Usize.max := hxs; omega),
+        seqOf (la ++ [x]) hacc)) := by
+  simp only [alloc.vec.Vec.Insts.CoreCloneClone.clone_loop.body,
+    core.slice.iter.Iter.Insts.CoreIterTraitsIteratorIteratorSharedAT.next,
+    rust_primitives.sequence.seq_len, bind_tc_ok]
+  have hz : ¬ (Slice.len (iterOf (x :: xs) hxs)) = 0#usize := by
+    intro hcon
+    have h2 := congrArg UScalar.val hcon
+    simp [iterOf] at h2
+  rw [if_neg hz]
+  rw [seq_remove_zero_cons x xs hxs]
+  simp [core.U8.Insts.CoreCloneClone, core_u8_clone, rust_primitives.sequence.seq_push]
+  have hpush : la.length < Usize.max := by
+    simp only [List.length_append, List.length_cons, List.length_nil] at hacc
+    omega
+  rw [dif_pos (show (seqOf la hla).val.length < Usize.max from hpush)]
+  rfl
+
+/-- Spec of the Vec clone loop (projection-form body): it appends the
+remaining elements to the accumulator. -/
+theorem vec_u8_clone_loop_spec :
+    ∀ (l : List Std.U8) (hl : l.length ≤ Usize.max)
+      (la : List Std.U8) (hla : la.length ≤ Usize.max)
+      (hacc : la.length + l.length ≤ Usize.max),
+      loop (fun x => alloc.vec.Vec.Insts.CoreCloneClone.clone_loop.body core.U8.Insts.CoreCloneClone
+        x.1 x.2) (iterOf l hl, seqOf la hla)
+        ⦃ r => seqVal r = la ++ l ⦄ := by
+  intro l
+  induction l with
+  | nil =>
+    intro hl la hla hacc
+    rw [loop.eq_1]
+    rw [show (iterOf ([] : List Std.U8) hl, seqOf la hla).1 = iterOf [] hl from rfl,
+        show (iterOf ([] : List Std.U8) hl, seqOf la hla).2 = seqOf la hla from rfl]
+    conv in (alloc.vec.Vec.Insts.CoreCloneClone.clone_loop.body core.U8.Insts.CoreCloneClone
+        (iterOf [] hl) (seqOf la hla)) =>
+      simp only [alloc.vec.Vec.Insts.CoreCloneClone.clone_loop.body,
+        core.slice.iter.Iter.Insts.CoreIterTraitsIteratorIteratorSharedAT.next,
+        rust_primitives.sequence.seq_len]
+    simp only [bind_tc_ok]
+    have hz : Slice.len (iterOf [] hl) = 0#usize :=
+      UScalar.eq_of_val_eq (by simp [iterOf])
+    rw [if_pos hz]
+    simp
+    rfl
+  | cons x xs ih =>
+    intro hl la hla hacc
+    rw [loop.eq_1]
+    rw [show (iterOf (x :: xs) hl, seqOf la hla).1 = iterOf (x :: xs) hl from rfl,
+        show (iterOf (x :: xs) hl, seqOf la hla).2 = seqOf la hla from rfl]
+    have hpush : (la ++ [x]).length ≤ Usize.max := by
+      simp only [List.length_append, List.length_cons, List.length_nil]
+      have hacc' : la.length + (xs.length + 1) ≤ Usize.max := hacc
+      omega
+    rw [vec_u8_clone_body_cons x xs hl la hla hpush]
+    simp
+    have happ : la ++ x :: xs = (la ++ [x]) ++ xs := by
+      simp [List.append_assoc]
+    rw [happ]
+    exact ih (by have h : xs.length + 1 ≤ Usize.max := hl; omega)
+      (la ++ [x]) hpush (by
+        simp only [List.length_append, List.length_cons, List.length_nil]
+        have hacc' : la.length + (xs.length + 1) ≤ Usize.max := hacc
+        omega)
+
+/-- The list spine of a slice `Iter` (def, like `seqVal`). -/
+def iterVal (i : core.slice.iter.Iter Std.U8) : List Std.U8 := i.val
+
+/-- Clone-loop spec over an opaque iterator/accumulator state. -/
+theorem vec_u8_clone_loop_spec' (it : core.slice.iter.Iter Std.U8)
+    (acc : rust_primitives.sequence.Seq Std.U8)
+    (hb : (seqVal acc).length + (iterVal it).length ≤ Usize.max) :
+    loop (fun x => alloc.vec.Vec.Insts.CoreCloneClone.clone_loop.body core.U8.Insts.CoreCloneClone
+      x.1 x.2) (it, acc)
+      ⦃ r => seqVal r = seqVal acc ++ iterVal it ⦄ := by
+  have hit : it = iterOf (iterVal it) it.property := by
+    show it = (⟨it.val, it.property⟩ : Aeneas.Std.Slice Std.U8)
+    rfl
+  have hacc : acc = seqOf (seqVal acc) acc.property := by
+    show acc = (⟨acc.val, acc.property⟩ : Aeneas.Std.Slice Std.U8)
+    rfl
+  rw [hit, hacc]
+  exact vec_u8_clone_loop_spec (iterVal it) it.property (seqVal acc) acc.property hb
+
+/-- Vec clone is the identity on U8 vectors. -/
+theorem vec_u8_clone_eq (v : alloc.vec.Vec Std.U8) :
+    alloc.vec.Vec.Insts.CoreCloneClone.clone core.U8.Insts.CoreCloneClone v = ok v := by
+  simp only [alloc.vec.Vec.Insts.CoreCloneClone.clone,
+    alloc.vec.Vec.Insts.CoreOpsDerefDerefSlice.deref, alloc.vec.Vec.as_slice,
+    rust_primitives.sequence.seq_to_slice, rust_primitives.sequence.seq_empty,
+    core.slice.Slice.iter, rust_primitives.sequence.seq_from_slice]
+  simp only [Bind.bind, Aeneas.Std.bind]
+  rw [show alloc.vec.Vec.Insts.CoreCloneClone.clone_loop core.U8.Insts.CoreCloneClone
+        v (Slice.new Std.U8) =
+      loop (fun x => alloc.vec.Vec.Insts.CoreCloneClone.clone_loop.body core.U8.Insts.CoreCloneClone
+        x.1 x.2) (v, (Slice.new Std.U8)) from rfl]
+  obtain ⟨r, hr, hpost⟩ := spec_ok_elim (vec_u8_clone_loop_spec'
+    v (Slice.new Std.U8) (by
+      have hvp := v.property
+      simp only [seqVal, iterVal, Slice.new]
+      simp only [List.length_nil, Nat.zero_add]
+      exact hvp))
+  rw [hr]
+  have h2 : r = v := by
+    show r = (⟨v.val, v.property⟩ : Aeneas.Std.Slice Std.U8)
+    apply Subtype.ext
+    have h3 : seqVal r = seqVal (Slice.new Std.U8) ++ iterVal v := hpost
+    simp only [seqVal, iterVal, seqOf, Slice.new, List.nil_append] at h3
+    show r.val = v.val
+    exact h3
+  rw [h2]
+
+/-- Shim-array clone is the identity. -/
+theorem array_u8_clone_eq {N : Type} (d : vole.VoleArray N Std.U8)
+    (a : volar_spec.array.Array Std.U8 N) :
+    array.Array.Insts.CoreCloneClone.clone core.U8.Insts.CoreCloneClone
+      d.arrayArraySizeInst.typenummarker_traitsUnsignedInst.coremarkerCopyInst.cloneCloneInst
+      d.arrayArraySizeInst a = ok a := by
+  simp only [array.Array.Insts.CoreCloneClone.clone]
+  rw [vec_u8_clone_eq a.data]
+  simp only [Bind.bind, Aeneas.Std.bind]
+  simp only [core.marker.PhantomData.Insts.CoreCloneClone.clone, pure]
+
