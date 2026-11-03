@@ -49,3 +49,8 @@ def arrayAsRef {N : Type} (d : vole.VoleArray N Std.U8) :
   core.Shared0T.Insts.CoreConvertAsRef
     (array.Array.Insts.CoreConvertAsRefSlice Std.U8 d.arrayArraySizeInst)
 
+
+/-- Transport: fixed-size core array of shim arrays → list of lists. -/
+def arrFixedToNative {N : Type} {k : Std.Usize}
+    (a : Aeneas.Std.Array (array.Array Std.U8 N) k) : List (List UInt8) :=
+  (Aeneas.Std.Array.v a).map arrToNative
