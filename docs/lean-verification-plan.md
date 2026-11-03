@@ -293,32 +293,36 @@ Two proof layers, then the bridge:
   `array_u8_clone_eq`, driven by a `sliceOf`/`iterOf`/`seqOf`/`seqVal`
   discipline that keeps goals well-typed at instances transparency),
   `GlobalSecret.new` (`MutateOrZeroCtor`; uses `shim_index_mut_zero`,
-  `map_set_u8`, `u8ToUInt8_or`). `GarbleTable` transport is a fixed core
+  `map_set_u8`, `u8ToUInt8_or`), and `Garble.to_share`/`Eval.to_share`
+  (`BitPackCtor`; uses the curated per-struct extraction-side specs plus
+  the native-side `to_share_inner_native` (the `for`-loop is
+  definitionally a `List.foldl` over `List.range' 0 8`) and
+  `bitPack_transport` (foldl ↔ `bitPackBvFrom`) from the bridge Prelude).
+  `GarbleTable` transport is a fixed core
   array of shim arrays (`arrFixedToNative`).
 - **Curated bridges (voof `VolarSpecBridge/Bridge.lean`)**:
   `absorb_args_bases_commutes` (via the `digestStateRel`/`digestChain`
-  snoc-inductive digest-state relation) and `one_wire_eval_commutes`
-  (zero ∘ encode composition).
-- **to_share (extraction side landed)**: `usize_range_next_spec`,
+  snoc-inductive digest-state relation), `one_wire_eval_commutes`
+  (zero ∘ encode composition), and `action_result_base_commutes`
+  (mixed digest chain: constant `[0xAC]` core-array update, the nested
+  `absorb_args_bases` as a peeled ok-hypothesis, and the
+  `u64.to_le_bytes` update via the `u64LeByte`/`u64_to_le_bytes_spine`
+  correspondence with the native `u64LeBytes`).
+- **to_share (extraction side)**: `usize_range_next_spec`,
   `u8_shl_eq`, `bitPackBvFrom`, `to_share_loop_body_step`,
-  `to_share_loop_eq`, `Garble_to_share_closure_spec`,
-  `garble_to_share_spec` — the extracted bit-pack is fully characterized.
+  `to_share_loop_eq`, per-struct closure+method specs for both
+  `Garble.to_share` and `Eval.to_share`.
 - Still open for M2:
-  - `to_share` ×2, *native side*: the native emission is an `Id.run`
-    for-in loop over `[0:8]` — needs native-side for-loop/fold
-    characterization lemmas plus `u8ToUInt8` or/shl/and transport to
-    close the commutation.
-  - `action_result_base`: digest chain with a constant `[0xAC]` update
-    (core fixed array AsRef), a nested `absorb_args_bases` call (the
-    curated absorb bridge plugs in via `digestStateRel`), and a
-    `u64.to_le_bytes` update (needs the CoreModels `to_le_bytes` model's
-    spine = `u64LeBytes (UInt64.ofNat bit)` correspondence).
-  - `gen_and_table`/`gen_and_table_pol`: bounded loop with mutation
-    building the table rows (per-iteration encode + digest + row write);
-    needs loop-with-mutation specs on both sides.
-  - `absorb_args_bases` is bridged (curated) but still listed by the
-    generator's `-- NOT-BRIDGED` comment (free functions are out of the
-    generator's scope).
+  - `gen_and_table`/`gen_and_table_pol`: bounded loop `for i in 0..4`
+    mutating the core fixed array (`table[row] = from_fn(...)`); needs a
+    core-`Array` `index_mut` spec plus loop-with-mutation specs on both
+    sides (the extraction side's range loop and the native side's
+    `List.set` fold).
+  - `absorb_args_bases` and `one_wire_eval` are bridged (curated) but
+    still listed by the generator's `-- NOT-BRIDGED` comment (the former
+    is a free function, out of the generator's scope; the latter's
+    zero-∘-encode composition is a candidate for a `BindCompose`
+    generator pattern if a second instance appears).
 
 ## 4. Extraction configuration (hax.toml scenarios)
 
