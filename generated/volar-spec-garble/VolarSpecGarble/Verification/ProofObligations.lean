@@ -723,3 +723,57 @@ theorem to_share_loop_eq {N : Type} (d : vole.VoleArray N Std.U8)
       (congrArg (bitPackBvFrom (vecL g.base.data) i.val (iter.start.val + 1))
         (congrArg (fun x => v.bv ||| x) hstep.2.2.2))
 
+
+/-- (curated) the to_share closure is the bit-pack. -/
+theorem Garble_to_share_closure_spec {N O : Type} (d : vole.VoleArray N Std.U8)
+    (dO : vole.VoleArray O Std.U8)
+    (divDict : core.ops.arith.Div N
+      (typenum.uint.UInt (typenum.uint.UInt (typenum.uint.UInt (typenum.uint.UInt
+        typenum.uint.UTerm typenum.bit.B1) typenum.bit.B0) typenum.bit.B0)
+      typenum.bit.B0) O)
+    (m : Std.Usize)
+    (g : garble.Garble N) (i : Std.Usize)
+    (hg : (vecL g.base.data).length = m.val)
+    (hi : i.val * 8 + 7 < m.val) :
+    garble.Garble.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut
+        d dO divDict g i =
+      ok (⟨bitPackBvFrom (vecL g.base.data) i.val 0 (0#u8).bv⟩, g) := by
+  simp only [garble.Garble.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut]
+  rw [show garble.Garble.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut_loop
+        d { start := 0#usize, «end» := 8#usize } g i 0#u8 =
+      loop (fun x =>
+        garble.Garble.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8.call_mut_loop.body
+          d g i x.1 x.2) ({ start := 0#usize, «end» := 8#usize }, 0#u8) from rfl]
+  rw [to_share_loop_eq d g i m hg hi 8 { start := 0#usize, «end» := 8#usize } 0#u8
+    (by simp [usize_eight_val]) (by simp [usize_eight_val]) rfl]
+  simp only [Bind.bind, Aeneas.Std.bind]
+  rfl
+
+/-- (curated) the extracted `Garble.to_share` bit-packs each output byte. -/
+theorem garble_to_share_spec {N O : Type} (d : vole.VoleArray N Std.U8)
+    (dO : vole.VoleArray O Std.U8)
+    (divDict : core.ops.arith.Div N
+      (typenum.uint.UInt (typenum.uint.UInt (typenum.uint.UInt (typenum.uint.UInt
+        typenum.uint.UTerm typenum.bit.B1) typenum.bit.B0) typenum.bit.B0)
+      typenum.bit.B0) O)
+    (m mo : Std.Usize)
+    (hsize : d.arrayArraySizeInst.typenummarker_traitsUnsignedInst.USIZE = ok m)
+    (hsizeO : dO.arrayArraySizeInst.typenummarker_traitsUnsignedInst.USIZE = ok mo)
+    (hdiv : mo.val * 8 = m.val)
+    (g : garble.Garble N)
+    (hgl : (vecL g.base.data).length = m.val) :
+    garble.Garble.to_share d dO divDict g
+      ⦃ r => vecL r.base.data = List.ofFn (fun j : Fin mo.val =>
+          ⟨bitPackBvFrom (vecL g.base.data) j.val 0 (0#u8).bv⟩) ⦄ := by
+  simp only [garble.Garble.to_share]
+  apply spec_bind (from_fn_spec dO.arrayArraySizeInst
+    (garble.Garble.to_share.closure.Insts.CoreOpsFunctionFnMutTupleUsizeU8 d dO divDict)
+    mo hsizeO g
+    (fun j => ⟨bitPackBvFrom (vecL g.base.data) j 0 (0#u8).bv⟩)
+    (by
+      intro i hi
+      exact Garble_to_share_closure_spec d dO divDict m g i hgl (by omega)))
+  intro a ha
+  rw [spec_ok]
+  exact ha
+
