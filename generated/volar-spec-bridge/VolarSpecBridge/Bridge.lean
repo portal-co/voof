@@ -116,3 +116,36 @@ theorem absorb_args_bases_commutes {N D : Type} (d : vole.VoleArray N Std.U8)
       have hnb : (GarbleToNative 0 x).base = arrToNative x.base := rfl
       rw [hnb]
       exact hrel'
+
+/-- (curated) `GlobalSecret.one_wire_eval` commutes with the transport:
+composition of the generated `zero` and `encode` bridges. -/
+theorem GlobalSecret_one_wire_eval_commutes {N : Type} (d : vole.VoleArray N Std.U8)
+    (m : Std.Usize)
+    (hsize : d.arrayArraySizeInst.typenummarker_traitsUnsignedInst.USIZE = ok m)
+    (self : volar_spec.garble.GlobalSecret N)
+    (hsl : (vecL self.secret.data).length = m.val) :
+    (do let r ← volar_spec.garble.GlobalSecret.one_wire_eval d self
+        ok (EvalToNative m.val r)) =
+    ok (GlobalSecret.one_wire_eval (GlobalSecretToNative m.val self)) := by
+  have hspec : volar_spec.garble.Garble.zero d
+      ⦃ r => vecL r.base.data = List.replicate m.val default ⦄ := by
+    simp only [volar_spec.garble.Garble.zero]
+    apply spec_bind (array_default_spec _ _ _ m hsize default core_u8_default)
+    intro a ha
+    rw [spec_ok]
+    exact ha
+  obtain ⟨r0, hr0, hpost0⟩ := spec_ok_elim hspec
+  have hl0 : (vecL r0.base.data).length = m.val := by rw [hpost0]; simp
+  simp only [volar_spec.garble.GlobalSecret.one_wire_eval]
+  rw [hr0]
+  simp only [bind_tc_ok]
+  rw [GlobalSecret_encode_commutes d m hsize self r0 true hsl hl0]
+  -- now: ok (GlobalSecret.encode (GlobalSecretToNative .. self) (GarbleToNative .. r0) true)
+  --    = ok (GlobalSecret.one_wire_eval (GlobalSecretToNative .. self))
+  have hbase : arrToNative r0.base = (Garble.zero : Garble m.val).base := by
+    simp only [arrToNative, Garble.zero]
+    rw [hpost0]
+    simp [List.map_replicate, u8ToUInt8_default]
+  simp only [GlobalSecret.one_wire_eval, GlobalSecret.encode, GarbleToNative, GlobalSecretToNative]
+  rw [hbase]
+
