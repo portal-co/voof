@@ -44,3 +44,75 @@ theorem native_roundtrip_via_bridge {N : Type} (d : vole.VoleArray N Std.U8)
   simp only [Bind.bind, Aeneas.Std.bind] at ho
   rw [ok.injEq] at ho
   rw [← hs, ho]
+
+/-- The dict state results from absorbing `chunks` in order, starting from
+`new` (snoc-structured so single-step extension is definitional). -/
+inductive digestChain {N D : Type} (dict : SpecDigest D N)
+    (asref : core.convert.AsRef (array.Array Std.U8 N) (Slice Std.U8)) :
+    List (array.Array Std.U8 N) → D → Prop where
+  | nil (d' : D) : dict.new = ok d' → digestChain dict asref [] d'
+  | snoc (cs : List (array.Array Std.U8 N)) (c : array.Array Std.U8 N) (d1 d2 : D) :
+      digestChain dict asref cs d1 →
+      dict.update asref d1 c = ok d2 →
+      digestChain dict asref (cs ++ [c]) d2
+
+/-- A digest-dict state corresponds to a native accumulation state if the
+dict state is the result of absorbing witnessed chunks, and the native parts
+are the transported chunks. Induction-stable by construction. -/
+def digestStateRel {N D : Type} (d : vole.VoleArray N Std.U8) (dict : SpecDigest D N)
+    (dD : D) (dn : DigestSt) : Prop :=
+  ∃ (chunks : List (array.Array Std.U8 N)),
+    dn.parts = chunks.map (fun c => (vecL c.data).map u8ToUInt8) ∧
+    digestChain dict (arrayAsRef d) chunks dD
+
+/-- (curated) commutation of the recursive digest absorption: the extracted
+`absorb_args_bases` preserves the digest-state relation. -/
+theorem absorb_args_bases_commutes {N D : Type} (d : vole.VoleArray N Std.U8)
+    (dict : SpecDigest D N)
+    (hok : ∀ (dd : D) (x : garble.Garble N),
+      ∃ d', dict.update (arrayAsRef d) dd x.base = ok d') :
+    ∀ (args : List (garble.Garble N)) (hargs : args.length ≤ Usize.max),
+      ∀ (dD : D) (dn : DigestSt), digestStateRel d dict dD dn →
+      ∃ r, garble.absorb_args_bases d dict dD ⟨args, hargs⟩ = ok r ∧
+        digestStateRel d dict r
+          (_root_.absorb_args_bases dn (args.map (GarbleToNative 0))) := by
+  intro args
+  induction args with
+  | nil =>
+    intro hargs dD dn hrel
+    refine ⟨dD, ?_, hrel⟩
+    rw [garble.absorb_args_bases.eq_def]
+    simp only [Bind.bind, Aeneas.Std.bind]
+    rw [slice_split_first_nil]
+    rfl
+  | cons x rest ih =>
+    intro hargs dD dn hrel
+    have hrest : rest.length ≤ Usize.max := by
+      simp only [List.length_cons] at hargs
+      omega
+    obtain ⟨d1, hup⟩ := hok dD x
+    obtain ⟨r, habs, hrel'⟩ := ih hrest d1 (dn.update (arrToNative x.base)) (by
+      obtain ⟨chunks, hparts, hfold⟩ := hrel
+      refine ⟨chunks ++ [x.base], ?_, ?_⟩
+      · simp [DigestSt.update, hparts, arrToNative, List.map_append]
+      · exact digestChain.snoc chunks x.base dD d1 hfold hup)
+    refine ⟨r, ?_, ?_⟩
+    · rw [garble.absorb_args_bases.eq_def]
+      simp only [Bind.bind, Aeneas.Std.bind]
+      rw [slice_split_first_cons _ _ _ rfl]
+      simp only [Aeneas.Std.bind]
+      show (do let d1' ← dict.update (arrayAsRef d) dD x.base
+               garble.absorb_args_bases d dict d1'
+                 (⟨rest, by omega⟩ : Slice (garble.Garble N))) = ok r
+      rw [hup]
+      exact habs
+    · have hnat : _root_.absorb_args_bases dn
+          ((x :: rest).map (GarbleToNative 0)) =
+          _root_.absorb_args_bases (DigestSt.update dn (GarbleToNative 0 x).base)
+            (rest.map (GarbleToNative 0)) := by
+        rw [List.map_cons, _root_.absorb_args_bases.eq_1]
+        rfl
+      rw [hnat]
+      have hnb : (GarbleToNative 0 x).base = arrToNative x.base := rfl
+      rw [hnb]
+      exact hrel'

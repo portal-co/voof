@@ -70,6 +70,36 @@ theorem u8_xor_cancel2 (b t : Std.U8) : (b ^^^ t) ^^^ b = t := by
   exact u8_xor_cancel t b
 
 
+/-- Spec of the `split_first` model (hand model in Assumptions): nil case. -/
+theorem slice_split_first_nil {T : Type} (s : Slice T) (h : s.val = []) :
+    core.slice.Slice.split_first s = ok core.option.Option.None := by
+  conv_lhs => rw [core.slice.Slice.split_first]
+  split
+  · rfl
+  · rename_i x' rest' hv
+    rw [h] at hv
+    nomatch hv
+
+/-- Spec of the `split_first` model: cons case. -/
+theorem slice_split_first_cons {T : Type} (s : Slice T) (x : T) (rest : List T)
+    (h : s.val = x :: rest) :
+    core.slice.Slice.split_first s = ok (core.option.Option.Some (x,
+      (⟨rest, by
+        have hsp := s.property
+        rw [h] at hsp
+        simp only [List.length_cons] at hsp
+        omega⟩ : Slice T))) := by
+  conv_lhs => rw [core.slice.Slice.split_first]
+  split
+  · rename_i hv
+    rw [h] at hv
+    nomatch hv
+  · rename_i x' rest' hv
+    rw [h] at hv
+    simp only [List.cons.injEq] at hv
+    obtain ⟨rfl, rfl⟩ := hv
+    rfl
+
 /-- `core.U8`'s `Default` computes to `default`. -/
 theorem core_u8_default :
     core.U8.Insts.CoreDefaultDefault.default = ok (default : Std.U8) := by

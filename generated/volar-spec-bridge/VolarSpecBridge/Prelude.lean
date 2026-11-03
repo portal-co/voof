@@ -42,3 +42,10 @@ theorem u8ToUInt8_default : u8ToUInt8 (default : Std.U8) = 0 := by
 /-- Transport: extracted shim array → native list. -/
 def arrToNative {N : Type} (a : array.Array Std.U8 N) : List UInt8 :=
   (vecL a.data).map u8ToUInt8
+
+/-- The `AsRef` dictionary used by all shim-array digest `update` calls. -/
+def arrayAsRef {N : Type} (d : vole.VoleArray N Std.U8) :
+    core.convert.AsRef (array.Array Std.U8 N) (Slice Std.U8) :=
+  core.Shared0T.Insts.CoreConvertAsRef
+    (array.Array.Insts.CoreConvertAsRefSlice Std.U8 d.arrayArraySizeInst)
+
